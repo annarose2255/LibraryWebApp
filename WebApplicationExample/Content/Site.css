@@ -126,4 +126,27 @@ button:hover span:after { /* edits/add all span elements (just an inline element
         opacity: 1;
         right: 0;
 }
+/* FAQ collumn*/
+#faq {
+    margin-left: 150px;
+    margin-right: 150px;
+    max-width: 1000px;
+}
+/* style to change color of links */
+#link{
+    color: #9F2CAD;
+}
+    #link:hover {
+        color: #5D43C1;
+        /*-webkit-text-stroke: .12px;
+        -webkit-text-stroke-color: #5E44C4;*/
+        text-shadow: -1px 1px 2px #000, /*  h-shadow (horizontal), v-shadow (vertical), blur-radius, color -- left bottom shadow*/
+                    1px 1px 2px #000;  /*more than 1 shadow - right bottom*/
+                    /*1px -1px 0 #000;*/ /* top right shadow*/
+                    /*-1px -1px 0 #000;*/ /* top left shadow*/
+    }
+/* change color of the headers on the footer collumns*/
+#footerCollumnHeader {
+    color: #2CA6A4; /* EDF7F6 white, 2CA6A4 blue*/
+}
 
