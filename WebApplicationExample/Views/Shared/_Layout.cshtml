@@ -42,53 +42,36 @@
         @*<p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>*@
         <div class="footer">
                 <div class="footerCollumn" id="newsletter">
-                    <span id="footerCollumnHeader">
-                        Join the newsletter </span>
-                        <p class="newsletterInfo"> Get notified monthly when you need to return a book, or when new books are added!</p>
-                        <div class="newsletterInput">
-                            <input type="email" placeholder="Enter your Email" />
-                            <button type="button" style="vertical-align:middle"> <span>Sign up</span> </button>
-                        </div>
+                    Join the newsletter
+                    <p class="newsletterInfo"> Get notified monthly when you need to return a book, or when new books are added!</p>
+                    <div class="newsletterInput">
+                        <input type="email" placeholder="Enter your Email" />
+                        <button type="button" style="vertical-align:middle"> <span>Sign up</span> </button>
+                    </div>
                 </div>
 
                 <div class="footerCollumn" id="faq">
-                    <span id="footerCollumnHeader"> 
-                        FAQ and Support <br /> </span>
-                        <div class="footerLinks"> @Html.ActionLink("FAQ Page", "FAQ", "Home", null, new { id = "link" })</div> @* passed the name of the link, the view,
-        the location folder of view, no id so null, then the style*@
-                        <div class="footerLinks"> @Html.ActionLink("Support Page", "Support", "Home", null, new { id = "link" })</div>
-</div>
+                    FAQ and Support <br />
+                    <div class="footerLinks"> @Html.ActionLink("FAQ Page", "FAQ", "Home", null, new { @style = "color:#E05B2A" })</div> @* passed the name of the link, the view,
+                                                                                                                        the location folder of view, no id so null, then the style*@
+                    <div class="footerLinks"> @Html.ActionLink("Support Page", "Support", "Home", null, new { @style = "color:#E05B2A" })</div>
+                </div>
 
                 <div class="footerCollumn">
-                    <span id="footerCollumnHeader">
-                        Contact Us
-                    </span>
-                    <div class="footerLinks"> @Html.ActionLink("Contact Us Page", "Contact", "Home", null, new { id = "link" })</div>
-                    <p class="footerLinks">
-                        Phone:
-                        <a class="footerLinks" href="tel:1-237-6679" id="link">
-                            1-237-6679
+                    Contact Us
+                    <div class="footerLinks"> @Html.ActionLink("Contact Us Page", "Contact", "Home", null, new { @style = "color:#E05B2A" })</div>
+                    <p class="footerLinks">Phone: 1-237-6679</p>
+                    <p class="footerLinks">Fax: 1-237-2873</p>
+                    <p class="footerLinks"> Email: 
+                        <a class="footerLinks" href="mailto:Library@gmail.com" style="color: #E05B2A">
+                        Library@gmail.com
                         </a>
                     </p>
                     <p class="footerLinks">
-                        Fax:
-                        <a class="footerLinks" href="tel:1-237-2873" id="link">
-                            1-237-2873
-                        </a>
+                        Address: One Microsoft Way
+                        Redmond, WA 98052-6399
                     </p>
-                    <p class="footerLinks">
-                        Email:
-                        <a class="footerLinks" href="mailto:Library@gmail.com" id="link">
-                            Library@gmail.com
-                        </a>
-                    </p>
-                    <p class="footerLinks">
-                        Address:
-                        <a class="footerLinks" id="link" href="https://www.google.com/maps/place/Westview+Cemetery+Inc./33.7330846,-84.4306764,13.62z/data=!4m5!3m4!1s0x88f51cbbe22cb30f:0x7b869bcdcf20033c!8m2!3d33.7463642!4d-84.4422021">
-                            1680 Westview Dr SW, Atlanta, GA 30310
-                        </a>
-                    </p>
-</div>
+                </div>
         </div>
     </footer>
  

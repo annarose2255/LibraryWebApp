@@ -31,11 +31,6 @@ textarea {
     min-height: calc(100vh - 364px);
 }
 
-.justspace {
-    height: 500px;
-}
-
-/* Base Footer Stuff*/
 .footer {
     background-color: #3D3D3D;
     min-height: 290px;
@@ -46,8 +41,12 @@ textarea {
     bottom: 0; /* this sets the footer at the bottom*/
 }
 
+.footerAllColumn{
+    margin-left: 150px;
+}
 .footerCollumn {
     max-width: 360px;
+    /*background-color: blanchedalmond;*/
     align-self: stretch;
     width: auto;
     margin-right: 150px;
@@ -57,33 +56,28 @@ textarea {
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 10px;
-    color: #D2DBDA; /* color of text - EDF7F6 white, 2CA6A4 - blue, D2DBDA - light Grey Silver*/
+    color: lightgray; /* color of text*/
 }
 .footerLinks{
     font-size: 18px;
     padding-block-start: 10px;
 }
-/* newsLetter collumn stuff*/
 .newsletterInput {
     padding-block-start: 20px;
     font-size: 20px;
 }
-.newsletterInfo {
+.newsletterInfo{
     font-size: 15px;
-    color: #B2B7B6; /* B2B7B6 - darker silver */
+    color: darkgray;
     margin-top: 10px;
 }
 #newsletter {
     margin-left: 200px;
     margin-right: 100px;
 }
-::placeholder { /* for changing the place holder text color - Chrome, Firefox, Opera, Safari 10.1+ */
-    color: #5B5B5B;
-    opacity: 100; /* needed for Firefox */
-}
 button {
     float: right; /* stay to right of text box */
-    background-color: #9F2CAD;
+    background-color: #E05B2A;
     border-radius: 12px;
     transition-duration: 0.4s;
     color: white;
@@ -93,53 +87,44 @@ button {
     cursor: pointer; /* makes mouse look like a hand*/
 }
 button:hover {
-    background-color: #3B2685;
+    background-color: #CC4A22;
     color: white;
 }
+#faq{
+    margin-left: 150px;
+    margin-right: 150px;
+    max-width: 1000px;
+}
 
+.justspace{
+    height: 500px;
+}
+::placeholder { /* for changing the place holder text color - Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #5B5B5B;
+    opacity: 100; /* needed for Firefox */
+}
 button span { /* selects span elements inside of the button element*/
     cursor: pointer; /* makes mouse look like a hand*/
     display: inline-block; /* says the elements should be inline with each other*/
     position: relative;
     transition: 2.5s;
 }
-button span:after { /* inserts element after the span elements inside of the button element*/
-    content: '\279C'; /* this is code for ➜ - see https://www.w3schools.com/cssref/css_entities.asp for more of these*/
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    right: -20px;
-    transition: 2.5s;
-}
+    button span:after { /* inserts element after the span elements inside of the button element*/
+        content: '\279C'; /* this is code for ➜ - see https://www.w3schools.com/cssref/css_entities.asp for more of these*/
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 2.5s;
+    }
+
 button:hover span { /* selects span elements inside of the button element when it is hovered*/
     padding-right: 25px;
 }
+
 button:hover span:after { /* edits/add all span elements (just an inline element) after the button's hover state (and selects span elements inside of the button element) */
         opacity: 1;
         right: 0;
-}
-/* FAQ collumn*/
-#faq {
-    margin-left: 150px;
-    margin-right: 150px;
-    max-width: 1000px;
-}
-/* style to change color of links */
-#link{
-    color: #9F2CAD;
-}
-    #link:hover {
-        color: #5D43C1;
-        /*-webkit-text-stroke: .12px;
-        -webkit-text-stroke-color: #5E44C4;*/
-        text-shadow: -1px 1px 2px #000, /*  h-shadow (horizontal), v-shadow (vertical), blur-radius, color -- left bottom shadow*/
-                    1px 1px 2px #000;  /*more than 1 shadow - right bottom*/
-                    /*1px -1px 0 #000;*/ /* top right shadow*/
-                    /*-1px -1px 0 #000;*/ /* top left shadow*/
-    }
-/* change color of the headers on the footer collumns*/
-#footerCollumnHeader {
-    color: #2CA6A4; /* EDF7F6 white, 2CA6A4 blue*/
 }
 
 body {
