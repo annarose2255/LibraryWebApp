@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="allButFooter">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Example", "Example", "Home")</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container body-content">
+            @RenderBody()  @* where view is inserted*@
+            <hr />
+            <div class="justspace">
+                hi!
+            </div>
+        </div>
+        
+    </div>
+    <footer>
+        @*<p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>*@
+        <div class="footer">
+                <div class="footerCollumn" id="newsletter">
+                    Join the newsletter
+                    <p class="newsletterInfo"> Get notified monthly when you need to return a book, or when new books are added!</p>
+                    <div class="newsletterInput">
+                        <input type="email" placeholder="Enter your Email" />
+                        <button type="button" style="vertical-align:middle"> <span>Sign up</span> </button>
+                    </div>
+                </div>
+
+                <div class="footerCollumn" id="faq">
+                    FAQ and Support <br />
+                    <div class="footerLinks"> @Html.ActionLink("FAQ Page", "FAQ", "Home", null, new { @style = "color:#E05B2A" })</div> @* passed the name of the link, the view,
+                                                                                                                        the location folder of view, no id so null, then the style*@
+                    <div class="footerLinks"> @Html.ActionLink("Support Page", "Support", "Home", null, new { @style = "color:#E05B2A" })</div>
+                </div>
+
+                <div class="footerCollumn">
+                    Contact Us
+                    <div class="footerLinks"> @Html.ActionLink("Contact Us Page", "Contact", "Home", null, new { @style = "color:#E05B2A" })</div>
+                    <p class="footerLinks">Phone: 1-237-6679</p>
+                    <p class="footerLinks">Fax: 1-237-2873</p>
+                    <p class="footerLinks"> Email: 
+                        <a class="footerLinks" href="mailto:Library@gmail.com" style="color: #E05B2A">
+                        Library@gmail.com
+                        </a>
+                    </p>
+                    <p class="footerLinks">
+                        Address: One Microsoft Way
+                        Redmond, WA 98052-6399
+                    </p>
+                </div>
+        </div>
+    </footer>
+ 
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
