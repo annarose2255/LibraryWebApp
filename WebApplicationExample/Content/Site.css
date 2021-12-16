@@ -130,11 +130,10 @@ button:hover span:after { /* edits/add all span elements (just an inline element
 }
     #link:hover {
         color: #5D43C1;
-        /*-webkit-text-stroke: .12px;
-        -webkit-text-stroke-color: #5E44C4;*/
-        text-shadow: -1px 1px 2px #000, /*  h-shadow (horizontal), v-shadow (vertical), blur-radius, color -- left bottom shadow*/
-                    1px 1px 2px #000;  /*more than 1 shadow - right bottom*/
-                    /*1px -1px 0 #000;*/ /* top right shadow*/
+        /* see https://www.w3schools.com/cssref/css3_pr_text-shadow.asp for more on text shadows*/
+        text-shadow: -1px 1px 2px #000, /*  h-shadow (horizontal), v-shadow (vertical), blur-radius, color -- left bottom shadow */
+                    1px 1px 2px #000; /*more than 1 shadow - right bottom*/
+                    /*1px -1px 0 #000;*/ /* top right shadow - need comma to activate*/
                     /*-1px -1px 0 #000;*/ /* top left shadow*/
     }
 /* change color of the headers on the footer collumns*/
