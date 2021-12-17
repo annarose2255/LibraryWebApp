@@ -235,6 +235,10 @@ nav {
 .box-login td {
         text-align: right;
 }
+.box-login th {
+        font-weight: normal; /*Override the bold from th*/
+        text-align: left;
+}
 
 .box-register {
     display: inline-block;
@@ -249,11 +253,18 @@ nav {
 }
 
 .box-regsiter th {
-    font-weight: normal; /*Override the bold from th*/
     text-align: left;
+    font-weight: normal; /*Override the bold from th*/
 }
 
 .box-register td {
     text-align: right;
+}
+.box-register button{
+    margin: auto;
+}
+.box-login button {
+    vertical-align: central;
+    position:relative; top :75px;
 }
 /**End of Login-Page CSS*/
