@@ -142,18 +142,18 @@ button:hover span:after { /* edits/add all span elements (just an inline element
     color: #2CA6A4; /* EDF7F6 white, 2CA6A4 blue*/
 }
 
-/*Begin header styling*/
+/* Begin header styling */
 
 body {
     margin: 0px;
 }
-
+/* Header text */
 header {
     background-color: #2CA6A4;
     width: 100%;
     padding: 10px;
 }
-
+/* Navbar text */
 nav a {
     color: #f2f2f2;
     text-align: center;
