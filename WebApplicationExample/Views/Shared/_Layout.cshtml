@@ -8,29 +8,41 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
+
     <header>
-        <div class="title">Library</div>
-        <nav>
-            <ul>
-                <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                <li>@Html.ActionLink("About", "About", "Home")</li>
-                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                <li>@Html.ActionLink("Login", "Login", "Home")</li>
-            </ul>
-           
-        </nav>
-        <div class="search">
-            <form action="home/search">
-                <input type="text"
-                       placeholder=" Search Catalog"
-                       name="query">
-                <button>
-                    🔎
-                </button>
-            </form>
+        <div class="headerButtons-list">
+
+
+            <div class="title">Library</div>
+            <nav>
+                @*<div class="headerButtons-list">*@
+
+                <ul class="headerButtons">
+
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Login", "Login", "Home")</li>
+                </ul>
+                @*</div>*@
+
+
+            </nav>
+            <div class="search">
+                <form action="home/search">
+                    <input type="text"
+                           placeholder=" Search Catalog"
+                           name="query">
+                    <button>
+                        🔎
+                    </button>
+                </form>
+            </div>
         </div>
+
     </header>
-    @RenderBody()
+    <div class="allButFooter">
+        @RenderBody()
     </div>
     <footer>
         @*<p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>*@
