@@ -9,7 +9,7 @@ namespace LibraryCommon
     public class UserDTO
     {
         public int UserId { get; set; }      
-        public int AddressIDFk {get; set;}
+        public int AddressID {get; set;}
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string PrimaryEmail { get; set; }
@@ -22,5 +22,6 @@ namespace LibraryCommon
         public string Comment { get; set; }
         public DateTime DateModified { get; set; }
         public int ModifiedByUserID { get; set; }
+        
     }
 }

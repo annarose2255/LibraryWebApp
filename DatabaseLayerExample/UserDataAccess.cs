@@ -50,22 +50,19 @@ namespace LibraryDatabaseAccessLayer
                                 _user = new UserDTO
                                 {
                                     UserId = reader.GetInt32(reader.GetOrdinal("UserID")),
-                                    // public int RoleIDFk { get; set; }
-                                    //public int AddressIDFk { get; set; }
-
+                                    RoleId = reader.GetInt32(reader.GetOrdinal("RoleID")),
+                                    AddressID = reader.GetInt32(reader.GetOrdinal("AddressID")),
                                     FirstName = (string)reader["FirstName"],
                                     LastName = (string)reader["LastName"],
-                                    //  public string PrimaryEmail { get; set; }
-                                    // public string PrimaryPhone { get; set; }
+                                    PrimaryEmail = (string)reader["PrimaryEmail"],
+                                    PrimaryPhone = (string)reader["PrimaryPhone"],
                                     Username = (string)reader["UserName"],
                                     Password = (string)reader["Password"],
-
-                                    Salt = (reader["Salt"] == System.DBNull.Value) ? "" : (string)reader["Salt"], // teritary operation C#
-                                    RoleId = reader.GetInt32(reader.GetOrdinal("RoleID_FK")),
-                                    //public string RoleName { get; set; }
-                                    //public string Comment { get; set; }
-                                    //public DateTime DateModified { get; set; }
-                                    //public int ModifiedByUserID { get; set; }
+                                    Salt = (reader["Salt"] == System.DBNull.Value) ? "" : (string)reader["Salt"], // teritary operation C#   
+                                    RoleName = (string)reader["RoleName"],
+                                    Comment = (string)reader["Comment"],
+                                    DateModified = reader.GetDateTime(reader.GetOrdinal("DateModified")),
+                                    ModifiedByUserID = reader.GetInt32(reader.GetOrdinal("RoleID"))
 
                                 };
                                 _list.Add(_user);
