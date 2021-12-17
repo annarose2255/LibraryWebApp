@@ -64,5 +64,9 @@ namespace LibraryWebApp
             ViewBag.Message = "Support Page";
             return View();
         }
+        public ActionResult Login()
+        {
+            return View();
+        }
     }
 }

@@ -203,4 +203,69 @@ nav {
     border: none;
     cursor: pointer;
 }
+/*CSS for Login Page Starts Here*/
+.parent-login { /*Define the div that contains the two forms*/
+    border: 1px solid white;
+    margin: 1rem;
+    padding: 2rem 2rem;
+}
 
+.box-login { /*Formatting for the login form/table*/
+    display: inline-block;
+    text-align: center;
+    border: 1px solid black; 
+    padding: 1rem 1rem;
+    margin-left: 15%; /*Margin added to center the two tables*/
+    margin-right: 10%;
+    vertical-align: middle;
+    width: 200px;
+    height: 250px;
+}
+
+.box-login ul {
+        text-align: left;
+        padding: 0;
+        margin-right: 0;
+}
+
+.box-login table {
+        width: 30%;
+        border-right: 0;
+}
+
+.box-login td {
+        text-align: right;
+}
+.box-login th {
+        font-weight: normal; /*Override the bold from th*/
+        text-align: left;
+}
+
+.box-register {
+    display: inline-block;
+    text-align: center;
+    border: 1px solid black;
+    padding: 1rem 1rem;
+    vertical-align: middle;
+    margin-left: 10%; /*Center the two forms*/
+    margin-right: 15%;
+    width: 200px;
+    height: 250px;
+}
+
+.box-regsiter th {
+    text-align: left;
+    font-weight: normal; /*Override the bold from th*/
+}
+
+.box-register td {
+    text-align: right;
+}
+.box-register button{
+    margin: auto;
+}
+.box-login button {
+    vertical-align: central;
+    position:relative; top :75px;
+}
+/**End of Login-Page CSS*/
