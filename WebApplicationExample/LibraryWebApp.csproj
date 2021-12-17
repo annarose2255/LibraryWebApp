@@ -184,9 +184,9 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DatabaseLayerExample\LibraryDatabaseAccessLayer.csproj">
-      <Project>{75e10265-c1f9-4e09-b93c-88c01050623b}</Project>
-      <Name>LibraryDatabaseAccessLayer</Name>
+    <ProjectReference Include="..\BusinessLayerExample\LibraryBusinessLogicLayer.csproj">
+      <Project>{c65a551f-ec46-49c4-8a93-ab993527f690}</Project>
+      <Name>LibraryBusinessLogicLayer</Name>
     </ProjectReference>
     <ProjectReference Include="..\ExampleCommon\LibraryCommon.csproj">
       <Project>{45d23a74-1193-4b78-bff8-537a132e53db}</Project>

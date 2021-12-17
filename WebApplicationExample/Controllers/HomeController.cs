@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using LibraryBusinessLogicLayer;
+using LibraryCommon;
 using LibraryWebApp.Models;
 
 namespace LibraryWebApp
@@ -40,6 +42,10 @@ namespace LibraryWebApp
 
         public ActionResult Example() // need view that corresponds 
         {
+            // example for getting to 
+            BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru();
+            List<UserDTO> _users = businessLogicPassThru.GetUsersData();
+
             UserModel _model = new UserModel();
 
             _model.FirstName = "Joe";
