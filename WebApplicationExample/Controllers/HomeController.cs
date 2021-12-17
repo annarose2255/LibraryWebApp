@@ -40,20 +40,6 @@ namespace LibraryWebApp
             return View();
         }
 
-        public ActionResult Example() // need view that corresponds 
-        {
-            // example for getting to 
-            BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru();
-            List<UserDTO> _users = businessLogicPassThru.GetUsersData();
-
-            UserModel _model = new UserModel();
-
-            _model.FirstName = "Joe";
-            _model.LastName = "Smith";
-            _model.RoleName = "Admin";
-            return View(_model); //way to give view the model to outprint data
-        }
-
         public ActionResult FAQ()
         {
             ViewBag.Message = "FAQ Page";
@@ -70,5 +56,41 @@ namespace LibraryWebApp
             ViewBag.Message = query;
             return View();
         }
+
+
+        [HttpGet]
+        public ActionResult Login()
+        {
+
+            UserModel _model = new UserModel();
+            return View(_model);
+        }
+
+
+        [HttpPost]
+        public ActionResult Login(UserModel inModel)
+        {
+
+            if (ModelState.IsValid)
+            {
+                // TODO: add code there
+                BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru();
+                List<UserDTO> _users = businessLogicPassThru.GetUsersData();
+
+                UserModel _model = new UserModel();
+
+                return View(inModel);
+
+            }
+            else 
+            {
+                return View(inModel);
+            }
+
+           
+        }
+
+
+
     }
 }
