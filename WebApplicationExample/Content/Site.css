@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 0px;
     /*padding-bottom: 50px;*/
     margin: 0;
 }
@@ -141,12 +141,14 @@ button:hover span:after { /* edits/add all span elements (just an inline element
     color: #2CA6A4; /* EDF7F6 white, 2CA6A4 blue*/
 }
 
+/*Begin header styling*/
+
 body {
     margin: 0px;
 }
 
 header {
-    background-color: #00b517;
+    background-color: #2CA6A4;
     width: 100%;
     padding: 10px;
 }
@@ -154,15 +156,15 @@ header {
 nav a {
     color: #f2f2f2;
     text-align: center;
-    padding: 15px;
+    padding: 10px;
     text-decoration: none;
     font-size: 20px;
 }
 
-    nav a:hover {
-        background-color: #ddd;
-        color: black;
-    }
+nav a:hover {
+    background-color: #9F2CAD;
+    color: white;
+}
 
 nav {
     display: inline-block;
@@ -193,7 +195,7 @@ nav {
 }
 
 .search button {
-    background-color: #00b517;
+    background-color: #2CA6A4;
     color: #f2f2f2;
     float: right;
     padding: 5px 10px;

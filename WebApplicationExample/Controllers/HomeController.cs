@@ -58,5 +58,11 @@ namespace LibraryWebApp
             ViewBag.Message = "Support Page";
             return View();
         }
+
+        public ActionResult Search(string query)
+        {
+            ViewBag.Message = query;
+            return View();
+        }
     }
 }
