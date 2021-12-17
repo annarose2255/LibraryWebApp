@@ -204,3 +204,76 @@ nav {
     cursor: pointer;
 }
 
+/* Contact page css*/
+.menu-wrapper {
+    position: sticky;
+    top: 0px;
+    z-index: 900;
+}
+
+.contact-hero-section {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    background-color: chartreuse;
+    color: brown;
+}
+
+.allcontactpage{
+    display: flow;
+}
+.contact-page_background-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    /*justify-content: flex-end;*/
+    /*background-color: blue;*/
+    background-color: cornsilk;
+    width: 100%;
+    height: 200px;
+}
+
+.container {
+    max-width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+    /*justify-items: left;*/
+    /*background-color: lightblue;*/
+}
+.container.contact {
+    /*position: absolute;*/
+    left: 0%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    background-color: aliceblue;
+    width: 200px;
+    height: 200px;
+    /*justify-self: left;*/
+    
+}
+.background{
+    width: 200px;
+    height: 200px;
+    background-color: darkgrey;
+   
+}
+
+heading {
+    margin-top: 55px;
+}
+h1 {
+    font-size: 38px;
+    line-height: 44px;
+    color: aqua;
+}
+
+.content-section {
+    padding-top: 65px;
+    padding-bottom: 65px;
+}
+* {
+    box-sizing: border-box;
+}
