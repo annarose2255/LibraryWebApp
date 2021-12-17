@@ -11,9 +11,13 @@
     <header>
         <div class="title">Library</div>
         <nav>
-            <a href="#">Home</a>
-            <a href="#">Browse</a>
-            <a href="#">Contact Us</a>
+            <ul>
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>@Html.ActionLink("About", "About", "Home")</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                <li>@Html.ActionLink("Login", "Login", "Home")</li>
+            </ul>
+           
         </nav>
         <div class="search">
             <form action="home/search">
