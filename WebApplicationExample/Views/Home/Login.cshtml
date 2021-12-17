@@ -4,13 +4,31 @@
     ViewBag.Title = "Login";
 }
 
+<div class="row">
+    <div class="col-xs-12 col-sm-6 table-bordered">
+        @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+        {
 
-<div class='parent-login'>
+            <div class="form-group">
+                <label for="name">Username: </label>
+                @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Username, "", new { @class = "alert-danger" })
+            </div>
 
-    @using (Html.BeginForm("Login", "Home", FormMethod.Post))
-    {
+            <div class="form-group">
+                <label for="name">Password</label>
+                @Html.TextBoxFor(m => m.Password, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "alert-danger" })
+            </div>
 
-        <form>
+            <input type="submit" value="Login" class="btn btn-primary" />
+
+        }
+    </div>
+
+    <div class="col-xs-12 col-sm-6 table-bordered">
+        @using (Html.BeginForm("Register", "Home", FormMethod.Post))
+        {
 
             <div class="form-group">
                 <label for="name">Username</label>
@@ -24,12 +42,14 @@
                 @Html.ValidationMessageFor(m => m.Password, "", new { @class = "alert-danger" })
             </div>
 
-            <input type="submit" value="Submit" class="btn btn-primary" />
+            <input type="submit" value="Register" class="btn btn-primary" />
 
-        </form>
+        }
+    </div>
+</div>
 
-    }
 
+@*<div class='parent-login'>
 
 
     <div class='box-login'>
@@ -84,4 +104,4 @@
         </form>
         <button type="button">Submit</button>
     </div>
-</div>
+</div>*@
