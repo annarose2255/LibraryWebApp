@@ -23,7 +23,6 @@ namespace LibraryDatabaseAccessLayer
         {
         }
 
-
         // methods
 
         // user login
