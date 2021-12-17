@@ -8,39 +8,40 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="allButFooter">
-        <header>
-            <div class="headerButtons-list">
+
+    <header>
+        <div class="headerButtons-list">
 
 
-                <div class="title">Library</div>
-                <nav>
-                    @*<div class="headerButtons-list">*@
+            <div class="title">Library</div>
+            <nav>
+                @*<div class="headerButtons-list">*@
 
-                    <ul class="headerButtons">
+                <ul class="headerButtons">
 
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                        <li>@Html.ActionLink("Login", "Login", "Home")</li>
-                    </ul>
-                    @*</div>*@
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Login", "Login", "Home")</li>
+                </ul>
+                @*</div>*@
 
 
-                </nav>
-                <div class="search">
-                    <form action="home/search">
-                        <input type="text"
-                               placeholder=" Search Catalog"
-                               name="query">
-                        <button>
-                            🔎
-                        </button>
-                    </form>
-                </div>
+            </nav>
+            <div class="search">
+                <form action="home/search">
+                    <input type="text"
+                           placeholder=" Search Catalog"
+                           name="query">
+                    <button>
+                        🔎
+                    </button>
+                </form>
             </div>
+        </div>
 
-        </header>
+    </header>
+    <div class="allButFooter">
         @RenderBody()
     </div>
     <footer>
