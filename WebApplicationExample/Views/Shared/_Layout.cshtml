@@ -9,24 +9,25 @@
 </head>
 <body>
     <header>
-        <div class="title">Library</div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                <li>@Html.ActionLink("About", "About", "Home")</li>
-                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                <li>@Html.ActionLink("Login", "Login", "Home")</li>
-            </ul>
-        </div>
-        @*<nav>
-            <ul>
-                <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                <li>@Html.ActionLink("About", "About", "Home")</li>
-                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                <li>@Html.ActionLink("Login", "Login", "Home")</li>
-            </ul>
+        <div class="headerButtons-list">
 
-        </nav>*@
+
+            <div class="title">Library</div>
+            <nav>
+                @*<div class="headerButtons-list">*@
+
+                <ul class="headerButtons">
+
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Login", "Login", "Home")</li>
+                </ul>
+                @*</div>*@
+
+
+            </nav>
+        </div>
         <div class="search">
             <form action="home/search">
                 <input type="text"

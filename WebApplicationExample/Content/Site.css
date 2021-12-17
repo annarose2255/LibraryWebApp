@@ -77,6 +77,8 @@ textarea {
     margin-left: 200px;
     margin-right: 100px;
 }
+/* footer button styling*/
+
 ::placeholder { /* for changing the place holder text color - Chrome, Firefox, Opera, Safari 10.1+ */
     color: #5B5B5B;
     opacity: 100; /* needed for Firefox */
@@ -128,19 +130,21 @@ button:hover span:after { /* edits/add all span elements (just an inline element
 #link{
     color: #9F2CAD;
 }
-    #link:hover {
-        color: #5D43C1;
-        /* see https://www.w3schools.com/cssref/css3_pr_text-shadow.asp for more on text shadows*/
-        text-shadow: -1px 1px 2px #000, /*  h-shadow (horizontal), v-shadow (vertical), blur-radius, color -- left bottom shadow */
-                    1px 1px 2px #000; /*more than 1 shadow - right bottom*/
-                    /*1px -1px 0 #000;*/ /* top right shadow - need comma to activate*/
-                    /*-1px -1px 0 #000;*/ /* top left shadow*/
-    }
+#link:hover {
+    color: #5D43C1;
+    /* see https://www.w3schools.com/cssref/css3_pr_text-shadow.asp for more on text shadows*/
+    text-shadow: -1px 1px 2px #000, /*  h-shadow (horizontal), v-shadow (vertical), blur-radius, color -- left bottom shadow */
+                1px 1px 2px #000; /*more than 1 shadow - right bottom*/
+                /*1px -1px 0 #000;*/ /* top right shadow - need comma to activate*/
+                /*-1px -1px 0 #000;*/ /* top left shadow*/
+}
 
 /* change color of the headers on the footer collumns*/
 #footerCollumnHeader {
     color: #2CA6A4; /* EDF7F6 white, 2CA6A4 blue*/
 }
+
+/* End Footer Stlying*/
 
 /* Begin header styling */
 
@@ -155,15 +159,18 @@ header {
 }
 /* Navbar text */
 nav a {
-    color: #f2f2f2;
+    color: #f2f2f2; /* #9F2CAD;*/
     text-align: center;
-    padding: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
     text-decoration: none;
     font-size: 20px;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 
 nav a:hover {
-    background-color: #9F2CAD;
+    background-color: #9F2CAD; /*  #5D43C1; */
     color: white;
 }
 
@@ -172,19 +179,29 @@ nav {
     margin-left: 30px;
 }
 
+/* make nav bar in line and title look good */
+.headerButtons {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+}
+headerButtons-list{
+    display:inline;
+}
+.title {
+    color: #ffffff;
+    display: inline-block;
+    font-size: 30px;
+    padding-left: 20px;
+}
+
+/* Search bar stuff*/
 .search input[type=text] {
     width: 300px;
     height: 25px;
     border-radius: 25px;
     border: none;
 }
-
-.title {
-    color: #ffffff;
-    display: inline-block;
-    font-size: 30px;
-}
-
 .search {
     float: right;
     padding: 5px;
@@ -205,6 +222,8 @@ nav {
     border: none;
     cursor: pointer;
 }
+/* End header styling */
+
 /*CSS for Login Page Starts Here*/
 .parent-login { /*Define the div that contains the two forms*/
     border: 1px solid white;
