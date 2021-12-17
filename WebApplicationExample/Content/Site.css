@@ -29,6 +29,10 @@ textarea {
 /* our custom css*/
 .allButFooter {
     min-height: calc(100vh - 364px);
+    margin-top: 20px;
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-bottom: 100px;
 }
 
 .justspace {
