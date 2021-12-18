@@ -63,7 +63,7 @@ namespace LibraryWebApp
         public ActionResult Login()
         {
 
-            LoginModel _model = new LoginModel();
+            LoginModel _model = new LoginModel { ErrorMessage = "test"};
             return View(_model);
         }
 
@@ -72,19 +72,27 @@ namespace LibraryWebApp
         public ActionResult Login(LoginModel inModel)
         {
 
+            // use case # 1, username and password match, store profile object and send them to dashboard
+
+            // use case # 2, username and/or password not not match, no profile stored and give them an error message 
+
             if (ModelState.IsValid)
             {
                 // TODO: add code there
                 BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru();
-                List<UserDTO> _users = businessLogicPassThru.GetUsersData();
+                //List<UserDTO> _users = businessLogicPassThru.GetUsersData();
 
                 LoginModel _model = new LoginModel();
 
+                inModel.ErrorMessage = "Something went wrong beside client validation";
                 return View(inModel);
+
+                //return RedirectToAction("DashBoard", "System");
 
             }
             else 
             {
+               
                 return View(inModel);
             }
 

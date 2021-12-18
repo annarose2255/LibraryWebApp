@@ -6,7 +6,7 @@ using System.Web;
 
 namespace LibraryWebApp.Models
 {
-    public class LoginModel
+    public class LoginModel : BaseModel
     {
       
 
