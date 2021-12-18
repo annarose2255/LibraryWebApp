@@ -79,8 +79,10 @@ namespace LibraryWebApp
             if (ModelState.IsValid)
             {
                 // TODO: add code there
-                BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru();
-                //List<UserDTO> _users = businessLogicPassThru.GetUsersData();
+                BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru(System.Configuration.ConfigurationManager.
+                ConnectionStrings["dbconnection"].ConnectionString);
+
+                List<UserDTO> _users = businessLogicPassThru.GetUsersData();
 
                 LoginModel _model = new LoginModel();
 

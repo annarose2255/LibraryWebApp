@@ -11,12 +11,20 @@ namespace LibraryBusinessLogicLayer
 
     public class BusinessLogicPassThru
     {
+        private readonly string _conn;
 
+        // properties
+
+        // constructors
+        public BusinessLogicPassThru(string conn)
+        {
+            _conn = conn;
+        }
 
         public List<UserDTO> GetUsersData()
         {
 
-            UserDataAccess userDataAccess = new UserDataAccess();
+            UserDataAccess userDataAccess = new UserDataAccess(this._conn);
 
             List<UserDTO> _listOfUsers = userDataAccess.GetUsers();
 

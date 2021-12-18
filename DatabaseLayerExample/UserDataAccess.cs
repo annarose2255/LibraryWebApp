@@ -53,13 +53,13 @@ namespace LibraryDatabaseAccessLayer
                                     AddressID = reader.GetInt32(reader.GetOrdinal("AddressID")),
                                     FirstName = (string)reader["FirstName"],
                                     LastName = (string)reader["LastName"],
-                                    PrimaryEmail = (string)reader["PrimaryEmail"],
-                                    PrimaryPhone = (string)reader["PrimaryPhone"],
+                                    PrimaryEmail = (reader["PrimaryEmail"] == System.DBNull.Value) ? "" : (string)reader["PrimaryEmail"],
+                                    PrimaryPhone = (reader["PrimaryPhone"] == System.DBNull.Value) ? "" : (string)reader["PrimaryPhone"],
                                     Username = (string)reader["UserName"],
                                     Password = (string)reader["Password"],
                                     Salt = (reader["Salt"] == System.DBNull.Value) ? "" : (string)reader["Salt"], // teritary operation C#   
                                     RoleName = (string)reader["RoleName"],
-                                    Comment = (string)reader["Comment"],
+                                    Comment = (reader["Comment"] == System.DBNull.Value) ? "" : (string)reader["Comment"],
                                     DateModified = reader.GetDateTime(reader.GetOrdinal("DateModified")),
                                     ModifiedByUserID = reader.GetInt32(reader.GetOrdinal("RoleID"))
 
@@ -71,7 +71,7 @@ namespace LibraryDatabaseAccessLayer
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 throw;
