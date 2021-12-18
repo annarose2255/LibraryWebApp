@@ -1,8 +1,8 @@
-﻿using LibraryCommon;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using LibraryCommon.DTO;
 
 namespace LibraryDatabaseAccessLayer
 {

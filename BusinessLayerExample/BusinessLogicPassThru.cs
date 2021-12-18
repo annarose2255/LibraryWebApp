@@ -1,4 +1,4 @@
-﻿using LibraryCommon;
+﻿using LibraryCommon.DTO;
 using LibraryDatabaseAccessLayer;
 using System;
 using System.Collections.Generic;

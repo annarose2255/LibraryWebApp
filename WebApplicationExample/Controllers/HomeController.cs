@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using LibraryBusinessLogicLayer;
-using LibraryCommon;
+using LibraryCommon.DTO;
 using LibraryWebApp.Models;
 
 namespace LibraryWebApp
@@ -82,11 +82,10 @@ namespace LibraryWebApp
                 BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru(System.Configuration.ConfigurationManager.
                 ConnectionStrings["dbconnection"].ConnectionString);
 
-                List<UserDTO> _users = businessLogicPassThru.GetUsersData();
-
-                LoginModel _model = new LoginModel();
-
-                inModel.ErrorMessage = "Something went wrong beside client validation";
+                //List<UserDTO> _users = businessLogicPassThru.GetUsersData();
+                LoginBLL loginBLL = new LoginBLL();
+                UserDTO _profile = loginBLL.Login(inModel.Username, inModel.Password, businessLogicPassThru);
+                inModel.ErrorMessage = _profile.ErrorMessage;
                 return View(inModel);
 
                 //return RedirectToAction("DashBoard", "System");
