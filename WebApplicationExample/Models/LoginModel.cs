@@ -6,13 +6,9 @@ using System.Web;
 
 namespace LibraryWebApp.Models
 {
-    public class UserModel
+    public class LoginModel
     {
-        
-        public string FirstName { get; set; }
-
-       
-        public string LastName { get; set; }
+      
 
         [Required(ErrorMessage = "Username is required.")]
         public string Username { get; set; }
@@ -20,8 +16,6 @@ namespace LibraryWebApp.Models
         [Required(ErrorMessage = "Password is required.")]
         public string Password { get; set; }
 
-
-        public string RoleName { get; set; }
 
     }
 }

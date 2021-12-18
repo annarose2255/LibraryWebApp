@@ -63,13 +63,13 @@ namespace LibraryWebApp
         public ActionResult Login()
         {
 
-            UserModel _model = new UserModel();
+            LoginModel _model = new LoginModel();
             return View(_model);
         }
 
 
         [HttpPost]
-        public ActionResult Login(UserModel inModel)
+        public ActionResult Login(LoginModel inModel)
         {
 
             if (ModelState.IsValid)
@@ -78,7 +78,7 @@ namespace LibraryWebApp
                 BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru();
                 List<UserDTO> _users = businessLogicPassThru.GetUsersData();
 
-                UserModel _model = new UserModel();
+                LoginModel _model = new LoginModel();
 
                 return View(inModel);
 

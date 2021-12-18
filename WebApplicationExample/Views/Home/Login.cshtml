@@ -1,33 +1,45 @@
-﻿@model LibraryWebApp.Models.UserModel
-
+﻿@model LibraryWebApp.Models.LoginModel
 @{
     ViewBag.Title = "Login";
 }
 
 <div class="row">
-    <div class="col-xs-12 col-sm-6 table-bordered">
+    <div class="col-xs-12 col-sm-5 table-bordered">
         <h3>Login</h3>
         @using (Html.BeginForm("Login", "Home", FormMethod.Post))
         {
 
-            <div class="form-group">
-                <label for="name">Username: </label>
-                @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Username, "", new { @class = "alert-danger" })
+            <div class="form-group row">
+                <div class="col-sm-2">
+                    <label for="name">Username:</label>
+                </div>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })          
+                </div>
+                <div class="col-sm-6">  
+                    @Html.ValidationMessageFor(m => m.Username, "", new { @class = "alert-danger" })
+                </div>
             </div>
 
-            <div class="form-group">
-                <label for="name">Password</label>
-                @Html.TextBoxFor(m => m.Password, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "alert-danger" })
+            <div class="form-group row">                            
+                <div class="col-sm-2">
+                    <label for="name">Password</label>
+                </div>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Password, new { @class = "form-control" })
+                    <input type="submit" value="Login" class="btn btn-primary" style="background-color: #9F2CAD; color: white; margin-top: 10%" />
+                </div>
+                <div class="col-sm-6">
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "alert-danger" })
+                </div>              
             </div>
-
-            <input type="submit" value="Login" class="btn btn-primary" />
-
         }
     </div>
 
-    <div class="col-xs-12 col-sm-6 table-bordered">
+    <div class="col-xs-12 col-sm-2">
+
+    </div>
+    <div class="col-xs-12 col-sm-5 table-bordered">
         <h3>Register</h3>
         @using (Html.BeginForm("Register", "Home", FormMethod.Post))
         {
@@ -51,59 +63,59 @@
 </div>
 
 
-@*<div class='parent-login'>
+    @*<div class='parent-login'>
 
 
-    <div class='box-login'>
-        Login
-        <form>
-            <table>
-                <tr>
-                    <th>Username:</th>
-                    <td><input type="text" size="8"></td>
-                </tr>
-                <tr>
-                    <th>Password:</th>
-                    <td><input type="password" size="8"></td>
-                </tr>
-            </table>
-        </form>
-        <button type="button">Login</button>
-    </div>
+            <div class='box-login'>
+                Login
+                <form>
+                    <table>
+                        <tr>
+                            <th>Username:</th>
+                            <td><input type="text" size="8"></td>
+                        </tr>
+                        <tr>
+                            <th>Password:</th>
+                            <td><input type="password" size="8"></td>
+                        </tr>
+                    </table>
+                </form>
+                <button type="button">Login</button>
+            </div>
 
-    <div class='box-register'>
-        Register
-        <form>
-            <table>
-                <tr>
-                    <th>Username:</th>
-                    <td><input type="text" size="8"></td>
-                </tr>
-                <tr>
-                    <th>First Name:</th>
-                    <td><input type="text" size="8"></td>
-                </tr>
-                <tr>
-                    <th>Last Name:</th>
-                    <td><input type="text" size="8"></td>
-                </tr>
-                <tr>
-                    <th>Password:</th>
-                    <td><input type="text" size="8"></td>
-                </tr>
-                <tr>
-                    <th>E-Mail Address:</th>
-                    <td><input type="email" size="8"></td>
-                </tr>
-                <tr>
-                    <th>Phone Number:</th>
-                    <td><input type="text" size="8"></td>
-                </tr>
-            </table>
+            <div class='box-register'>
+                Register
+                <form>
+                    <table>
+                        <tr>
+                            <th>Username:</th>
+                            <td><input type="text" size="8"></td>
+                        </tr>
+                        <tr>
+                            <th>First Name:</th>
+                            <td><input type="text" size="8"></td>
+                        </tr>
+                        <tr>
+                            <th>Last Name:</th>
+                            <td><input type="text" size="8"></td>
+                        </tr>
+                        <tr>
+                            <th>Password:</th>
+                            <td><input type="text" size="8"></td>
+                        </tr>
+                        <tr>
+                            <th>E-Mail Address:</th>
+                            <td><input type="email" size="8"></td>
+                        </tr>
+                        <tr>
+                            <th>Phone Number:</th>
+                            <td><input type="text" size="8"></td>
+                        </tr>
+                    </table>
 
 
 
-        </form>
-        <button type="button">Submit</button>
-    </div>
-</div>*@
+                </form>
+                <button type="button">Submit</button>
+            </div>
+        </div>*@
