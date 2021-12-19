@@ -73,5 +73,10 @@ namespace LibraryCommon
         {
             return this.ComputeSHA256Hash(saltpassword);
         }
+
+        public string CreateSalt()
+        {
+            return Guid.NewGuid().ToString();
+        }
     }
 }

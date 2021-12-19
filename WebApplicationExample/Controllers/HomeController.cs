@@ -63,7 +63,7 @@ namespace LibraryWebApp
         public ActionResult Login()
         {
 
-            LoginModel _model = new LoginModel { ErrorMessage = "test"};
+            LoginModel _model = new LoginModel { ErrorMessage = ""};
             return View(_model);
         }
 
@@ -71,32 +71,36 @@ namespace LibraryWebApp
         [HttpPost]
         public ActionResult Login(LoginModel inModel)
         {
-
-            // use case # 1, username and password match, store profile object and send them to dashboard
-
-            // use case # 2, username and/or password not not match, no profile stored and give them an error message 
-
+         
             if (ModelState.IsValid)
             {
-                // TODO: add code there
+                // connection string coming out of the web.config
                 BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru(System.Configuration.ConfigurationManager.
                 ConnectionStrings["dbconnection"].ConnectionString);
-
-                //List<UserDTO> _users = businessLogicPassThru.GetUsersData();
+               
                 LoginBLL loginBLL = new LoginBLL();
+                // pass a LoginBLL object because it contains the connection string and that will be need in business layer
+                // to connect to database
                 UserDTO _profile = loginBLL.Login(inModel.Username, inModel.Password, businessLogicPassThru);
+                // error message coming all the way up the stack from database or business layer
                 inModel.ErrorMessage = _profile.ErrorMessage;
-                return View(inModel);
 
-                //return RedirectToAction("DashBoard", "System");
-
+                if (string.IsNullOrEmpty(inModel.ErrorMessage))
+                {
+                    // use case # 1, username and password match, store profile object and send them to dashboard
+                    return View(inModel);
+                }
+                else
+                {
+                    // use case # 2, username and/or password not not match, no profile stored and give them an error message 
+                    return RedirectToAction("DashBoard", "System");
+                }
             }
             else 
             {
-               
+               // use case # 3, valiation on client failed
                 return View(inModel);
             }
-
            
         }
         
