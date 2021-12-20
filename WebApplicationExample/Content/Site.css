@@ -295,3 +295,11 @@ headerButtons-list{
     position:relative; top :75px;
 }
 /**End of Login-Page CSS*/
+
+/* home page CSS*/
+#home-faq {
+    /*height: 30vh;*/ /* Relative to 30% of the height of the viewport (browser window size)**/
+    min-height: max-content;
+    height: auto;
+    overflow: auto; /* if content is too big then, extends box (see https://www.w3schools.com/css/css_overflow.asp for more details*/
+}
