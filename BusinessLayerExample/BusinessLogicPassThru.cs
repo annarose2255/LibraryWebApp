@@ -23,6 +23,11 @@ namespace LibraryBusinessLogicLayer
             return _listOfUsers;
         }
 
+        public List<MediaDTO> GetTopThreeMedia()
+        {
+            List<MediaDTO> listOfMedia = new List<MediaDTO>();
+            return listOfMedia;
+        }
        
     }
 }
