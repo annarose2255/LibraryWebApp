@@ -16,11 +16,15 @@ namespace LibraryWebApp.Models
         [Required(ErrorMessage = "Password is required.")]
         public string Password { get; set; }
 
+
+        [Display(Name = "Firstname")]
         [Required(ErrorMessage = "First name is required.")]
         public string FirstName { get; set; }
 
+        [Display(Name = "Lastname")]
         [Required(ErrorMessage = "Last name is required.")]
         public string LastName { get; set; }
+
         public string PrimaryEmail { get; set; } = "";
         public string PrimaryPhone { get; set; } = "";
         public int RoleId { get; set; }

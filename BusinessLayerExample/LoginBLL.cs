@@ -26,7 +26,8 @@ namespace LibraryBusinessLogicLayer
                 // get salt from the match
                 Hasher hasher = new Hasher();
                 string _salt = _match.Salt;
-                string _hashAndSalt = hasher.SHA256HashWithSalt(password, _salt);
+                //string _hashAndSalt = hasher.SHA256HashWithSalt(password, _salt);
+                string _hashAndSalt = hasher.HashedValue(_salt + password);
 
                 // 4. if it matches, we have have a validated user so pass it back up.
                 if (_hashAndSalt == _match.Password)

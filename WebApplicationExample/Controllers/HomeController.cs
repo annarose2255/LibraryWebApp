@@ -57,15 +57,12 @@ namespace LibraryWebApp
             return View();
         }
 
-
-
         [HttpGet]
         public ActionResult Login()
         {
 
             GlobalLoginModel _model = new GlobalLoginModel();
-            _model.ErrorMessage = "";
-            //model.LoginModel.ErrorMessage = "";
+            _model.Message = "";
             return View(_model);
         }
 
@@ -85,12 +82,12 @@ namespace LibraryWebApp
                 // to connect to database
                 UserDTO _profile = loginBLL.Login(inModel.LoginModel.Username, inModel.LoginModel.Password, businessLogicPassThru);
                 // error message coming all the way up the stack from database or business layer
-                inModel.LoginModel.ErrorMessage = _profile.ErrorMessage;
+                inModel.Message = _profile.ErrorMessage;
 
-                if (string.IsNullOrEmpty(inModel.LoginModel.ErrorMessage))
+                if (string.IsNullOrEmpty(inModel.Message))
                 {
                     // use case # 1, username and password match, store profile object and send them to dashboard
-                    return RedirectToAction("Login");
+                    return RedirectToAction("Dashboard","System");
                     
                 }
                 else
@@ -120,9 +117,9 @@ namespace LibraryWebApp
                 // to connect to database       
                 UserDTO _profile = registerBLL.Register(inModel.RegisterModel.Username, inModel.RegisterModel.FirstName, inModel.RegisterModel.LastName, inModel.RegisterModel.Password, 5,5, businessLogicPassThru,inModel.RegisterModel.PrimaryEmail,inModel.RegisterModel.PrimaryPhone);
                 // error message coming all the way up the stack from database or business layer
-                inModel.ErrorMessage = _profile.ErrorMessage;
+                inModel.Message = _profile.ErrorMessage;
 
-                if (string.IsNullOrEmpty(inModel.RegisterModel.ErrorMessage))
+                if (string.IsNullOrEmpty(inModel.Message))
                 {
                     // use case # 1, registration was successful, store profile object and send them to dashboard
                     return RedirectToAction("Login");

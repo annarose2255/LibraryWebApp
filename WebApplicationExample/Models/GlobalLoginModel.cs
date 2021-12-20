@@ -10,5 +10,12 @@ namespace LibraryWebApp.Models
     {
         public LoginModel LoginModel { get; set; }
         public RegisterModel RegisterModel { get; set; }
+
+
+        public GlobalLoginModel() 
+        {
+            LoginModel = new LoginModel();
+            RegisterModel = new RegisterModel();
+        }
     }
 }

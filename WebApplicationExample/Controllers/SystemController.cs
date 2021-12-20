@@ -9,7 +9,7 @@ namespace WebApplicationExample.Controllers
     public class SystemController : Controller
     {
         // GET: System
-        public ActionResult Index()
+        public ActionResult Dashboard()
         {
             return View();
         }

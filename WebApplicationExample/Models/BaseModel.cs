@@ -7,11 +7,11 @@ namespace LibraryWebApp.Models
 {
     public class BaseModel
     {
-        public string ErrorMessage { get; set; }
+        public string Message { get; set; }
 
         public BaseModel()
         {
-            this.ErrorMessage = "message not set";
+            this.Message = "";
         }
 
     }
