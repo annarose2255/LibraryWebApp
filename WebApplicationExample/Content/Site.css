@@ -303,11 +303,13 @@ headerButtons-list{
     border: 1px #ccc solid;
     padding: 10px;
     border-radius: 15px;
-    text-align:center;
+    text-align: center;
+    background-color: #2CA6A4;
+    color:white; 
 }
 /* Carousel CSS */
 #myCarousel{
-    margin-top: 10%;
+    margin-top: 3%;
 }
 
 #image-height{
@@ -325,4 +327,21 @@ headerButtons-list{
     line-height: 1.6em;
     margin-bottom: 50px;
 }
+/*Info Block CSS*/
+.block {
+    float: left;
+    width: 33.3%;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom:3%;
+}
 
+.hours-location {
+    border: 1px #ccc solid;
+    padding: 10px;
+    border-radius: 15px;
+    text-align: center;
+    background-color: #2CA6A4;
+    color: white;
+}
