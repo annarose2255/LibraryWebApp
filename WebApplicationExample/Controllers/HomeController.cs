@@ -88,12 +88,13 @@ namespace LibraryWebApp
                 if (string.IsNullOrEmpty(inModel.ErrorMessage))
                 {
                     // use case # 1, username and password match, store profile object and send them to dashboard
-                    return View(inModel);
+                    //return View(inModel);
+                    return RedirectToAction("DashBoard", "System");
                 }
                 else
                 {
                     // use case # 2, username and/or password not not match, no profile stored and give them an error message 
-                    return RedirectToAction("DashBoard", "System");
+                    return View(inModel);
                 }
             }
             else 
