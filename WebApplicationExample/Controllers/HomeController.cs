@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using LibraryBusinessLogicLayer;
 using LibraryCommon.DTO;
 using LibraryWebApp.Models;
+using LibraryCommon;
+using WebApplicationExample.Utility;
 
 namespace LibraryWebApp
 {
@@ -114,8 +116,13 @@ namespace LibraryWebApp
 
                 RegisterBLL registerBLL = new RegisterBLL();
                 // pass a LoginBLL object because it contains the connection string and that will be need in business layer
-                // to connect to database       
-                UserDTO _profile = registerBLL.Register(inModel.RegisterModel.Username, inModel.RegisterModel.FirstName, inModel.RegisterModel.LastName, inModel.RegisterModel.Password,5, businessLogicPassThru,inModel.RegisterModel.PrimaryEmail,inModel.RegisterModel.PrimaryPhone);
+                // to connect to database
+                // 
+
+                // UserDTO _profile = registerBLL.Register(inModel.RegisterModel.Username, inModel.RegisterModel.FirstName, inModel.RegisterModel.LastName, inModel.RegisterModel.Password,5, businessLogicPassThru,inModel.RegisterModel.PrimaryEmail,inModel.RegisterModel.PrimaryPhone);
+                
+                UserDTO _profile = registerBLL.Register(Mapper.GlobalLoginModelToUserDTO(inModel), businessLogicPassThru);
+
                 // error message coming all the way up the stack from database or business layer
                 inModel.RegisterModel.Message = _profile.ErrorMessage;
 
