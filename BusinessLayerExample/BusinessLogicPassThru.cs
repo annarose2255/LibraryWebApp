@@ -25,6 +25,8 @@ namespace LibraryBusinessLogicLayer
 
         public List<MediaDTO> GetTopThreeMedia()
         {
+            MediaDataAccess mediaDataAccess = new MediaDataAccess();
+
             List<MediaDTO> listOfMedia = new List<MediaDTO>();
             return listOfMedia;
         }
