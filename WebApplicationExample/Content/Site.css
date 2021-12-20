@@ -296,7 +296,36 @@ headerButtons-list{
 }
 /**End of Login-Page CSS*/
 
-/* home page CSS*/
+/* Begin Home/Index CSS*/
+
+/* New additions CSS*/
+.new-additions {
+    border: 1px #ccc solid;
+    padding: 10px;
+    border-radius: 15px;
+    text-align:center;
+}
+/* Carousel CSS */
+#myCarousel{
+    margin-top: 10%;
+}
+
+#image-height{
+    height:300px;
+}
+
+.item{
+    background-color: purple;
+}
+
+.carousel-caption {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 29px;
+    font-weight: normal;
+    line-height: 1.6em;
+    margin-bottom: 50px;
+}
+
 #home-faq {
     /*height: 30vh;*/ /* Relative to 30% of the height of the viewport (browser window size)**/
     min-height: max-content;
