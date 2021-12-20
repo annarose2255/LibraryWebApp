@@ -192,7 +192,7 @@ namespace LibraryDatabaseAccessLayer
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 throw;

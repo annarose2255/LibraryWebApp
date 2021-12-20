@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="DTO\BaseDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />
+    <Compile Include="Enumeration.cs" />
     <Compile Include="Hasher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
