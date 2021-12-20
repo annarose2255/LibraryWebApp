@@ -117,25 +117,33 @@ namespace LibraryWebApp
                 // to connect to database       
                 UserDTO _profile = registerBLL.Register(inModel.RegisterModel.Username, inModel.RegisterModel.FirstName, inModel.RegisterModel.LastName, inModel.RegisterModel.Password, 5,5, businessLogicPassThru,inModel.RegisterModel.PrimaryEmail,inModel.RegisterModel.PrimaryPhone);
                 // error message coming all the way up the stack from database or business layer
-                inModel.Message = _profile.ErrorMessage;
+                inModel.RegisterModel.Message = _profile.ErrorMessage;
 
                 if (string.IsNullOrEmpty(inModel.Message))
                 {
                     // use case # 1, registration was successful, store profile object and send them to dashboard
-                    return RedirectToAction("Login");
+
+                    // TODO: go to dashboard
+
+
+                    // save profile into in session variable
+                    System.Web.HttpContext.Current.Session["Profile"] = _profile;
+
+                    return RedirectToAction("Dashboard", "System");
                     
                 }
                 else
                 {
                     // use case # 2, registration was not successful, no profile stored and give them an error message 
-                    //TODO: Create dashboard
-                    return View(inModel);
+                    return View("Login", inModel);
+
                 }
             }
             else
             {
                 // use case # 3, validation on client failed
-                return View(inModel);
+                return View("Login", inModel);
+               
             }
         }
         
