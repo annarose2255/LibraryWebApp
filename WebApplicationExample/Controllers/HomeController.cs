@@ -23,7 +23,9 @@ namespace LibraryWebApp
 
         public ActionResult Index()
         {
-            return View();
+            MediaCarouselModel _model = new MediaCarouselModel();
+            _model.Media1.Img = "img1.jpg";
+            return View(_model);
         }
 
         public ActionResult About()
