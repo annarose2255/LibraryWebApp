@@ -4,8 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using LibraryBusinessLogicLayer;
-using LibraryCommon;
+using LibraryCommon.DTO;
 using LibraryWebApp.Models;
+using LibraryCommon;
+using WebApplicationExample.Utility;
 
 namespace LibraryWebApp
 {
@@ -57,38 +59,99 @@ namespace LibraryWebApp
             return View();
         }
 
-
-
         [HttpGet]
         public ActionResult Login()
         {
 
-            UserModel _model = new UserModel();
+            GlobalLoginModel _model = new GlobalLoginModel();
+            _model.Message = "";
             return View(_model);
         }
 
 
         [HttpPost]
-        public ActionResult Login(UserModel inModel)
+        public ActionResult Login(GlobalLoginModel inModel)
         {
-
+         
             if (ModelState.IsValid)
             {
-                // TODO: add code there
-                BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru();
-                List<UserDTO> _users = businessLogicPassThru.GetUsersData();
+                // connection string coming out of the web.config
+                BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru(System.Configuration.ConfigurationManager.
+                ConnectionStrings["dbconnection"].ConnectionString);
+               
+                LoginBLL loginBLL = new LoginBLL();
+                // pass a LoginBLL object because it contains the connection string and that will be need in business layer
+                // to connect to database
+                UserDTO _profile = loginBLL.Login(inModel.LoginModel.Username, inModel.LoginModel.Password, businessLogicPassThru);
+                // error message coming all the way up the stack from database or business layer
+                inModel.Message = _profile.ErrorMessage;
 
-                UserModel _model = new UserModel();
-
-                return View(inModel);
-
+                if (string.IsNullOrEmpty(inModel.Message))
+                {
+                    // use case # 1, username and password match, store profile object and send them to dashboard
+                    return RedirectToAction("Dashboard","System");
+                    
+                }
+                else
+                {
+                    // use case # 2, username and/or password not not match, no profile stored and give them an error message 
+                    return View(inModel);
+                }
             }
             else 
             {
+               // use case # 3, valiation on client failed, show error message in login.cshtml
                 return View(inModel);
             }
-
            
+        }
+        [HttpPost]
+        public ActionResult Register(GlobalLoginModel inModel)
+        {
+            if (ModelState.IsValid)
+            {
+                // connection string coming out of the web.config
+                BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru(System.Configuration.ConfigurationManager.
+                ConnectionStrings["dbconnection"].ConnectionString);
+
+                RegisterBLL registerBLL = new RegisterBLL();
+                // pass a LoginBLL object because it contains the connection string and that will be need in business layer
+                // to connect to database
+                // 
+
+                // UserDTO _profile = registerBLL.Register(inModel.RegisterModel.Username, inModel.RegisterModel.FirstName, inModel.RegisterModel.LastName, inModel.RegisterModel.Password,5, businessLogicPassThru,inModel.RegisterModel.PrimaryEmail,inModel.RegisterModel.PrimaryPhone);
+                
+                UserDTO _profile = registerBLL.Register(Mapper.GlobalLoginModelToUserDTO(inModel), businessLogicPassThru);
+
+                // error message coming all the way up the stack from database or business layer
+                inModel.RegisterModel.Message = _profile.ErrorMessage;
+
+                if (string.IsNullOrEmpty(inModel.RegisterModel.Message))
+                {
+                    // use case # 1, registration was successful, store profile object and send them to dashboard
+
+                    // TODO: go to dashboard
+
+
+                    // save profile into in session variable
+                    System.Web.HttpContext.Current.Session["Profile"] = _profile;
+
+                    return RedirectToAction("Dashboard", "System");
+                    
+                }
+                else
+                {
+                    // use case # 2, registration was not successful, no profile stored and give them an error message 
+                    return View("Login", inModel);
+
+                }
+            }
+            else
+            {
+                // use case # 3, validation on client failed
+                return View("Login", inModel);
+               
+            }
         }
         
     }

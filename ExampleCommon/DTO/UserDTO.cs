@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LibraryCommon
+namespace LibraryCommon.DTO
 {
-    public class UserDTO
+    public class UserDTO : BaseDTO
     {
         public int UserId { get; set; }      
         public int AddressID {get; set;}
@@ -22,6 +22,9 @@ namespace LibraryCommon
         public string Comment { get; set; }
         public DateTime DateModified { get; set; }
         public int ModifiedByUserID { get; set; }
+
+        public UserDTO() : base()
+        { }
         
     }
 }
