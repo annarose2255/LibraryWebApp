@@ -91,7 +91,7 @@ namespace LibraryWebApp
            
         }
         //TODO: add methods for the index of reaching the database, (and possible need for media DTO to hold that info) 
-        //TODO: and change database script for media table to reflect info now needed
+        //TODO: and change database script for media table to reflect info now needed 9img and description)- need join/view for getting author for media
         
     }
 }
