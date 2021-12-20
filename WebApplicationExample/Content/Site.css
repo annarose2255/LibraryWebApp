@@ -345,3 +345,9 @@ headerButtons-list{
     background-color: #2CA6A4;
     color: white;
 }
+#home-faq {
+    /*height: 30vh;*/ /* Relative to 30% of the height of the viewport (browser window size)**/
+    min-height: max-content;
+    height: auto;
+    overflow: auto; /* if content is too big then, extends box (see https://www.w3schools.com/css/css_overflow.asp for more details*/
+}
