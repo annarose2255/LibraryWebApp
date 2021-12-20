@@ -30,6 +30,12 @@ namespace LibraryBusinessLogicLayer
 
             return _listOfUsers;
         }
+        public int CreateUser(UserDTO u)
+        {
+            UserDataAccess userDataAccess = new UserDataAccess(this._conn);
+            int userid = userDataAccess.CreateUser(u);
+            return userid;
+        }
 
        
     }

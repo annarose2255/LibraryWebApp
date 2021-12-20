@@ -83,7 +83,7 @@ namespace LibraryDatabaseAccessLayer
 
         // TODO: return Operation DTO
         // register at login
-        public void CreateUser(UserDTO u)
+        public int CreateUser(UserDTO u)
         {
 
             try
@@ -121,9 +121,19 @@ namespace LibraryDatabaseAccessLayer
                         _sqlCommand.Parameters.Add(_parmLastName);
 
                         // TODO: @parmPrimaryEmail
+                        SqlParameter _parmPrimaryEmail = _sqlCommand.CreateParameter();
+                        _parmPrimaryEmail.DbType = DbType.String;
+                        _parmPrimaryEmail.ParameterName = "@parmPrimaryEmail";
+                        _parmPrimaryEmail.Value = u.PrimaryEmail;
+                        _sqlCommand.Parameters.Add(_parmPrimaryEmail);
 
 
                         // TODO: @parmPrimaryPhone
+                        SqlParameter _parmPrimaryPhone = _sqlCommand.CreateParameter();
+                        _parmPrimaryPhone.DbType = DbType.String;
+                        _parmPrimaryPhone.ParameterName = "@parmPrimaryPhone";
+                        _parmPrimaryPhone.Value = u.PrimaryPhone;
+                        _sqlCommand.Parameters.Add(_parmPrimaryPhone);
 
                         SqlParameter _parmUserName = _sqlCommand.CreateParameter();
                         _parmUserName.DbType = DbType.String;
@@ -133,25 +143,38 @@ namespace LibraryDatabaseAccessLayer
 
                         SqlParameter _paramPassword = _sqlCommand.CreateParameter();
                         _paramPassword.DbType = DbType.String;
-                        _paramPassword.ParameterName = "@ParamPassword";
+                        _paramPassword.ParameterName = "@parmPassword";
                         _paramPassword.Value = u.Password;
                         _sqlCommand.Parameters.Add(_paramPassword);
 
                        
                         SqlParameter _paramSalt = _sqlCommand.CreateParameter();
                         _paramSalt.DbType = DbType.String;
-                        _paramSalt.ParameterName = "@ParamSalt";
+                        _paramSalt.ParameterName = "@parmSalt";
                         _paramSalt.Value = u.Salt;
                         _sqlCommand.Parameters.Add(_paramSalt);
 
 
-
                         // TODO: @parmComment
+                        SqlParameter _parmComment = _sqlCommand.CreateParameter();
+                        _parmComment.DbType = DbType.String;
+                        _parmComment.ParameterName = "@parmComment";
+                        _parmComment.Value = u.Comment;
+                        _sqlCommand.Parameters.Add(_parmComment);
 
                         // TODO:  @parmDateModified
+                        SqlParameter _parmDateModified = _sqlCommand.CreateParameter();
+                        _parmDateModified.DbType = DbType.DateTime;
+                        _parmDateModified.ParameterName = "@parmDateModified";
+                        _parmDateModified.Value = u.DateModified;
+                        _sqlCommand.Parameters.Add(_parmDateModified);
 
                         // TODO: @parmModifiedByUserID
-
+                        SqlParameter _parmModifiedByUserID = _sqlCommand.CreateParameter();
+                        _parmModifiedByUserID.DbType = DbType.String;
+                        _parmModifiedByUserID.ParameterName = "@parmModifiedByUserID";
+                        _parmModifiedByUserID.Value = u.ModifiedByUserID;
+                        _sqlCommand.Parameters.Add(_parmModifiedByUserID);
 
                         SqlParameter _parmUserIDOut = _sqlCommand.CreateParameter();
                         _parmUserIDOut.DbType = DbType.Int32;
@@ -161,9 +184,9 @@ namespace LibraryDatabaseAccessLayer
 
                         con.Open();
                         _sqlCommand.ExecuteNonQuery();   // calls the sp 
-                                                         //var result = _paramAuthorIDReturn.Value;
+                        var result = _parmUserIDOut.Value;
                         con.Close();
-                        //return (int)result;
+                        return (int)result;
 
 
                     }

@@ -1,4 +1,4 @@
-﻿@model LibraryWebApp.Models.LoginModel
+﻿@model LibraryWebApp.Models.GlobalLoginModel
 @{
     ViewBag.Title = "Login";
 }
@@ -14,10 +14,10 @@
                     <label for="username" id="username">Username:</label>
                 </div>
                 <div class="col-sm-4">
-                    @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+                    @Html.TextBoxFor(m => m.LoginModel.Username, new { @class = "form-control" })
                 </div>
                 <div class="col-sm-6">
-                    @Html.ValidationMessageFor(m => m.Username, "", new { @class = "alert-danger" })
+                    @Html.ValidationMessageFor(m => m.LoginModel.Username, "", new { @class = "alert-danger" })
                 </div>
             </div>
 
@@ -26,11 +26,11 @@
                     <label for="name">Password</label>
                 </div>
                 <div class="col-sm-4">
-                    @Html.TextBoxFor(m => m.Password, new { @class = "form-control" })
+                    @Html.TextBoxFor(m => m.LoginModel.Password, new { @class = "form-control" })
                     <input type="submit" value="Login" class="btn btn-primary" style="background-color: #9F2CAD; color: white; margin-top: 10%" />
                 </div>
                 <div class="col-sm-6">
-                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "alert-danger" })
+                    @Html.ValidationMessageFor(m => m.LoginModel.Password, "", new { @class = "alert-danger" })
                 </div>
             </div>
         }
@@ -40,22 +40,60 @@
 
     </div>
     <div class="col-xs-12 col-sm-5 table-bordered">
+        <!--If there is an error message, print it here-->
+        <label for="error" id="error" class="alert-danger">@Model.ErrorMessage</label>
         <h3>Register</h3>
+        <!--beginform(modelname,derive,type)-->
         @using (Html.BeginForm("Register", "Home", FormMethod.Post))
         {
-
-            <div class="form-group">
-                <label for="name">Username</label>
-                @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Username, "", new { @class = "alert-danger" })
+            <!--prompt for username-->
+            <div class="form-group row">
+                <div class="col-sm-2">
+                    <label for="username" id="username">Username:</label>
+                </div>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.RegisterModel.Username, new { @class = "form-control" })
+                </div>
+                <div class="col-sm-6">
+                    @Html.ValidationMessageFor(m => m.RegisterModel.Username, "", new { @class = "alert-danger" })
+                </div>
             </div>
-
-            <div class="form-group">
-                <label for="name">Password</label>
-                @Html.TextBoxFor(m => m.Password, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "alert-danger" })
+            <!--prompt for firstname-->
+            <div class="form-group row">
+                <div class="col-sm-2">
+                    <label for="firstname" id="firstname">First name:</label>
+                </div>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.RegisterModel.FirstName, new { @class = "form-control" })
+                </div>
+                <div class="col-sm-6">
+                    @Html.ValidationMessageFor(m => m.RegisterModel.FirstName, "", new { @class = "alert-danger" })
+                </div>
             </div>
-
+            <!--prompt for lastname-->
+            <div class="form-group row">
+                <div class="col-sm-2">
+                    <label for="lastname" id="lastname">Last name:</label>
+                </div>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.RegisterModel.LastName, new { @class = "form-control" })
+                </div>
+                <div class="col-sm-6">
+                    @Html.ValidationMessageFor(m => m.RegisterModel.LastName, "", new { @class = "alert-danger" })
+                </div>
+            </div>
+            <!--prompt for password-->
+            <div class="form-group row">
+                <div class="col-sm-2">
+                    <label for="password" id="password">Password:</label>
+                </div>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.RegisterModel.Password, new { @class = "form-control" })
+                </div>
+                <div class="col-sm-6">
+                    @Html.ValidationMessageFor(m => m.RegisterModel.Password, "", new { @class = "alert-danger" })
+                </div>
+            </div>
             <input type="submit" value="Register" class="btn btn-primary" />
 
         }
