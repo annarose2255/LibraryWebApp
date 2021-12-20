@@ -24,7 +24,13 @@ namespace LibraryWebApp
         public ActionResult Index()
         {
             MediaCarouselModel _model = new MediaCarouselModel();
-            _model.Media1.Img = "img1.jpg";
+            BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru();
+
+
+            List<MediaDTO> listOfMedia = businessLogicPassThru.GetTopThreeMedia();
+            _model.Media1.Img = listOfMedia[2].ImageName;
+            _model.Media2.Img = listOfMedia[1].ImageName;
+            _model.Media3.Img = listOfMedia[0].ImageName;
             return View(_model);
         }
 
