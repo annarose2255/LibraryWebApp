@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibraryCommon.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,8 @@ namespace WebApplicationExample.Controllers
         // GET: System
         public ActionResult Dashboard()
         {
+
+            UserDTO _profile  = (UserDTO)System.Web.HttpContext.Current.Session["Profile"];
             return View();
         }
     }
