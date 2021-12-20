@@ -8,7 +8,7 @@ namespace LibraryWebApp.Models
 {
     public class RegisterModel : BaseModel
     {
-
+        public new string Message { get; set; } // hides the base property
 
         [Required(ErrorMessage = "Username is required.")]
         public string Username { get; set; }

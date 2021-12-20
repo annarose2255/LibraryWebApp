@@ -43,7 +43,7 @@
 
     <div class="col-xs-12 col-sm-5 table-bordered">
         <!--If there is an error message, print it here-->
-        <label for="error" id="error" class="alert-danger">@Model.Message</label>
+        <label for="error" id="error" class="alert-danger">@Model.RegisterModel.Message</label>
         <h3>Register</h3>
         <!--beginform(modelname,derive,type)-->
         @using (Html.BeginForm("Register", "Home", FormMethod.Post))
