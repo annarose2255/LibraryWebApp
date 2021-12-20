@@ -13,6 +13,7 @@
         </div>
     </div>
 
+    <!-- TODO: add model varables to change info based on database-->
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
@@ -24,7 +25,7 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
             <div class="item active">
-                <img id="image-height" src="~/Content/book-images/img1.jpg" alt="Los Angeles">
+                <img id="image-height" src="~/Content/book-images/@Model.Media1.Img" alt="Los Angeles">
                 <div class="carousel-caption">
                     <h3>Think Outside the Box</h3>
                     <h2>Author</h2>
@@ -103,21 +104,27 @@
 
 @*faq section*@
 <div class="row">
-    <div id="home-faq" class="well well-sm">
-        <h1> FAQ</h1>
-        <div class="col-md-6">
-            <div class="well well-sm" style="background-color: beige;" ;>
-                <div class="footerLinks"> @Html.ActionLink("FAQ Page", "FAQ", "Home", null, new { id = "link" })</div>
-                <p> Get help by seeing the frequeny asked questions! </p>
-            </div>
+    </br>
+    <div>
+        <div class="faq-box">
+            <h2>FAQ</h2>
         </div>
-        <div class="col-md-6">
-            <div class="well well-sm" style="background-color: bisque;">
-                <div class="footerLinks"> @Html.ActionLink("Contact Us Page", "Contact", "Home", null, new { id = "link" })</div>
-                <p> Contact us if you have any more questions! </p>
-            </div>
+    </div>
+    </br>
+    @*<div id="home-faq" class="well well-sm">*@
+    <div class="col-md-6">
+        <div class="well well-sm" style="background-color: #A5CECD; " ;> @*lighter blue color*@
+            <div class="footerLinks"> @Html.ActionLink("FAQ Page", "FAQ", "Home", null, new { id = "link" })</div>
+            <p> Get help by seeing the frequeny asked questions! </p>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="well well-sm" style="background-color: #A5CECD; ">
+            <div class="footerLinks"> @Html.ActionLink("Contact Us Page", "Contact", "Home", null, new { id = "link" })</div>
+            <p> Contact us if you have any more questions! </p>
         </div>
     </div>
 </div>
+    </div>
 </body>
 </html>
