@@ -75,6 +75,7 @@ namespace LibraryBusinessLogicLayer
             else
             {
                 Hasher hasher = new Hasher();
+                string _salt = hasher.CreateSalt();
                 //create new user from HTTPGet 
                 _user = new UserDTO
                 {
@@ -86,8 +87,8 @@ namespace LibraryBusinessLogicLayer
                     PrimaryEmail = email,
                     PrimaryPhone = phonenumber,
                     Username = username,
-                    Password = hasher.HashedValue(hasher.CreateSalt() + password), //add salt to password before creating hashed password
-                    Salt = hasher.CreateSalt(),//use password to get salt 
+                    Password = hasher.HashedValue(_salt + password), //add salt to password before creating hashed password
+                    Salt = _salt,//use password to get salt 
                     Comment = "", 
                     DateModified = DateTime.Now,
                     ModifiedByUserID = 5
