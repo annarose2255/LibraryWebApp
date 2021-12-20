@@ -30,10 +30,13 @@ namespace LibraryWebApp
             List<MediaDTO> listOfMedia = businessLogicPassThru.GetTopThreeMedia();
             _model.Media1.Img = listOfMedia[2].ImageName;
             _model.Media1.Title = listOfMedia[2].Title;
+            _model.Media1.Description = listOfMedia[2].Description;
             _model.Media2.Img = listOfMedia[1].ImageName;
             _model.Media2.Title = listOfMedia[1].Title;
+            _model.Media2.Description = listOfMedia[1].Description;
             _model.Media3.Img = listOfMedia[0].ImageName;
             _model.Media3.Title = listOfMedia[0].Title;
+            _model.Media3.Description = listOfMedia[0].Description;
             return View(_model);
         }
 
