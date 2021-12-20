@@ -394,13 +394,14 @@ headerButtons-list{
     height: auto;
     overflow: auto; /* if content is too big then, extends box (see https://www.w3schools.com/css/css_overflow.asp for more details*/
 }
-.faq-box{
+.faq-box {
     border: 1px #ccc solid;
     padding: 10px;
     border-radius: 15px;
     text-align: center;
     background-color: #2CA6A4;
     color: white;
+    box-shadow: 0px 5px #9F2CAD;
 }
 .loc-and-hours-container{
     padding: 20px;
