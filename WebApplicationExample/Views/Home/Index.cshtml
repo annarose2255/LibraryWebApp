@@ -73,7 +73,7 @@
 
     </br>
     <!-- Information Blocks -->
-    <div>
+    <<div class="row">
         <div class="block">
             <h3>Heading</h3>
             <p>
@@ -96,34 +96,33 @@
             </p>
         </div>
     </div>
-  
 
 
+    @*faq section*@
 
-
-
-
-
-
-
-@*faq section*@
 <div class="row">
-    <div id="home-faq" class="well well-sm">
-        <h1> FAQ</h1>
-        <div class="col-md-6">
-            <div class="well well-sm" style="background-color: beige;" ;>
-                <div class="footerLinks"> @Html.ActionLink("FAQ Page", "FAQ", "Home", null, new { id = "link" })</div>
-                <p> Get help by seeing the frequeny asked questions! </p>
-            </div>
+    </br>
+    <div>
+        <div class="faq-box">
+            <h2>FAQ</h2>
         </div>
-        <div class="col-md-6">
-            <div class="well well-sm" style="background-color: bisque;">
-                <div class="footerLinks"> @Html.ActionLink("Contact Us Page", "Contact", "Home", null, new { id = "link" })</div>
-                <p> Contact us if you have any more questions! </p>
-            </div>
+    </div>
+    </br>
+    @*<div id="home-faq" class="well well-sm">*@
+    <div class="col-md-6">
+        <div class="well well-sm" style="background-color: #A5CECD; " ;>
+            <div class="footerLinks"> @Html.ActionLink("FAQ Page", "FAQ", "Home", null, new { id = "link" })</div>
+            <p> Get help by seeing the frequeny asked questions! </p>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="well well-sm" style="background-color: #A5CECD; ">
+            <div class="footerLinks"> @Html.ActionLink("Contact Us Page", "Contact", "Home", null, new { id = "link" })</div>
+            <p> Contact us if you have any more questions! </p>
         </div>
     </div>
 </div>
+    </div>
 </body>
 </html>
 
