@@ -90,6 +90,7 @@ namespace LibraryWebApp
 
            
         }
+        //TODO: add methods for the index of reaching the database, (and possible need for media DTO to hold that info)
         
     }
 }
