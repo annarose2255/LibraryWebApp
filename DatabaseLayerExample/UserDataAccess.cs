@@ -143,14 +143,14 @@ namespace LibraryDatabaseAccessLayer
 
                         SqlParameter _paramPassword = _sqlCommand.CreateParameter();
                         _paramPassword.DbType = DbType.String;
-                        _paramPassword.ParameterName = "@ParamPassword";
+                        _paramPassword.ParameterName = "@parmPassword";
                         _paramPassword.Value = u.Password;
                         _sqlCommand.Parameters.Add(_paramPassword);
 
                        
                         SqlParameter _paramSalt = _sqlCommand.CreateParameter();
                         _paramSalt.DbType = DbType.String;
-                        _paramSalt.ParameterName = "@ParamSalt";
+                        _paramSalt.ParameterName = "@parmSalt";
                         _paramSalt.Value = u.Salt;
                         _sqlCommand.Parameters.Add(_paramSalt);
 

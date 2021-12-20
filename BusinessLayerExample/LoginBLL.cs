@@ -57,7 +57,7 @@ namespace LibraryBusinessLogicLayer
         public UserDTO Register(string username, string firstname, string lastname,string password, int roleid, int addressid, BusinessLogicPassThru businessLogicPassThru,string email = "",string phonenumber = "")
         {
             UserDTO _user;
-            // 1. get all the users for the database
+            // 1. get all the users for the database, GetUsersData() uses a view, which filters for certain roles
             List<UserDTO> _allUsers = businessLogicPassThru.GetUsersData();
 
             // 2. filter thru and see if I have match for this username
@@ -65,9 +65,9 @@ namespace LibraryBusinessLogicLayer
                 _allUsers.Where(u => u.Username == username).FirstOrDefault() : new UserDTO();
 
 
-            if (_match.Password != null)
+            if (_match.Username != null)
             {
-                // 3. if match,  hash and salt the password parm.
+                // 3. if match,  unable to register.
                 _match.ErrorMessage = "Username already exists.";
                 return _match;
             }

@@ -63,13 +63,15 @@ namespace LibraryWebApp
         public ActionResult Login()
         {
 
-            LoginModel _model = new LoginModel { ErrorMessage = ""};
+            GlobalLoginModel _model = new GlobalLoginModel();
+            _model.ErrorMessage = "";
+            //model.LoginModel.ErrorMessage = "";
             return View(_model);
         }
 
 
         [HttpPost]
-        public ActionResult Login(LoginModel inModel)
+        public ActionResult Login(GlobalLoginModel inModel)
         {
          
             if (ModelState.IsValid)
@@ -81,27 +83,63 @@ namespace LibraryWebApp
                 LoginBLL loginBLL = new LoginBLL();
                 // pass a LoginBLL object because it contains the connection string and that will be need in business layer
                 // to connect to database
-                UserDTO _profile = loginBLL.Login(inModel.Username, inModel.Password, businessLogicPassThru);
+                UserDTO _profile = loginBLL.Login(inModel.LoginModel.Username, inModel.LoginModel.Password, businessLogicPassThru);
                 // error message coming all the way up the stack from database or business layer
-                inModel.ErrorMessage = _profile.ErrorMessage;
+                inModel.LoginModel.ErrorMessage = _profile.ErrorMessage;
 
-                if (string.IsNullOrEmpty(inModel.ErrorMessage))
+                if (string.IsNullOrEmpty(inModel.LoginModel.ErrorMessage))
                 {
                     // use case # 1, username and password match, store profile object and send them to dashboard
-                    return View(inModel);
+                    return RedirectToAction("Login");
+                    
                 }
                 else
                 {
                     // use case # 2, username and/or password not not match, no profile stored and give them an error message 
-                    return RedirectToAction("DashBoard", "System");
+                    return View(inModel);
                 }
             }
             else 
             {
-               // use case # 3, valiation on client failed
+               // use case # 3, valiation on client failed, show error message in login.cshtml
                 return View(inModel);
             }
            
+        }
+        [HttpPost]
+        public ActionResult Register(GlobalLoginModel inModel)
+        {
+            if (ModelState.IsValid)
+            {
+                // connection string coming out of the web.config
+                BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru(System.Configuration.ConfigurationManager.
+                ConnectionStrings["dbconnection"].ConnectionString);
+
+                RegisterBLL registerBLL = new RegisterBLL();
+                // pass a LoginBLL object because it contains the connection string and that will be need in business layer
+                // to connect to database       
+                UserDTO _profile = registerBLL.Register(inModel.RegisterModel.Username, inModel.RegisterModel.FirstName, inModel.RegisterModel.LastName, inModel.RegisterModel.Password, 5,5, businessLogicPassThru,inModel.RegisterModel.PrimaryEmail,inModel.RegisterModel.PrimaryPhone);
+                // error message coming all the way up the stack from database or business layer
+                inModel.ErrorMessage = _profile.ErrorMessage;
+
+                if (string.IsNullOrEmpty(inModel.RegisterModel.ErrorMessage))
+                {
+                    // use case # 1, registration was successful, store profile object and send them to dashboard
+                    return RedirectToAction("Login");
+                    
+                }
+                else
+                {
+                    // use case # 2, registration was not successful, no profile stored and give them an error message 
+                    //TODO: Create dashboard
+                    return View(inModel);
+                }
+            }
+            else
+            {
+                // use case # 3, validation on client failed
+                return View(inModel);
+            }
         }
         
     }
