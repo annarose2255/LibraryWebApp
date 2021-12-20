@@ -55,7 +55,7 @@ namespace LibraryBusinessLogicLayer
     }
     public class RegisterBLL
     {
-        public UserDTO Register(string username, string firstname, string lastname,string password, int roleid, int addressid, BusinessLogicPassThru businessLogicPassThru,string email = "",string phonenumber = "")
+        public UserDTO Register(string username, string firstname, string lastname,string password, int addressid, BusinessLogicPassThru businessLogicPassThru,string email = "",string phonenumber = "")
         {
             UserDTO _user;
             // 1. get all the users for the database, GetUsersData() uses a view, which filters for certain roles
@@ -74,22 +74,23 @@ namespace LibraryBusinessLogicLayer
             }
             else
             {
+                Hasher hasher = new Hasher();
                 //create new user from HTTPGet 
                 _user = new UserDTO
                 {
-                    //TODO: will need to change how roleid and addressid are passed through, currently no RoleDTO
-                    RoleId = roleid,
+                    RoleId = 5,  //RoleId is assumed member, has minimal abilities
+                    RoleName = "Member",
                     AddressID = addressid,
                     FirstName = firstname,
                     LastName = lastname,
                     PrimaryEmail = email,
                     PrimaryPhone = phonenumber,
                     Username = username,
-                    Password = password,
-                    Salt = "",//use password to get salt 
-                    Comment = "",
+                    Password = hasher.HashedValue(hasher.CreateSalt() + password), //add salt to password before creating hashed password
+                    Salt = hasher.CreateSalt(),//use password to get salt 
+                    Comment = "", 
                     DateModified = DateTime.Now,
-                    ModifiedByUserID = roleid
+                    ModifiedByUserID = 5
 
                 };
                 //assign userid after creating user in Db
