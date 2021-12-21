@@ -2,6 +2,13 @@
 @{
     ViewBag.Title = "Contact";
 }
+@if (Model.Message != "")
+{
+    <div class="alert alert-success" role="alert">
+        @Model.Message
+    </div>
+
+}
 
 <div class="row" style="background-color: dimgray; padding-top: 20px; padding-bottom: 40px; padding-left: 40px;">
     <div class="row">
@@ -69,23 +76,38 @@
             <h2> Contact us form!</h2>
             @using (Html.BeginForm("Contact", "Home", FormMethod.Post))
             {
-                <form>
+                <form id="myForm">
                     <div class="form-group">
                         <label for="Name">Name</label>
-                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "alert-danger" })
+                        <p>@Html.ValidationMessageFor(m => m.Name, "", new { @class = "alert-danger" })</p>
+
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @id = "contact-input", @placeholder = "Enter the name you wish to go by" })
+
                         @*<input id="contact-input" type="text" class="form-control" id="Name" placeholder="Your Name">*@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
-                        <input id="contact-input" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Your email (name@example.com)">
+                        <p>@Html.ValidationMessageFor(m => m.Email, "", new { @class = "alert-danger" })</p>
+
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @id = "contact-input", @placeholder = "Enter Your email (name@example.com)" })
+                        @*<input id="contact-input" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Your email (name@example.com)">*@
                         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Your Message</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Enter you text here! Tell us about anything!"></textarea>
+                        <label for="exampleInputEmail1">Email address</label>
+                        <p>@Html.ValidationMessageFor(m => m.MessageText, "", new { @class = "alert-danger" })</p>
+
+                        @Html.TextAreaFor(m => m.MessageText, new
+                        {
+                            @class = "form-control",
+                            @id = "contact-input",
+                            @placeholder = "Enter you text here! Tell us about anything!",
+                       @rows = "3"
+                        })
+                        @*<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Enter you text here! Tell us about anything!"></textarea>*@
                     </div>
-                    <button id="contact-button" type="button"> Submit </button>
+                    <button id="contact-button" type="submit"> Submit</button>
                 </form>
             }
         </div>

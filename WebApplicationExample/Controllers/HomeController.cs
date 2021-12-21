@@ -52,6 +52,7 @@ namespace LibraryWebApp
         public ActionResult Contact()
         {
             ContactModel _model = new ContactModel();
+            _model.Message = "";
             return View(_model);
         }
 
@@ -61,12 +62,15 @@ namespace LibraryWebApp
 
             if (ModelState.IsValid)
             {
-                //do stuff
+
                 ContactModel _model = new ContactModel();
+                //TODO: take info to database
+                inModel.Message = "You have submitted the form. Thank you!";
                 return View(inModel);
             }
             else
             {
+                inModel.Message = "";
                 return View(inModel);
 
             }
