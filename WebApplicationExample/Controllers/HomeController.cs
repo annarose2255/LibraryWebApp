@@ -47,11 +47,29 @@ namespace LibraryWebApp
             return View();
         }
 
+
+        [HttpGet]
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ContactModel _model = new ContactModel();
+            return View(_model);
+        }
 
-            return View();
+        [HttpPost]
+        public ActionResult Contact(ContactModel inModel)
+        {
+
+            if (ModelState.IsValid)
+            {
+                //do stuff
+                ContactModel _model = new ContactModel();
+                return View(inModel);
+            }
+            else
+            {
+                return View(inModel);
+
+            }
         }
 
         public ActionResult FAQ()
@@ -59,6 +77,7 @@ namespace LibraryWebApp
             ViewBag.Message = "FAQ Page";
             return View();
         }
+
         public ActionResult Support()
         {
             ViewBag.Message = "Support Page";
