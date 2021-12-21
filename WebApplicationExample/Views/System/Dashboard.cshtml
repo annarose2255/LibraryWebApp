@@ -5,3 +5,104 @@
 
 <h2>Dashboard</h2>
 
+<table id="tableusers" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>UserID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>RoleID</th>
+            <th>Role</th>           
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Giancarlo</td>
+            <td>Rhodes</td>
+            <td>grhodes29</td>
+            <td>password123</td>
+            <td>1</td>
+            <td>Administrator</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Emma</td>
+            <td>Dufresne</td>
+            <td>emma29</td>
+            <td>password123</td>
+            <td>6</td>
+            <td>Employee</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Anna </td>
+            <td>Karoll </td>
+            <td>anna29</td>
+            <td>password123</td>
+            <td>5</td>
+            <td>Member</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Aaron</td>
+            <td>Mathes</td>
+            <td>aaron29</td>
+            <td>password123</td>
+            <td>5</td>
+            <td>Member</td>
+        </tr>
+        <tr>
+            <td>15</td>
+            <td>Joe</td>
+            <td>Smith</td>
+            <td>jsmith29</td>
+            <td>password123</td>
+            <td>6</td>
+            <td>Employee</td>
+        </tr>
+        <tr>
+            <td>220</td>
+            <td>Sally</td>
+            <td>Holly</td>
+            <td>sallyholly29</td>
+            <td>password123</td>
+            <td>6</td>
+            <td>Employee</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>UserID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>RoleID</th>
+            <th>Role</th>
+        </tr>
+    </tfoot>
+</table>
+
+
+
+
+
+@section scripts {
+
+    <script type="text/javascript" language="javascript">
+
+        $(document).ready(function () {
+
+            $('#tableusers').DataTable();
+
+        });
+
+      
+
+    </script>
+
+}
+
