@@ -1,17 +1,79 @@
-﻿@using LibraryCommon.DTO
+﻿@using LibraryCommon
+@using LibraryCommon.DTO
 
 @{
     ViewBag.Title = "Dashboard";
-    UserDTO profile = (UserDTO)Session["Profile"];
+    UserDTO guest = new UserDTO();
+    guest.Username = "guest";
+    guest.RoleId = (int)RoleType.Guest;
+    guest.RoleName = RoleType.Guest.ToString();
+    UserDTO profile = (UserDTO)Session["Profile"] is null ? guest: (UserDTO)Session["Profile"];
 }
+<div class="container">
+    <div class="col-xs-6">
+        <div class="row" style="border:solid black 1px; margin-right:10%">
+            <h4 class="card-title" style="border-bottom:solid black 1px">Welcome, <strong>@profile.Username</strong>!</h4>
+            <h6 class="card-subtitle mb-2 text-muted">This is your dashboard with all your relevent user information</h6>
+            <p class="card-text">
+                <strong>Username: </strong>@profile.Username
+            </p>
+            <p class="card-text">
+                <strong>First name: </strong>@profile.FirstName
+            </p>
+            <p class="card-text">
+                <strong>Last name: </strong>@profile.LastName
+            </p>
+            <p class="card-text">
+                <strong>E-mail: </strong>@profile.PrimaryEmail
+            </p>
+            <p class="card-text">
+                <strong>Phone number: </strong>@profile.PrimaryPhone
+            </p>
+            <a href="/Home/Login" class="card-link">Logout</a>
+        </div>
+        <br/><br/>
+        <div class="row" style="border:solid black 1px; margin-right:10%">
 
-<h2>Dashboard</h2>
-<h3>Username: @profile.Username</h3>
-<h3>First Name: @profile.FirstName</h3>
-<h3>Last Name: @profile.LastName</h3>
-<h3>Email: @profile.PrimaryEmail</h3>
-<h3>Phone number: @profile.PrimaryPhone</h3>
+            <h4 class="card-title" style="border-bottom:solid black 1px">Membership/Billing</h4>
+            <p class="card-text">
+                <strong>Library Card status: </strong>@profile.RoleName
+            </p>
+            <p class="card-text">
+                Renewal Date: TODO
+            </p>
+            <p class="card-text">
+                Billing: TODO?
+            </p>
 
+
+        </div>
+
+    </div>
+    <div class="col-xs-6" style="border:solid black 1px">
+        <h4 class="card-title" style="border-bottom:solid black 1px">Saved books</h4>
+        <p class="card-text">
+            <strong>TODO </strong>
+        <p class="card-text">
+            Placeholder
+        </p>
+        <p class="card-text">
+            Placeholder
+        </p>
+        <p class="card-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare id elit sed ultrices.
+            Fusce aliquet sagittis pellentesque. Morbi tristique magna vitae velit auctor pulvinar. In leo tortor,
+            molestie ut varius ut, dignissim id lectus. Phasellus laoreet ex at urna pretium, ac tempor tortor rhoncus.
+        </p>
+        <p class="card-text">
+            Placeholder
+        </p>
+
+    </div>
+    <br />
+
+</div>
+
+<br/><br/>
 
 <table id="tableusers" class="display" style="width:100%">
     <thead>
