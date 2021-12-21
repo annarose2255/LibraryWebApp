@@ -4,7 +4,7 @@
 
 <div class="row" style="background-color: dimgray; padding-top: 20px; padding-bottom: 40px; padding-left: 40px;">
     <div class="row">
-        <div class="col-md-5 col-md-offset-1" >
+        <div class="col-md-5 col-md-offset-1">
             <h1 class="support-title img-rounded"> Contact Library Support</h1>
         </div>
     </div>
@@ -40,7 +40,8 @@
     </div>
 </div>
 
-<div id="contact-form"> @*this is for using buttons to get here*@
+<div id="contact-form">
+    @*this is for using buttons to get here*@
     <div class="row" style="margin-top: 10px;">
         <div class="col-lg-4" style="text-align: left;">
             <h2> Contact Information</h2>
@@ -64,23 +65,29 @@
             </address>
         </div>
         <div class="col-lg-6 col-lg-offset-1">
+            <label for="error" id="error" class="alert-danger">@Model.Message</label>
             <h2> Contact us form!</h2>
-            <form>
-                <div class="form-group">
-                    <label for="Name">Name</label>
-                    <input id="contact-input" type="text" class="form-control" id="Name" placeholder="Your Name">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input id="contact-input" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Your email (name@example.com)">
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Your Message</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Enter you text here! Tell us about anything!"></textarea>
-                </div>
-                <button id="contact-button" type="button"> Submit </button>
-            </form>
+            @using (Html.BeginForm("Contact", "Home", FormMethod.Post))
+            {
+                <form>
+                    <div class="form-group row">
+                        <label for="Name" id="Name">Name</label>
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "alert-danger" })
+                        @*<input id="contact-input" type="text" class="form-control" id="Name" placeholder="Your Name">*@
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input id="contact-input" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Your email (name@example.com)">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Your Message</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Enter you text here! Tell us about anything!"></textarea>
+                    </div>
+                    <button id="contact-button" type="button"> Submit </button>
+                </form>
+            }
         </div>
 
     </div>

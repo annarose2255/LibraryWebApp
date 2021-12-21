@@ -49,7 +49,10 @@ namespace LibraryWebApp
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ContactModel _model = new ContactModel();
+            _model.Message = "";
+            return View(_model);
+        }
 
             return View();
         }
