@@ -286,9 +286,6 @@ h1 {
 }
 
 /***   Contact page CSS*/
-#contact-space{
-    margin-right: 20px;
-}
 
 .contact-icon {
     margin-bottom: 10px;
@@ -310,7 +307,7 @@ h1 {
     min-width: 150px;
     min-height: 40px;
 }
-hr.rounded {
+/*hr.rounded {
     border-top: 2px solid #9F2CAD;
     border-radius: 5px;
 }
@@ -318,10 +315,34 @@ hr.rounded {
     border-left: 6px solid green;
     height: 500px;
     
-}
+}*/
 #contact-input{
     max-width: 100%;
 }
 #exampleFormControlTextarea1{
     max-width: 100%;
+}
+.long-container{
+    max-width: 1600px;
+    width: 100%;
+}
+.support-title {
+    color: #9F2CAD;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 10px;
+    margin-left: 20px;
+    /*background-color: ghostwhite;*/
+    /*border-width: 6px;
+    border-style: solid;
+    border-color: #2CA6A4;*/
+    text-shadow: -2px 1px 2px #2CA6A4, 
+        1px 1px 2px #2CA6A4, 
+        1px 1px 0 #2CA6A4, 
+        -1px -1px 0 #2CA6A4, 
+
+        -1px 1px 0px white, 
+        1px 0px 2px white, 
+        1px -2px 2px white, 
+        -2px -2px 0px white
 }
