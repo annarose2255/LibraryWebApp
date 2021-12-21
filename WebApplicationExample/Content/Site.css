@@ -346,3 +346,10 @@ h1 {
         1px -2px 2px white, 
         -2px -2px 0px white
 }
+.support-text {
+    color: #9F2CAD;
+    /*padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 10px;
+    margin-left: 20px;*/
+}
