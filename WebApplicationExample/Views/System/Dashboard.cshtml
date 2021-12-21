@@ -1,14 +1,50 @@
 ﻿@using LibraryCommon.DTO
 @{
     ViewBag.Title = "Dashboard";
-    UserDTO profile = (UserDTO)Session["Profile"];
+    UserDTO guest = new UserDTO();
+    guest.Username = "guest";
+    UserDTO profile = (UserDTO)Session["Profile"] is null ? guest: (UserDTO)Session["Profile"];
 }
+<div class="d-flex flex-row">
+    <div class="d-inline-flex">
+        <div class="d-inline-flex" style="border:solid black 1px; margin-right:65%">
+            <h4 class="card-title" style="border-bottom:solid black 1px">Welcome, @profile.Username</h4>
+            <h6 class="card-subtitle mb-2 text-muted">This is your dashboard will all your relevent user information</h6>
+            <p class="card-text">
+                Username: @profile.Username
+            </p>
+            <p class="card-text">
+                First name: @profile.FirstName
+            </p>
+            <p class="card-text">
+                Last name: @profile.LastName
+            </p>
+            <p class="card-text">
+                Email: @profile.PrimaryEmail
+            </p>
+            <p class="card-text">
+                Phone number: @profile.PrimaryPhone
+            </p>
+            <a href="/Home/Login" class="card-link">Logout</a>
+        </div>
+    </div>
+    <br />
+    <div class="d-inline-flex">
+        <div class="d-inline-flex" style="border:solid black 1px; margin-right:65%">
+            <h4 class="card-title" style="border-bottom:solid black 1px">Your membership/billing</h4>
+            <p class="card-text">
+                Library Card status: @profile.RoleName
+            </p>
+            <p class="card-text">
+                Renewal Date: TODO
+            </p>
+            <p class="card-text">
+                Billing: TODO?
+            </p>
 
-<h2>Dashboard</h2>
-<h3>Username: @profile.Username</h3>
-<h3>First Name: @profile.FirstName</h3>
-<h3>Last Name: @profile.LastName</h3>
-<h3>Email: @profile.PrimaryEmail</h3>
-<h3>Phone number: @profile.PrimaryPhone</h3>
+        </div>
+    </div>
+</div>
+
 
 
