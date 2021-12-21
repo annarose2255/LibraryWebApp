@@ -1,8 +1,7 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+
 
 @*<div class="menu-wrapper">
 
@@ -85,53 +84,64 @@
                 <h1 class="support-box-header"> Get Support</h1>
                 <p style="padding: 10px"> Have an issue with the site? Get help and fill out our support form.</p>
                 <div class="col-md-12" style="padding-bottom: 20px; padding-top: 0px;">
-                    <button id="contact-button" type="button" onclick="location.href='#contact'"> @*<span>*@ Send A Help Ticket! @*</span>*@</button>
-                    @*<a href="#contact" class="btn btn-info btn-block" role="button">Send Us A Message!</a>*@
+                    <button id="contact-button" type="button" onclick="location.href='/Home/Support'">  Send A Help Ticket!</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 <div class="row" style="padding-top: 10px;">
     @*<hr class="rounded">*@
     <div class="col-sm-12 img-rounded" style="background-color: #2CA6A4; border-width: 2px; border-style: solid; border-color: #9F2CAD; height: 8px;">
         <p> </p>
     </div>
 </div>
-<div class="row" style="margin-top: 10px;">
-    @*<div class="col-lg-4" style="text-align: left; border-right: 6px solid green;">*@
-    <div class="col-lg-4" style="text-align: left;">
-        <h2> Contact Information</h2>
-        <address>
-            <p class="footerLinks">
-                Address:
-                <a class="footerLinks" id="link" href="https://www.google.com/maps/place/Westview+Cemetery+Inc./33.7330846,-84.4306764,13.62z/data=!4m5!3m4!1s0x88f51cbbe22cb30f:0x7b869bcdcf20033c!8m2!3d33.7463642!4d-84.4422021">
-                    1680 Westview Dr SW,
-                    Atlanta, GA 30310 <br />
-                </a>
-            </p>
-            <abbr title="Phone" class="footerLinks">P:</abbr>
-            <a class="footerLinks" href="tel:1-237-2873" id="link">
-                1-237-2873
-            </a>
-        </address>
 
-        <address>
-            <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-            <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-        </address>
-    </div>
-    <div class="col-lg-8">
-        <div class="footerCollumn" id="newsletter">
-            <span id="footerCollumnHeader">
-                Join the newsletter
-            </span>
-            <p class="newsletterInfo"> Get notified monthly when you need to return a book, or when new books are added!</p>
-            <div class="newsletterInput">
-                <input type="email" placeholder="Enter your Email" />
-                <button type="button" style="vertical-align:middle"> <span>Sign up</span> </button>
-            </div>
+<div id="contact"> @*this is for using buttons to get here*@
+    <div class="row" style="margin-top: 10px;">
+        @*<div class="col-lg-4" style="text-align: left; border-right: 6px solid green;">*@
+        <div class="col-lg-4" style="text-align: left;">
+            <h2> Contact Information</h2>
+            <address>
+                <p class="footerLinks">
+                    Address:
+                    <a class="footerLinks" id="link" href="https://www.google.com/maps/place/Westview+Cemetery+Inc./33.7330846,-84.4306764,13.62z/data=!4m5!3m4!1s0x88f51cbbe22cb30f:0x7b869bcdcf20033c!8m2!3d33.7463642!4d-84.4422021">
+                        1680 Westview Dr SW,
+                        Atlanta, GA 30310 <br />
+                    </a>
+                </p>
+                <abbr title="Phone" class="footerLinks">P:</abbr>
+                <a class="footerLinks" href="tel:1-237-2873" id="link">
+                    1-237-2873
+                </a>
+            </address>
+
+            <address>
+                <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+                <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+            </address>
         </div>
+        <div class="col-lg-6 col-lg-offset-1">
+            <h2> Contact us form!</h2>
+            <form>
+                <div class="form-group">
+                    <label for="Name">Name</label>
+                    <input id="contact-input" type="text" class="form-control" id="Name" placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input id="contact-input" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Your email (name@example.com)">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Your Message</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Enter you text here! Tell us about anything!"></textarea>
+                </div>
+                <button id="contact-button" type="button"> Submit </button>
+            </form>
+        </div>
+
     </div>
 
 </div>

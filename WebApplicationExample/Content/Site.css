@@ -319,4 +319,9 @@ hr.rounded {
     height: 500px;
     
 }
-
+#contact-input{
+    max-width: 100%;
+}
+#exampleFormControlTextarea1{
+    max-width: 100%;
+}
