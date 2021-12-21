@@ -244,7 +244,7 @@ nav {
     padding-right: 15px;
     padding-left: 15px;
     /*justify-items: left;*/
-    /*background-color: lightblue;*/
+   /* background-color: lightblue;*/
 }
 .container.contact {
     /*position: absolute;*/
@@ -261,9 +261,10 @@ nav {
     
 }
 .background{
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
     background-color: darkgrey;
+    color: darkblue;
    
 }
 
@@ -273,7 +274,7 @@ heading {
 h1 {
     font-size: 38px;
     line-height: 44px;
-    color: aqua;
+    /*color: aqua;*/
 }
 
 .content-section {
@@ -283,3 +284,39 @@ h1 {
 * {
     box-sizing: border-box;
 }
+
+/***   Contact page CSS*/
+#contact-space{
+    margin-right: 20px;
+}
+
+.contact-icon {
+    margin-bottom: 10px;
+}
+
+.contact-container {
+    background-color: dimgray;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.support-box-header {
+    margin: 5px;
+     color: #9F2CAD;
+    /*color: #2CA6A4;*/
+}
+#contact-button{
+    float: none;
+    min-width: 150px;
+    min-height: 40px;
+}
+hr.rounded {
+    border-top: 2px solid #9F2CAD;
+    border-radius: 5px;
+}
+.vl {
+    border-left: 6px solid green;
+    height: 500px;
+    
+}
+

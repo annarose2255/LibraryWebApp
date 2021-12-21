@@ -6,64 +6,134 @@
 
 @*<div class="menu-wrapper">
 
-</div>
-<div class="contact-hero-section wf-section">
+    </div>
+    <div class="contact-hero-section wf-section">
+        <div class="contact-page_background-wrapper">
+            <div class="container contact">
+                <h1 class="heading"> Library App </h1>
+            </div>
+        </div>
+    </div>
+    <div class="contact-hero-bg-wrapper">
+        <div class="container contact">
+            <h1 class="heading">Contact Acme Outdoors</h1>
+            <div class="contact-block-wrapper">
+                <div class="contact-block">
+                    <img src="https://assets.website-files.com/5e7ff3ec0c4ef4c974fa99e3/5e84ba313e8232516a7da902_chat-alt.svg" alt="" class="contact-icon">
+                    <h2>Contact Us</h2>
+                    <p>Just want to say hi?&nbsp;We'd love to hear from you. We love our customers and community!&nbsp;</p>
+                    <a href="#contact" class="btn w-button">Send Us A Message</a>
+                </div>
+                <div class="contact-block">
+                    <img src="https://assets.website-files.com/5e7ff3ec0c4ef4c974fa99e3/5e850414db1f6ebfba8bc42d_chat-warning.svg" alt="" class="contact-icon">
+                    <h2>Get Support</h2><p>Have an issue with an order or with a product you purchased from us?&nbsp;Fill out our support form.</p>
+                    <a href="https://university.webflow.com/support" target="_blank" class="btn w-button">Contact Support</a>
+                </div>
+            </div>
+        </div>
+        <div class="contact-image-div"></div>
+    </div>*@
+
+@*<div class="allcontactpage">
     <div class="contact-page_background-wrapper">
         <div class="container contact">
+            <div class="background">
             <h1 class="heading"> Library App </h1>
-        </div>
-    </div>
-</div> 
-<div class="contact-hero-bg-wrapper">
-    <div class="container contact">
-        <h1 class="heading">Contact Acme Outdoors</h1>
-        <div class="contact-block-wrapper">
-            <div class="contact-block">
-                <img src="https://assets.website-files.com/5e7ff3ec0c4ef4c974fa99e3/5e84ba313e8232516a7da902_chat-alt.svg" alt="" class="contact-icon">
-                <h2>Contact Us</h2>
-                <p>Just want to say hi?&nbsp;We'd love to hear from you. We love our customers and community!&nbsp;</p>
-                <a href="#contact" class="btn w-button">Send Us A Message</a>
-            </div>
-            <div class="contact-block">
-                <img src="https://assets.website-files.com/5e7ff3ec0c4ef4c974fa99e3/5e850414db1f6ebfba8bc42d_chat-warning.svg" alt="" class="contact-icon">
-                <h2>Get Support</h2><p>Have an issue with an order or with a product you purchased from us?&nbsp;Fill out our support form.</p>
-                <a href="https://university.webflow.com/support" target="_blank" class="btn w-button">Contact Support</a>
             </div>
         </div>
+        <div class="container contact">
+            <div class="background">
+            <h1 class="heading"> Library App 2</h1>
+            </div>
+        </div>
+        hi, this is me
+    </div>*@
+
+@*<div class="col-md-12" style="background-color: darkgray;">
+    <h1 class="heading"> Library App </h1>
+    <div class="row">
+        <div class="col-sm-4" style="background-color: floralwhite">
+            <p> header 1</p>
+        </div>
+        <div id="contact-space" class="col-sm-4" style="background-color: ghostwhite">
+            <p> header 2</p>
+        </div>
     </div>
-    <div class="contact-image-div"></div>
 </div>*@
 
-<div class="allcontactpage">
-    <div class="contact-page_background-wrapper">
-        <div class="container contact">
-            @*<div class="background">*@
-            <h1 class="heading"> Library App </h1>
+<div class="row" style="background-color: dimgray; padding-top: 20px; padding-bottom: 20px; padding-left: 20px;">
+    <div class="col-md-3">
+
+        <div class="col-md-12 img-rounded" style="background-color: ghostwhite; border-width: 6px; border-style: solid; border-color: #2CA6A4; min-width: 270px; ">
+            @*<div class="img-rounded" style="border: 5px solid red;">*@
+                <div style="text-align: center; padding: 20px">
+                    <img class="contact-icon" src="https://assets.website-files.com/5e7ff3ec0c4ef4c974fa99e3/5e84ba313e8232516a7da902_chat-alt.svg" alt="" />
+                    <h1 class="support-box-header">Contact Us</h1>
+                    <p> Just want to say hi? We'd love to hear from you. We love our members and community! </p>
+                    <div class="col-md-12" style="padding-bottom: 20px">
+                        <button id="contact-button" type="button" onclick="location.href='#contact'"> @*<span>*@ Send Us A Message! @*</span>*@</button>
+                        @*<a href="#contact" class="btn btn-info btn-block" role="button">Send Us A Message!</a>*@
+                    </div>
+                </div>
             @*</div>*@
         </div>
-        <!--<div class="container contact">-->
-            @*<div class="background">*@
-            <!--<h1 class="heading"> Library App 2</h1>-->
-            @*</div>*@
-        <!--</div>-->
-        @*hi, this is me*@
     </div>
-    <address>
-        <p class="footerLinks">
-            Address:
-            <a class="footerLinks" id="link" href="https://www.google.com/maps/place/Westview+Cemetery+Inc./33.7330846,-84.4306764,13.62z/data=!4m5!3m4!1s0x88f51cbbe22cb30f:0x7b869bcdcf20033c!8m2!3d33.7463642!4d-84.4422021">
-                1680 Westview Dr SW,
-                Atlanta, GA 30310 <br />
-            </a>
-        </p>
-        <abbr title="Phone" class="footerLinks">P:</abbr>
-        <a class="footerLinks" href="tel:1-237-2873" id="link">
-            1-237-2873
-        </a>
-    </address>
-
-    <address>
-        <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-        <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-    </address>
+    <div class="col-md-8" style="margin-left: 5px;">
+        <div class="col-md-4 img-rounded" style="background-color: ghostwhite; border-width: 6px; border-style: solid; border-color: #2CA6A4; min-height: 330px; min-width: 270px; ">
+            <div style="text-align:center; padding: 20px">
+                <img class="contact-icon" src="https://assets.website-files.com/5e7ff3ec0c4ef4c974fa99e3/5e850414db1f6ebfba8bc42d_chat-warning.svg" alt="">
+                <h1 class="support-box-header"> Get Support</h1>
+                <p style="padding: 10px"> Have an issue with the site? Get help and fill out our support form.</p>
+                <div class="col-md-12" style="padding-bottom: 20px; padding-top: 0px;">
+                    <button id="contact-button" type="button" onclick="location.href='#contact'"> @*<span>*@ Send A Help Ticket! @*</span>*@</button>
+                    @*<a href="#contact" class="btn btn-info btn-block" role="button">Send Us A Message!</a>*@
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<div class="row" style="padding-top: 10px;">
+    @*<hr class="rounded">*@
+    <div class="col-sm-12 img-rounded" style="background-color: #2CA6A4; border-width: 2px; border-style: solid; border-color: #9F2CAD; height: 8px;">
+        <p> </p>
+    </div>
+</div>
+<div class="row" style="margin-top: 10px;">
+    @*<div class="col-lg-4" style="text-align: left; border-right: 6px solid green;">*@
+    <div class="col-lg-4" style="text-align: left;">
+        <h2> Contact Information</h2>
+        <address>
+            <p class="footerLinks">
+                Address:
+                <a class="footerLinks" id="link" href="https://www.google.com/maps/place/Westview+Cemetery+Inc./33.7330846,-84.4306764,13.62z/data=!4m5!3m4!1s0x88f51cbbe22cb30f:0x7b869bcdcf20033c!8m2!3d33.7463642!4d-84.4422021">
+                    1680 Westview Dr SW,
+                    Atlanta, GA 30310 <br />
+                </a>
+            </p>
+            <abbr title="Phone" class="footerLinks">P:</abbr>
+            <a class="footerLinks" href="tel:1-237-2873" id="link">
+                1-237-2873
+            </a>
+        </address>
+
+        <address>
+            <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+            <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+        </address>
+    </div>
+    <div class="col-lg-8">
+        <div class="footerCollumn" id="newsletter">
+            <span id="footerCollumnHeader">
+                Join the newsletter
+            </span>
+            <p class="newsletterInfo"> Get notified monthly when you need to return a book, or when new books are added!</p>
+            <div class="newsletterInput">
+                <input type="email" placeholder="Enter your Email" />
+                <button type="button" style="vertical-align:middle"> <span>Sign up</span> </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@*</div>*@
