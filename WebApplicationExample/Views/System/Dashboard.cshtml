@@ -1,39 +1,41 @@
-﻿@using LibraryCommon.DTO
+﻿@using LibraryCommon
+@using LibraryCommon.DTO
 @{
     ViewBag.Title = "Dashboard";
     UserDTO guest = new UserDTO();
     guest.Username = "guest";
+    guest.RoleId = (int)RoleType.Guest;
+    guest.RoleName = RoleType.Guest.ToString();
     UserDTO profile = (UserDTO)Session["Profile"] is null ? guest: (UserDTO)Session["Profile"];
 }
-<div class="d-flex flex-row">
-    <div class="d-inline-flex">
-        <div class="d-inline-flex" style="border:solid black 1px; margin-right:65%">
-            <h4 class="card-title" style="border-bottom:solid black 1px">Welcome, @profile.Username</h4>
-            <h6 class="card-subtitle mb-2 text-muted">This is your dashboard will all your relevent user information</h6>
+<div class="container">
+    <div class="col-xs-6">
+        <div class="row" style="border:solid black 1px; margin-right:10%">
+            <h4 class="card-title" style="border-bottom:solid black 1px">Welcome, <strong>@profile.Username</strong>!</h4>
+            <h6 class="card-subtitle mb-2 text-muted">This is your dashboard with all your relevent user information</h6>
             <p class="card-text">
-                Username: @profile.Username
+                <strong>Username: </strong>@profile.Username
             </p>
             <p class="card-text">
-                First name: @profile.FirstName
+                <strong>First name: </strong>@profile.FirstName
             </p>
             <p class="card-text">
-                Last name: @profile.LastName
+                <strong>Last name: </strong>@profile.LastName
             </p>
             <p class="card-text">
-                Email: @profile.PrimaryEmail
+                <strong>E-mail: </strong>@profile.PrimaryEmail
             </p>
             <p class="card-text">
-                Phone number: @profile.PrimaryPhone
+                <strong>Phone number: </strong>@profile.PrimaryPhone
             </p>
             <a href="/Home/Login" class="card-link">Logout</a>
         </div>
-    </div>
-    <br />
-    <div class="d-inline-flex">
-        <div class="d-inline-flex" style="border:solid black 1px; margin-right:65%">
-            <h4 class="card-title" style="border-bottom:solid black 1px">Your membership/billing</h4>
+        <br/><br/>
+        <div class="row" style="border:solid black 1px; margin-right:10%">
+
+            <h4 class="card-title" style="border-bottom:solid black 1px">Membership/Billing</h4>
             <p class="card-text">
-                Library Card status: @profile.RoleName
+                <strong>Library Card status: </strong>@profile.RoleName
             </p>
             <p class="card-text">
                 Renewal Date: TODO
@@ -42,11 +44,35 @@
                 Billing: TODO?
             </p>
 
+
         </div>
+
     </div>
+    <div class="col-xs-6" style="border:solid black 1px">
+        <h4 class="card-title" style="border-bottom:solid black 1px">Saved books</h4>
+        <p class="card-text">
+            <strong>TODO </strong>
+        <p class="card-text">
+            Placeholder
+        </p>
+        <p class="card-text">
+            Placeholder
+        </p>
+        <p class="card-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare id elit sed ultrices.
+            Fusce aliquet sagittis pellentesque. Morbi tristique magna vitae velit auctor pulvinar. In leo tortor,
+            molestie ut varius ut, dignissim id lectus. Phasellus laoreet ex at urna pretium, ac tempor tortor rhoncus.
+        </p>
+        <p class="card-text">
+            Placeholder
+        </p>
+
+    </div>
+    <br />
+
 </div>
 
-
+<br/><br/>
 
 <table id="tableusers" class="display" style="width:100%">
     <thead>
