@@ -89,6 +89,8 @@ namespace LibraryWebApp
                 if (string.IsNullOrEmpty(inModel.Message))
                 {
                     // use case # 1, username and password match, store profile object and send them to dashboard
+                    // save profile into in session variable
+                    System.Web.HttpContext.Current.Session["Profile"] = _profile;
                     return RedirectToAction("Dashboard","System");
                     
                 }
@@ -118,9 +120,6 @@ namespace LibraryWebApp
                 // pass a LoginBLL object because it contains the connection string and that will be need in business layer
                 // to connect to database
                 // 
-
-                // UserDTO _profile = registerBLL.Register(inModel.RegisterModel.Username, inModel.RegisterModel.FirstName, inModel.RegisterModel.LastName, inModel.RegisterModel.Password,5, businessLogicPassThru,inModel.RegisterModel.PrimaryEmail,inModel.RegisterModel.PrimaryPhone);
-                
                 UserDTO _profile = registerBLL.Register(Mapper.GlobalLoginModelToUserDTO(inModel), businessLogicPassThru);
 
                 // error message coming all the way up the stack from database or business layer

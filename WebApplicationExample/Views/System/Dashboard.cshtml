@@ -1,9 +1,16 @@
-﻿
+﻿@using LibraryCommon.DTO
 @{
     ViewBag.Title = "Dashboard";
+    UserDTO profile = (UserDTO)Session["Profile"];
 }
 
 <h2>Dashboard</h2>
+<h3>Username: @profile.Username</h3>
+<h3>First Name: @profile.FirstName</h3>
+<h3>Last Name: @profile.LastName</h3>
+<h3>Email: @profile.PrimaryEmail</h3>
+<h3>Phone number: @profile.PrimaryPhone</h3>
+
 
 <table id="tableusers" class="display" style="width:100%">
     <thead>

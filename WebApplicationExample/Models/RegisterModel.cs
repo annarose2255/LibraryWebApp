@@ -24,8 +24,9 @@ namespace LibraryWebApp.Models
         [Display(Name = "Last Name")]
         [Required(ErrorMessage = "Last name is required.")]
         public string LastName { get; set; }
-
+        [EmailAddress]
         public string PrimaryEmail { get; set; } = "";
+        [Phone]
         public string PrimaryPhone { get; set; } = "";
         public int RoleId { get; set; }
         public int AddressID { get; set; }
