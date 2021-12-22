@@ -82,11 +82,33 @@ namespace LibraryWebApp
             return View();
         }
 
+        [HttpGet]
         public ActionResult Support()
         {
-            ViewBag.Message = "Support Page";
-            return View();
+            SupportModel _model = new SupportModel();
+            _model.Message = "";
+            return View(_model);
         }
+
+        [HttpPost]
+        public ActionResult Support(SupportModel inModel)
+        {
+            if (ModelState.IsValid)
+            {
+
+                SupportModel _model = new SupportModel();
+                //TODO: take info to database
+                inModel.Message = "You have submitted the form. Thank you!";
+                return View(inModel);
+            }
+            else
+            {
+                inModel.Message = "";
+                return View(inModel);
+
+            }
+        }
+
 
         public ActionResult Search(string query)
         {
