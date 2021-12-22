@@ -14,11 +14,11 @@ namespace LibraryWebApp
 {
     public class HomeController : Controller
     {
-        private BusinessLogicPassThru _logic;
+        private BusinessLogicPassThru _logic = new BusinessLogicPassThru();
         public HomeController()
         {
             //NEED FIX  
-            BusinessLogicPassThru _logic = new BusinessLogicPassThru();
+             _logic = new BusinessLogicPassThru();
         }
         /// <summary>
         /// method to redirect the default to be index, so we can have url for index appear
@@ -26,6 +26,7 @@ namespace LibraryWebApp
         /// <returns></returns>
         public ActionResult Root()
         {
+
             // RedirectToRoute(new { name = "Home", url = "Home/Home" });  // might work with work on it
             return RedirectToAction("Index"); // go to the index page
         }

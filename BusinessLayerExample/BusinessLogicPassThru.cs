@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace LibraryBusinessLogicLayer
 {
@@ -20,7 +21,7 @@ namespace LibraryBusinessLogicLayer
         // constructors
         public BusinessLogicPassThru()
         {
-            
+            _conn = ConfigurationManager.ConnectionStrings["dbconnection"].ToString();
         }
         public BusinessLogicPassThru(string conn)
         {
