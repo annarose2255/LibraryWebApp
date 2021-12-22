@@ -1,11 +1,12 @@
-﻿using System;
+﻿using LibraryWebApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace WebApplicationExample.Models
+namespace LibraryWebApp.Models
 {
-    public class DashboardModel
+    public class DashboardModel : BaseModel
     {
     }
 }

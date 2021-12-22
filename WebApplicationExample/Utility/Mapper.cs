@@ -38,6 +38,7 @@ namespace WebApplicationExample.Utility
             {
                 UserModel _m = new UserModel 
                 { 
+                    UserId = item.UserId,
                     RoleId = item.RoleId,
                     RoleName = item.RoleName,
                     FirstName = item.FirstName,
@@ -51,6 +52,23 @@ namespace WebApplicationExample.Utility
             }
 
             return _list;
+        }
+
+        internal static UserModel UserDTOToUserModel(UserDTO user)
+        {
+            UserModel _m = new UserModel
+            {
+                UserId = user.UserId,
+                RoleId = user.RoleId,
+                RoleName = user.RoleName,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Password = user.Password,
+                Username = user.Username,
+                PrimaryEmail = user.PrimaryEmail,
+                PrimaryPhone = user.PrimaryPhone
+            };
+            return _m;
         }
     }   
 }

@@ -18,9 +18,7 @@ namespace WebApplicationExample.Controllers
         [HttpGet]
         public ActionResult Dashboard()
         {
-
-           
-
+          
             // connection string coming out of the web.config
             BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru(System.Configuration.ConfigurationManager.
             ConnectionStrings["dbconnection"].ConnectionString);
@@ -71,11 +69,19 @@ namespace WebApplicationExample.Controllers
         #region Users
 
         [HttpGet]
-        public ActionResult EditUser()
+        public ActionResult EditUser(int id)
         {
             //RoleListVM list = new RoleListVM(_logicRole.GetRolesPassThru());
             //ViewBag.Roles = new SelectList(list.ListOfRoleModel, "RoleId", "RoleName");
-            return View();
+
+
+            // connection string coming out of the web.config
+            BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru(System.Configuration.ConfigurationManager.
+            ConnectionStrings["dbconnection"].ConnectionString);
+
+            UserDTO _user = businessLogicPassThru.GetSingleUserData(id);
+
+            return View(Mapper.UserDTOToUserModel(_user));
         }
 
         [HttpPost]
@@ -84,7 +90,7 @@ namespace WebApplicationExample.Controllers
             if (ModelState.IsValid)
             {
 
-                UserDTO _addThisUser = new UserDTO();
+                UserDTO _editThisUser = new UserDTO();
 
                 // TODO: user mapper
                 //toAdd.FirstName = model.FirstName;
@@ -105,7 +111,7 @@ namespace WebApplicationExample.Controllers
 
 
         [HttpPost]
-        public ActionResult DeleteUser(int inPK)
+        public ActionResult DeleteUser(int id)
         {
             if (ModelState.IsValid)
             {

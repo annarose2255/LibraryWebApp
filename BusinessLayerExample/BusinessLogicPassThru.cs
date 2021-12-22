@@ -80,12 +80,17 @@ namespace LibraryBusinessLogicLayer
             return userid;
         }
 
-            //return dtoList.Select(dto => new DayHours
-            //{
-            //    Date = dto.Date,
-            //    IsOpen = !dto.IsClosed,
-            //    HourOfOperation = dto.IsClosed ? "Closed": "9AM - 5PM"
-            //}).ToList();
+        public UserDTO GetSingleUserData(int id)
+        {
+            return this.GetUsersData().Where(u => u.UserId == id).FirstOrDefault();
+        }
+
+        //return dtoList.Select(dto => new DayHours
+        //{
+        //    Date = dto.Date,
+        //    IsOpen = !dto.IsClosed,
+        //    HourOfOperation = dto.IsClosed ? "Closed": "9AM - 5PM"
+        //}).ToList();
 
     }
 }
