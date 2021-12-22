@@ -16,7 +16,7 @@ namespace LibraryDatabaseAccessLayer
 
         public MetaDataAccess()
         {
-            _connString = "Data Source=DESKTOP-99PARR2;Integrated Security=True; Initial Catalog = Library";
+            _connString = ConfigurationManager.ConnectionStrings["dbconnection"].ToString();
         }
 
         /// <summary>
