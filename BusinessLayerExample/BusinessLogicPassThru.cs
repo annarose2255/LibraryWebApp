@@ -42,7 +42,8 @@ namespace LibraryBusinessLogicLayer
         {
             MediaDataAccess mediaDataAccess = new MediaDataAccess();
 
-            List<MediaDTO> listOfMedia = new List<MediaDTO>();
+            List<MediaDTO> listOfMedia = mediaDataAccess.GetTop3RecentMedia();
+
             return listOfMedia;
         }
         /// <summary>

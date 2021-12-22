@@ -394,15 +394,169 @@ headerButtons-list{
     height: auto;
     overflow: auto; /* if content is too big then, extends box (see https://www.w3schools.com/css/css_overflow.asp for more details*/
 }
-.faq-box{
+.faq-box {
     border: 1px #ccc solid;
     padding: 10px;
     border-radius: 15px;
     text-align: center;
     background-color: #2CA6A4;
     color: white;
+    box-shadow: 0px 5px #9F2CAD;
 }
 .loc-and-hours-container{
     padding: 20px;
     height: 20px;
+}
+/* Contact page css*/
+.menu-wrapper {
+    position: sticky;
+    top: 0px;
+    z-index: 900;
+}
+
+.contact-hero-section {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    background-color: chartreuse;
+    color: brown;
+}
+
+.allcontactpage{
+    display: flow;
+}
+.contact-page_background-wrapper {
+    position: relative;
+    display: flex;
+    /*flex-direction: row;
+    justify-content: start;*/
+
+    /*justify-content: space-between;*/
+    flex-direction: row;
+    align-items: flex-start;
+    /*justify-content: flex-end;*/
+    /*background-color: blue;*/
+    background-color: darkmagenta;
+    width: 100%;
+    height: 200px;
+}
+
+.container {
+    max-width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+    /*justify-items: left;*/
+   /* background-color: lightblue;*/
+}
+.container.contact {
+    /*position: absolute;*/
+    left: 0%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    background-color: aliceblue;
+    width: 200px;
+    height: 200px;
+
+   /* align-self: center;*/
+    /*justify-self: left;*/
+    
+}
+.background{
+    width: 300px;
+    height: 300px;
+    background-color: darkgrey;
+    color: darkblue;
+   
+}
+
+heading {
+    margin-top: 55px;
+}
+h1 {
+    font-size: 38px;
+    line-height: 44px;
+    /*color: aqua;*/
+}
+
+.content-section {
+    padding-top: 65px;
+    padding-bottom: 65px;
+}
+* {
+    box-sizing: border-box;
+}
+
+/***   Contact page CSS*/
+
+.contact-icon {
+    margin-bottom: 10px;
+}
+
+.contact-container {
+    background-color: dimgray;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.support-box-header {
+    margin: 5px;
+     color: #9F2CAD;
+    /*color: #2CA6A4;*/
+}
+#contact-button{
+    float: none;
+    min-width: 150px;
+    min-height: 40px;
+}
+/*hr.rounded {
+    border-top: 2px solid #9F2CAD;
+    border-radius: 5px;
+}
+.vl {
+    border-left: 6px solid green;
+    height: 500px;
+    
+}*/
+#contact-input{
+    max-width: 100%;
+}
+#exampleFormControlTextarea1{
+    max-width: 100%;
+}
+.long-container{
+    max-width: 1600px;
+    width: 100%;
+}
+.support-title {
+    color: #9F2CAD;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 10px;
+    margin-left: 20px;
+    /*background-color: ghostwhite;*/
+    /*border-width: 6px;
+    border-style: solid;
+    border-color: #2CA6A4;*/
+    text-shadow: -2px 1px 2px #2CA6A4, 
+        1px 1px 2px #2CA6A4, 
+        1px 1px 0 #2CA6A4, 
+        -1px -1px 0 #2CA6A4, 
+
+        -1px 1px 0px white, 
+        1px 0px 2px white, 
+        1px -2px 2px white, 
+        -2px -2px 0px white
+}
+.support-text {
+    color: #9F2CAD;
+    /*padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 10px;
+    margin-left: 20px;*/
+}
+#contact-head{
+    margin-right: 0px;
+    margin-left: 0px;
 }

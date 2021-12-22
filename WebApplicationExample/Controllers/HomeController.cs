@@ -33,12 +33,29 @@ namespace LibraryWebApp
 
         public ActionResult Index()
         {
+            //MediaCarouselModel _model = new MediaCarouselModel();
+            //BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru();
+
+
+            //List<MediaDTO> listOfMedia = businessLogicPassThru.GetTopThreeMedia();
+            
             IndexViewModel _model = new IndexViewModel();
             MediaCarouselModel _carousel = new MediaCarouselModel();
             var closed = _logic.GetWeekDaysOpen();
             _model.DayHours = closed;
-            _carousel.Media1.Img = "img1.jpg";
+            //_carousel.Media1.Img = "img1.jpg";
             _model.CarouselMedia = _carousel;
+
+            List<MediaDTO> listOfMedia = _logic.GetTopThreeMedia();
+            _carousel.Media1.Img = listOfMedia[2].ImageName;
+            _carousel.Media1.Title = listOfMedia[2].Title;
+            _carousel.Media1.Description = listOfMedia[2].Description;
+            _carousel.Media2.Img = listOfMedia[1].ImageName;
+            _carousel.Media2.Title = listOfMedia[1].Title;
+            _carousel.Media2.Description = listOfMedia[1].Description;
+            _carousel.Media3.Img = listOfMedia[0].ImageName;
+            _carousel.Media3.Title = listOfMedia[0].Title;
+            _carousel.Media3.Description = listOfMedia[0].Description;
             return View(_model);
         }
 
@@ -51,10 +68,12 @@ namespace LibraryWebApp
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
+            //ContactModel _model = new ContactModel();
+            //_model.Message = "";
             return View();
         }
+
+  
 
         public ActionResult FAQ()
         {

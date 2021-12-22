@@ -29,27 +29,27 @@
             <div class="item active">
                 <img id="image-height" src="~/Content/book-images/@Model.CarouselMedia.Media1.Img" alt="Los Angeles">
                 <div class="carousel-caption">
-                    <h3>Think Outside the Box</h3>
+                    <h3>@Model.Media1.Title</h3>
                     <h2>Author</h2>
-                    <p class="summary-text">Summary</p>
+                    <p class="summary-text">@Model.Media1.Description</p>
                 </div>
             </div>
 
             <div class="item">
-                <img id="image-height" src="~/Content/book-images/img2.jpg" alt="Chicago">
+                <img id="image-height" src="~/Content/book-images/@Model.Media2.Img" alt="Chicago">
                 <div class="carousel-caption">
-                    <h3>Inspector Hobbes and the Blood</h3>
+                    <h3>@Model.Media2.Title</h3>
                     <h2>Author</h2>
-                    <p class="summary-text">Summary</p>
+                    <p class="summary-text">@Model.Media2.Description</p>
                 </div>
             </div>
 
             <div class="item">
-                <img id="image-height" src="~/Content/book-images/img3.jpeg" alt="New York">
+                <img id="image-height" src="~/Content/book-images/@Model.Media3.Img" alt="New York">
                 <div class="carousel-caption">
-                    <h3>Fortress of Blood</h3>
+                    <h3>@Model.Media3.Title</h3>
                     <h2>Author</h2>
-                    <p>Summary</p>
+                    <p class="summary-text">@Model.Media3.Description</p>
                 </div>
             </div>
         </div>
@@ -76,7 +76,7 @@
 
     </br>
     <!-- Information Blocks -->
-    <div>
+    <div class="row">
         <!--Hours-->
         <div class="block1">
             <h3>Hours</h3>
@@ -103,30 +103,29 @@
     </div>
 
 
-    @*faq section*@
-    <div class="row">
-        </br>
-        <div>
-            <div class="faq-box">
-                <h2>FAQ</h2>
-            </div>
-        </div>
-        </br>
-        @*<div id="home-faq" class="well well-sm">*@
-        <div class="col-md-6">
-            <div class="well well-sm" style="background-color: #A5CECD; " ;>
-                @*lighter blue color*@
-                <div class="footerLinks"> @Html.ActionLink("FAQ Page", "FAQ", "Home", null, new { id = "link" })</div>
-                <p> Get help by seeing the frequeny asked questions! </p>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="well well-sm" style="background-color: #A5CECD; ">
-                <div class="footerLinks"> @Html.ActionLink("Contact Us Page", "Contact", "Home", null, new { id = "link" })</div>
-                <p> Contact us if you have any more questions! </p>
-            </div>
+@*faq section*@
+<div class="row">
+    </br>
+    <div>
+        <div class="faq-box">
+            <h2>FAQ</h2>
         </div>
     </div>
+    </br>
+    @*<div id="home-faq" class="well well-sm">*@
+    <div class="col-md-6">
+        <div class="well well-sm" style="background-color: #A5CECD; " ;> @*lighter blue color*@
+            <div class="footerLinks"> @Html.ActionLink("FAQ Page", "FAQ", "Home", null, new { id = "link" })</div>
+            <p> Get help by seeing the frequeny asked questions! </p>
+        </div>
     </div>
+    <div class="col-md-6">
+        <div class="well well-sm" style="background-color: #A5CECD; ">
+            <div class="footerLinks"> @Html.ActionLink("Contact Us Page", "Contact", "Home", null, new { id = "link" })</div>
+            <p> Contact us if you have any more questions! </p>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

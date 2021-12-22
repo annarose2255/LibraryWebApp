@@ -1,6 +1,7 @@
 ﻿using LibraryCommon;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -24,6 +25,7 @@ namespace LibraryDatabaseAccessLayer
 
         public MediaDataAccess()
         {
+            _conn = ConfigurationManager.ConnectionStrings["dbconnection"].ToString();
         }
 
 
@@ -47,6 +49,7 @@ namespace LibraryDatabaseAccessLayer
                         {
                             while (reader.Read())
                             {
+                                
                                 Media = new MediaDTO
                                 {
                                     MediaId = reader.GetInt32(reader.GetOrdinal("MediaID")),
@@ -55,9 +58,9 @@ namespace LibraryDatabaseAccessLayer
                                     PublisherID = reader.GetInt32(reader.GetOrdinal("PublisherID_FK")),
                                     IsCheckedOutUserID = reader.GetInt32(reader.GetOrdinal("IsCheckedOutUserID_FK")),
                                     Title = (string)reader["Name"],
-                                    Comment = (string)reader["Comment"],
+                                    //Comment = (string)reader["Comment"],
                                     DateModified = reader.GetDateTime(reader.GetOrdinal("DateModified")),
-                                    ModifiedByUserID = reader.GetInt32(reader.GetOrdinal("RoleID")),
+                                    ModifiedByUserID = reader.GetInt32(reader.GetOrdinal("ModifiedByUserID")),
                                     ImageName = (string)reader["image-name"],
                                     Description = (string)reader["Description"]
 
