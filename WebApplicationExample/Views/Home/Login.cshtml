@@ -92,10 +92,34 @@
                 </div>
                 <div class="col-sm-4">
                     @Html.TextBoxFor(m => m.RegisterModel.Password, new { @class = "form-control" })
-                    <input type="submit" value="Register" class="btn btn-primary" style="background-color: #9F2CAD; color: white; margin-top: 10%" />
                 </div>
                 <div class="col-sm-4">
                     @Html.ValidationMessageFor(m => m.RegisterModel.Password, "", new { @class = "alert-danger" })
+                </div>
+            </div>
+            <!--prompt for email-->
+            <div class="form-group row">
+                <div class="col-sm-4">
+                    <label for="email" id="email">E-Mail:</label>
+                </div>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.RegisterModel.PrimaryEmail, new { @class = "form-control" })
+                </div>
+                <div class="col-sm-4">
+                    @Html.ValidationMessageFor(m => m.RegisterModel.PrimaryEmail, "", new { @class = "alert-danger" })
+                </div>
+            </div>
+            <!--prompt for phone number-->
+            <div class="form-group row">
+                <div class="col-sm-4">
+                    <label for="phone" id="phone">Phone number:</label>
+                </div>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.RegisterModel.PrimaryPhone, new { @class = "form-control" })
+                </div>
+                <div class="col-sm-4">
+                    @Html.ValidationMessageFor(m => m.RegisterModel.PrimaryPhone, "", new { @class = "alert-danger" })
+                    <input type="submit" value="Register" class="btn btn-primary" style="background-color: #9F2CAD; color: white; margin-top: 10%" />
                 </div>
             </div>
         }

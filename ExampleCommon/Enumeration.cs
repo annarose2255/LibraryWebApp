@@ -8,6 +8,7 @@ namespace LibraryCommon
 {
     public enum RoleType
     {
+        Guest = 4,
         Member = 5,
         System = 0
     }
