@@ -19,17 +19,7 @@ namespace WebApplicationExample.Controllers
         public ActionResult Dashboard()
         {
 
-            //// TODO: remove after testing 
-            UserDTO _profile = new UserDTO
-            {
-                UserId = 1,
-                Username = "grhodes29",
-                FirstName = "Giancarlo",
-                LastName = "Rhodes",
-                RoleId = 1,
-                RoleName = "Administrator"
-            };
-
+           
 
             // connection string coming out of the web.config
             BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru(System.Configuration.ConfigurationManager.
@@ -37,7 +27,7 @@ namespace WebApplicationExample.Controllers
 
             List<UserDTO> _list = businessLogicPassThru.GetUsersData();
 
-            System.Web.HttpContext.Current.Session["Profile"] = _profile;
+          
             UsersModel _model = new UsersModel(Mapper.ListOfUserDTOToListOfUserModel(_list));
 
             return View(_model);
