@@ -24,7 +24,7 @@ namespace LibraryWebApp.Models
         public string PhoneNumber { get; set; }
 
         [Required(ErrorMessage = "Selection is required.")]
-        public bool IsMember { get; set; } = false;
+        public bool IsMember { get; set; } 
 
         [Required(ErrorMessage = "Brevity is the soul of wit, but we need your message to have text.")]
         public string MessageText { get; set; }
