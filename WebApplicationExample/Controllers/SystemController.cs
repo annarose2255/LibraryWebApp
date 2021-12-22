@@ -66,6 +66,49 @@ namespace WebApplicationExample.Controllers
         //        return Json(response, JsonRequestBehavior.AllowGet);
         //    }
         //}
+
+
+        #region Users
+
+        [HttpGet]
+        public ActionResult AddUser()
+        {
+            //RoleListVM list = new RoleListVM(_logicRole.GetRolesPassThru());
+            //ViewBag.Roles = new SelectList(list.ListOfRoleModel, "RoleId", "RoleName");
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddUser(UserModel inModel)
+        {
+            if (ModelState.IsValid)
+            {
+
+                UserDTO _addThisUser = new UserDTO();
+
+                // TODO: user mapper
+                //toAdd.FirstName = model.FirstName;
+                //toAdd.LastName = model.LastName;
+                //toAdd.UserName = model.Username;
+                //toAdd.Password = model.Password;
+                //toAdd.RoleID_FK = model.RoleId;
+
+                //_logicUser.CreateUserPassThru(toAdd);
+
+                return RedirectToAction("Dashboard", "System");
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        #endregion
+
+
+
+
+
     }
 
 }

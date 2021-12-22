@@ -1,5 +1,6 @@
 ﻿@using LibraryCommon
 @using LibraryCommon.DTO
+@model LibraryWebApp.Models.UsersModel
 
 @{
     ViewBag.Title = "Dashboard";
@@ -7,7 +8,7 @@
     guest.Username = "guest";
     guest.RoleId = (int)RoleType.Guest;
     guest.RoleName = RoleType.Guest.ToString();
-    UserDTO profile = (UserDTO)Session["Profile"] is null ? guest: (UserDTO)Session["Profile"];
+    UserDTO profile = (UserDTO)Session["Profile"] is null ? guest : (UserDTO)Session["Profile"];
 }
 <div class="container">
     <div class="col-xs-6">
@@ -31,7 +32,7 @@
             </p>
             <a href="/Home/Login" class="card-link">Logout</a>
         </div>
-        <br/><br/>
+        <br /><br />
         <div class="row" style="border:solid black 1px; margin-right:10%">
 
             <h4 class="card-title" style="border-bottom:solid black 1px">Membership/Billing</h4>
@@ -73,7 +74,8 @@
 
 </div>
 
-<br/><br/>
+<br />
+<br />
 
 <table id="tableusers" class="display" style="width:100%">
     <thead>
@@ -84,7 +86,7 @@
             <th>Username</th>
             <th>Password</th>
             <th>RoleID</th>
-            <th>Role</th>           
+            <th>Role</th>
         </tr>
     </thead>
     <tbody>
@@ -156,6 +158,83 @@
     </tfoot>
 </table>
 
+
+
+@*<table id="tblusers" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th hidden="hidden"></th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th hidden="hidden">RoleID</th>
+            <th>Role</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (UserModel _current in Model.ListOfUsers)
+            {
+                <tr>
+                    <td hidden="hidden">
+                        @Html.Hidden("UserId", _current.UserId.ToString())
+                    </td>
+                    <td>
+                        @_current.FirstName
+                    </td>
+                    <td>
+                        @_current.LastName
+                    </td>
+                    <td>
+                        @_current.Username
+                    </td>
+                    <td>
+                        @_current.Password
+                    </td>
+                    <td hidden="hidden">
+                        @Html.Hidden("RoleId", _current.RoleId.ToString())
+                    </td>
+                    <td>
+                        @_current.RoleName
+                    </td>
+                    <td>
+
+                        @using (Html.BeginForm("UserEdit", "Home", new { id = _current.UserId.ToString() }, FormMethod.Get))
+                        {
+                            var myModal = "myModal" + _current.UserId.ToString();
+                            <button type="submit" class="btn btn-primary btn-sm">Edit</button>
+                        }
+
+                    </td>
+                    <td>
+                        @using (Html.BeginForm("UserDelete", "Home", new { id = _current.UserId.ToString() }, FormMethod.Post))
+                        {
+                            var myModal = "myModal" + _current.UserId.ToString();
+                            <button type="button" class="btn btn-danger btn-sm" data-item-id="@_current.UserId" data-item-description="@_current.FirstName @_current.LastName" data-toggle="modal" data-target="#confirm-delete">Delete</button>
+                        }
+
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <th hidden="hidden"></th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th hidden="hidden">RoleID</th>
+            <th>Role</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </tfoot>
+</table>*@
 
 
 

@@ -104,9 +104,9 @@ namespace LibraryWebApp
             {
                // use case # 3, valiation on client failed, show error message in login.cshtml
                 return View(inModel);
-            }
-           
+            }          
         }
+
         [HttpPost]
         public ActionResult Register(GlobalLoginModel inModel)
         {
@@ -152,6 +152,6 @@ namespace LibraryWebApp
                
             }
         }
-        
+
     }
 }
