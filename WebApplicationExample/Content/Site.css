@@ -161,6 +161,7 @@ header {
     background-color: #2CA6A4;
     width: 100%;
     padding: 10px;
+    box-shadow: 0px 5px #9F2CAD;
 }
 /* Navbar text */
 nav a {
@@ -209,7 +210,7 @@ headerButtons-list{
 }
 .search {
     float: right;
-    padding: 5px;
+    padding: 13px;
     display: flex;
 }
 
@@ -295,3 +296,113 @@ headerButtons-list{
     position:relative; top :75px;
 }
 /**End of Login-Page CSS*/
+
+/* Begin Home/Index CSS*/
+
+/* New additions CSS*/
+.new-additions {
+    border: 1px #ccc solid;
+    padding: 10px;
+    border-radius: 15px;
+    text-align: center;
+    background-color: #2CA6A4;
+    color: white;
+    box-shadow: 0px 5px #9F2CAD;
+}
+/* Carousel CSS */
+#myCarousel{
+    margin-top: 3%;
+}
+
+#image-height{
+    height:300px;
+}
+
+.item {
+    background-color: #9F2CAD;
+}
+
+.carousel-caption {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 29px;
+    font-weight: normal;
+    line-height: 1.6em;
+    margin-bottom: 50px;
+}
+
+.summary-text{
+    font-size:18px;
+}
+/*Info Block CSS*/
+/*Hours*/
+.block1 {
+    width:200px;
+    height:300px;
+    float: left;
+    width: 33.3%;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 3%;
+    text-align: center;
+}
+/*Location*/
+.block2 {
+    width:200px;
+    height:300px;
+    float: left;
+    width: 33.3%;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 3%;
+    text-align: center;
+}
+/*Map Image block*/
+.block3 {
+    width:200px;
+    height: 300px;
+    float: left;
+    width: 33.3%;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 3%;
+    background-image: url(../Content/book-images/map.jpg);
+    background-repeat: no-repeat;
+}
+
+.block-links {
+    font-size: 18px;
+    padding-block-start: 10px;
+    color: #9F2CAD;
+}
+/*Location and Hours title bar*/
+.location-hours {
+    border: 1px #ccc solid;
+    padding: 10px;
+    border-radius: 15px;
+    text-align: center;
+    background-color: #2CA6A4;
+    color: white;
+    box-shadow: 0px 5px #9F2CAD;
+}
+
+#home-faq {
+    /*height: 30vh;*/ /* Relative to 30% of the height of the viewport (browser window size)**/
+    min-height: max-content;
+    height: auto;
+    overflow: auto; /* if content is too big then, extends box (see https://www.w3schools.com/css/css_overflow.asp for more details*/
+}
+.faq-box{
+    border: 1px #ccc solid;
+    padding: 10px;
+    border-radius: 15px;
+    text-align: center;
+    background-color: #2CA6A4;
+    color: white;
+}
+.loc-and-hours-container{
+    padding: 20px;
+    height: 20px;
+}
