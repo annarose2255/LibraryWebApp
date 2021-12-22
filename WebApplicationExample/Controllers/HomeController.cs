@@ -17,7 +17,8 @@ namespace LibraryWebApp
         private BusinessLogicPassThru _logic;
         public HomeController()
         {
-            _logic = new BusinessLogicPassThru();
+            //NEED FIX  
+            BusinessLogicPassThru _logic = new BusinessLogicPassThru();
         }
         /// <summary>
         /// method to redirect the default to be index, so we can have url for index appear

@@ -18,6 +18,10 @@ namespace LibraryBusinessLogicLayer
         // properties
 
         // constructors
+        public BusinessLogicPassThru()
+        {
+            
+        }
         public BusinessLogicPassThru(string conn)
         {
             _conn = conn;
@@ -54,7 +58,7 @@ namespace LibraryBusinessLogicLayer
             var dtoList = mData.GetDaysClosed(beginDate, endDate);
 
             List<DayHours> dayList = new List<DayHours>();
-            
+
             foreach (var dto in dtoList)
             {
                 var day = new DayHours
@@ -66,6 +70,7 @@ namespace LibraryBusinessLogicLayer
                 dayList.Add(day);
             }
             return dayList;
+        }
         public int CreateUser(UserDTO u)
         {
             UserDataAccess userDataAccess = new UserDataAccess(this._conn);
@@ -80,6 +85,5 @@ namespace LibraryBusinessLogicLayer
             //    HourOfOperation = dto.IsClosed ? "Closed": "9AM - 5PM"
             //}).ToList();
 
-        }
     }
 }
