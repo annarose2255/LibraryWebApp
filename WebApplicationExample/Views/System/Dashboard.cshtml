@@ -11,12 +11,12 @@
     UserDTO profile = (UserDTO)Session["Profile"] is null ? guest : (UserDTO)Session["Profile"];
 }
 <div class="container">
-    <div class="col-xs-6">
+    <div class="col-lg-6">
         <div class="row" style="border:solid black 1px; margin-right:10%">
             <h4 class="card-title" style="border-bottom:solid black 1px">Welcome, <strong>@profile.Username</strong>!</h4>
             <h6 class="card-subtitle mb-2 text-muted">This is your dashboard with all your relevent user information</h6>
             <p class="card-text">
-                <strong>Username: </strong>@profile.Username
+                <strong>Username: </strong>@profile.Username <button id="btn1" onclick="funcname()">Button 1</button>
             </p>
             <p class="card-text">
                 <strong>First name: </strong>@profile.FirstName
@@ -50,7 +50,7 @@
         </div>
 
     </div>
-    <div class="col-xs-6" style="border:solid black 1px">
+    <div class="col-lg-6" style="border:solid black 1px">
         <h4 class="card-title" style="border-bottom:solid black 1px">Saved books</h4>
         <p class="card-text">
             <strong>TODO </strong>
@@ -248,7 +248,11 @@
             $('#tableusers').DataTable();
 
         });
-
+    </script>
+    <script type="text/javascript" language="javascript">
+        $(function funcname() {
+            alert("All good");
+        });
     </script>
 
 }
