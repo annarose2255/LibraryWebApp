@@ -561,3 +561,12 @@ h1 {
     margin-right: 0px;
     margin-left: 0px;
 }
+input[type=radio] {
+    vertical-align: middle;
+    position: relative;
+    bottom: 1px;
+}
+
+label {
+    display: block;
+}
