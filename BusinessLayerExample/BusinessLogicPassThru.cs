@@ -1,10 +1,13 @@
 ﻿using LibraryCommon.DTO;
+using ExampleCommon;
+using LibraryCommon;
 using LibraryDatabaseAccessLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace LibraryBusinessLogicLayer
 {
@@ -16,6 +19,10 @@ namespace LibraryBusinessLogicLayer
         // properties
 
         // constructors
+        public BusinessLogicPassThru()
+        {
+            _conn = ConfigurationManager.ConnectionStrings["dbconnection"].ToString();
+        }
         public BusinessLogicPassThru(string conn)
         {
             _conn = conn;
@@ -30,6 +37,42 @@ namespace LibraryBusinessLogicLayer
 
             return _listOfUsers;
         }
+
+        public List<MediaDTO> GetTopThreeMedia()
+        {
+            MediaDataAccess mediaDataAccess = new MediaDataAccess();
+
+            List<MediaDTO> listOfMedia = mediaDataAccess.GetTop3RecentMedia();
+
+            return listOfMedia;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public List<DayHours> GetWeekDaysOpen()
+        {
+            var today = DateTime.Now;
+            var beginDate = today.AddDays(-(int)today.DayOfWeek);
+            var endDate = beginDate.AddDays(6);
+
+            MetaDataAccess mData = new MetaDataAccess();
+            var dtoList = mData.GetDaysClosed(beginDate, endDate);
+
+            List<DayHours> dayList = new List<DayHours>();
+
+            foreach (var dto in dtoList)
+            {
+                var day = new DayHours
+                {
+                    Date = dto.Date,
+                    IsOpen = !dto.IsClosed,
+                    HourOfOperation = dto.IsClosed ? "Closed" : "9AM - 5PM"
+                };
+                dayList.Add(day);
+            }
+            return dayList;
+        }
         public int CreateUser(UserDTO u)
         {
             UserDataAccess userDataAccess = new UserDataAccess(this._conn);
@@ -37,6 +80,12 @@ namespace LibraryBusinessLogicLayer
             return userid;
         }
 
-       
+            //return dtoList.Select(dto => new DayHours
+            //{
+            //    Date = dto.Date,
+            //    IsOpen = !dto.IsClosed,
+            //    HourOfOperation = dto.IsClosed ? "Closed": "9AM - 5PM"
+            //}).ToList();
+
     }
 }

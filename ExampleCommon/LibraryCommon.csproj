@@ -41,6 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DayHours.cs" />
+    <Compile Include="DaysClosedDTO.cs" />
+    <Compile Include="MediaDTO.cs" />
     <Compile Include="DTO\BaseDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />
     <Compile Include="Enumeration.cs" />
