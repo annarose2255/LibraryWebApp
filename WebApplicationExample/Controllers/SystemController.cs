@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using DataTables;
 using LibraryWebApp.Models;
 using LibraryBusinessLogicLayer;
+using WebApplicationExample.Utility;
 
 namespace WebApplicationExample.Controllers
 {
@@ -18,7 +19,7 @@ namespace WebApplicationExample.Controllers
         public ActionResult Dashboard()
         {
 
-            // TODO: remove after testing 
+            //// TODO: remove after testing 
             UserDTO _profile = new UserDTO
             {
                 UserId = 1,
@@ -28,9 +29,18 @@ namespace WebApplicationExample.Controllers
                 RoleId = 1,
                 RoleName = "Administrator"
             };
-            // UserDTO _profile
+
+
+            // connection string coming out of the web.config
+            BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru(System.Configuration.ConfigurationManager.
+            ConnectionStrings["dbconnection"].ConnectionString);
+
+            List<UserDTO> _list = businessLogicPassThru.GetUsersData();
+
             System.Web.HttpContext.Current.Session["Profile"] = _profile;
-            return View();
+            UsersModel _model = new UsersModel(Mapper.ListOfUserDTOToListOfUserModel(_list));
+
+            return View(_model);
         }
 
         //[AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post)]
@@ -71,7 +81,7 @@ namespace WebApplicationExample.Controllers
         #region Users
 
         [HttpGet]
-        public ActionResult AddUser()
+        public ActionResult EditUser()
         {
             //RoleListVM list = new RoleListVM(_logicRole.GetRolesPassThru());
             //ViewBag.Roles = new SelectList(list.ListOfRoleModel, "RoleId", "RoleName");
@@ -79,7 +89,7 @@ namespace WebApplicationExample.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddUser(UserModel inModel)
+        public ActionResult EditUser(UserModel inModel)
         {
             if (ModelState.IsValid)
             {
@@ -92,6 +102,23 @@ namespace WebApplicationExample.Controllers
                 //toAdd.UserName = model.Username;
                 //toAdd.Password = model.Password;
                 //toAdd.RoleID_FK = model.RoleId;
+
+                //_logicUser.CreateUserPassThru(toAdd);
+
+                return RedirectToAction("Dashboard", "System");
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+
+        [HttpPost]
+        public ActionResult DeleteUser(int inPK)
+        {
+            if (ModelState.IsValid)
+            {
 
                 //_logicUser.CreateUserPassThru(toAdd);
 

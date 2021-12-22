@@ -15,7 +15,7 @@ namespace LibraryWebApp
         {
 
             // Manually installed WebAPI 2.2 after making an MVC project.
-            GlobalConfiguration.Configure(WebApiConfig.Register); // NEW way
+            //GlobalConfiguration.Configure(WebApiConfig.Register); // NEW way
             //WebApiConfig.Register(GlobalConfiguration.Configuration); // DEPRECATED
 
             AreaRegistration.RegisterAllAreas();

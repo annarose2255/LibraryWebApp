@@ -429,7 +429,7 @@
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\System\Dashboard.cshtml" />
-    <Content Include="Views\System\AddUser.cshtml" />
+    <Content Include="Views\System\EditUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

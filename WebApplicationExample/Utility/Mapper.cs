@@ -29,5 +29,28 @@ namespace WebApplicationExample.Utility
            
             return _userDTO;
         }
+
+        internal static List<UserModel> ListOfUserDTOToListOfUserModel(List<UserDTO> inList)
+        {
+            List<UserModel> _list = new List<UserModel>();
+
+            foreach (var item in inList)
+            {
+                UserModel _m = new UserModel 
+                { 
+                    RoleId = item.RoleId,
+                    RoleName = item.RoleName,
+                    FirstName = item.FirstName,
+                    LastName = item.LastName,
+                    Password = item.Password,
+                    Username = item.Username,
+                    PrimaryEmail = item.PrimaryEmail,
+                    PrimaryPhone = item.PrimaryPhone
+                };
+                _list.Add(_m);
+            }
+
+            return _list;
+        }
     }   
 }
