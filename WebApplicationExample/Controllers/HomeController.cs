@@ -6,11 +6,17 @@ using System.Web.Mvc;
 using LibraryBusinessLogicLayer;
 using LibraryCommon;
 using LibraryWebApp.Models;
+using WebApplicationExample.Models;
 
 namespace LibraryWebApp
 {
     public class HomeController : Controller
     {
+        private BusinessLogicPassThru _logic;
+        public HomeController()
+        {
+            _logic = new BusinessLogicPassThru();
+        }
         /// <summary>
         /// method to redirect the default to be index, so we can have url for index appear
         /// </summary>
@@ -23,8 +29,12 @@ namespace LibraryWebApp
 
         public ActionResult Index()
         {
-            MediaCarouselModel _model = new MediaCarouselModel();
-            _model.Media1.Img = "img1.jpg";
+            IndexViewModel _model = new IndexViewModel();
+            MediaCarouselModel _carousel = new MediaCarouselModel();
+            var closed = _logic.GetWeekDaysOpen();
+            _model.DayHours = closed;
+            _carousel.Media1.Img = "img1.jpg";
+            _model.CarouselMedia = _carousel;
             return View(_model);
         }
 
@@ -59,8 +69,6 @@ namespace LibraryWebApp
             return View();
         }
 
-
-
         [HttpGet]
         public ActionResult Login()
         {
@@ -89,8 +97,6 @@ namespace LibraryWebApp
             {
                 return View(inModel);
             }
-
-           
         }
         //TODO: add methods for the index of reaching the database, (and possible need for media DTO to hold that info) 
         //TODO: and change database script for media table to reflect info now needed 9img and description)- need join/view for getting author for media
