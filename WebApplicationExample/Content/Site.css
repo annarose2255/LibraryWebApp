@@ -311,7 +311,7 @@ headerButtons-list{
 }
 /* Carousel CSS */
 #myCarousel{
-    margin-top: 3%;
+    margin-top: 1%;
 }
 
 #image-height{
@@ -334,40 +334,57 @@ headerButtons-list{
     font-size:18px;
 }
 /*Info Block CSS*/
+
+.row{
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
 /*Hours*/
+
+.schedule{
+    width: 100%;
+    font-size: 18px;
+
+}
+
+.schedule td {
+    text-align: end;
+}
+
 .block1 {
-    width:200px;
-    height:300px;
-    float: left;
-    width: 33.3%;
+    /*width: 200px;*/
+    height: 300px;
+   /* float: left;
+    width: 33.3%;*/
     border: 1px solid #ccc;
     padding: 10px;
     box-sizing: border-box;
-    margin-bottom: 3%;
+    margin-bottom: 1%;
     text-align: center;
 }
 /*Location*/
 .block2 {
-    width:200px;
-    height:300px;
-    float: left;
-    width: 33.3%;
+/*    width: 200px;*/
+    height: 300px;
+/*    float: left;
+    width: 33.3%;*/
     border: 1px solid #ccc;
     padding: 10px;
     box-sizing: border-box;
-    margin-bottom: 3%;
+    margin-bottom: 1%;
     text-align: center;
 }
 /*Map Image block*/
 .block3 {
-    width:200px;
+/*    width:200px;*/
     height: 300px;
-    float: left;
-    width: 33.3%;
+/*    float: left;
+    width: 33.3%;*/
     border: 1px solid #ccc;
     padding: 10px;
     box-sizing: border-box;
-    margin-bottom: 3%;
+    margin-bottom: 1%;
     background-image: url(../Content/book-images/map.jpg);
     background-repeat: no-repeat;
 }
