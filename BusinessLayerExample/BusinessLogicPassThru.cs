@@ -86,6 +86,25 @@ namespace LibraryBusinessLogicLayer
             //    IsOpen = !dto.IsClosed,
             //    HourOfOperation = dto.IsClosed ? "Closed": "9AM - 5PM"
             //}).ToList();
+        public UserDTO GetUser(UserDTO u)
+        {
+            UserDataAccess userDataAccess = new UserDataAccess(this._conn);
+            UserDTO oneUser = userDataAccess.GetUser(u);
+            return oneUser;
+
+        }
+        public UserDTO GetUser(int userId)
+        {
+            UserDataAccess userDataAccess = new UserDataAccess(this._conn);
+            UserDTO oneUser = userDataAccess.GetUser(userId);
+            return oneUser;
+        }
+        public UserDTO EditUser(UserDTO u)
+        {
+            UserDataAccess userDataAccess = new UserDataAccess(this._conn);
+            UserDTO edittedUser = userDataAccess.UpdateUser(u);
+            return edittedUser;
+        }
 
     }
 }

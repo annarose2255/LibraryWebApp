@@ -1,7 +1,6 @@
 ﻿@using LibraryCommon
 @using LibraryCommon.DTO
-@using LibraryWebApp.Models
-@model LibraryWebApp.Models.UsersModel
+@model LibraryWebApp.Models.DashboardModels
 
 @{
     ViewBag.Title = "Dashboard";
@@ -13,7 +12,7 @@
 }
 <div class="container">
     <div class="col-lg-6">
-        <div class="row" style="border:solid black 1px; margin-right:10%">
+        <div class="row" id="noedit" style="border:solid black 1px; margin-right:10%; display:run-in">
             <h4 class="card-title" style="border-bottom:solid black 1px">Welcome, <strong>@profile.Username</strong>!</h4>
             <h6 class="card-subtitle mb-2 text-muted">This is your dashboard with all your relevent user information</h6>
             <p class="card-text">
@@ -31,26 +30,49 @@
             <p class="card-text">
                 <strong>Phone number: </strong>@profile.PrimaryPhone
             </p>
-            <a href="/Home/Login" class="card-link">Logout</a>
+            <a href="/Home/Login" class="card-link">Logout</a> <span id="demo"></span><input type="button" onclick="editon()" value="Edit Profile">
         </div>
-        <br /><br />
-        <div class="row" style="border:solid black 1px; margin-right:10%">
-
-            <h4 class="card-title" style="border-bottom:solid black 1px">Membership/Billing</h4>
-            <p class="card-text">
-                <strong>Library Card status: </strong>@profile.RoleName
-            </p>
-            <p class="card-text">
-                Renewal Date: TODO
-            </p>
-            <p class="card-text">
-                Billing: TODO?
-            </p>
-
-
-        </div>
-
+        @using (Html.BeginForm("EditUser", "System", FormMethod.Post))
+        {
+    <div class="row" id="edit" style="border:solid black 1px; margin-right:10%; display:none">
+        <h4 class="card-title" style="border-bottom:solid black 1px">Welcome, <strong>@profile.Username</strong>!</h4>
+        <h6 class="card-subtitle mb-2 text-muted">This is your dashboard with all your relevent user information</h6>
+        <p class="card-text">
+            <strong>Username: </strong>@profile.Username
+        </p>
+        <p class="card-text">
+            <strong>First name: </strong>@Html.TextBoxFor(m => m.UserModel.FirstName, new { @class = "form-control" })
+        </p>
+        <p class="card-text">
+            <strong>Last name: </strong>@Html.TextBoxFor(m => m.UserModel.LastName, new { @class = "form-control" })
+        </p>
+        <p class="card-text">
+            <strong>E-mail: </strong>@Html.TextBoxFor(m => m.UserModel.PrimaryEmail, new { @class = "form-control" })
+        </p>
+        <p class="card-text">
+            <strong>Phone number: </strong>@Html.TextBoxFor(m => m.UserModel.PrimaryPhone, new { @class = "form-control" })
+        </p>
+        <input type="submit" value="Save Changes" onclick="editoff()" class="btn btn-primary" style="background-color: #9F2CAD; color: white; margin-top: 10%" />
     </div>
+        }
+            <br /><br />
+            <div class="row" style="border:solid black 1px; margin-right:10%">
+
+                <h4 class="card-title" style="border-bottom:solid black 1px">Membership/Billing</h4>
+                <p class="card-text">
+                    <strong>Library Card status: </strong>@profile.RoleName
+                </p>
+                <p class="card-text">
+                    Renewal Date: TODO
+                </p>
+                <p class="card-text">
+                    Billing: TODO?
+                </p>
+
+
+            </div>
+
+        </div>
     <div class="col-lg-6" style="border:solid black 1px">
         <h4 class="card-title" style="border-bottom:solid black 1px">Saved books</h4>
         <p class="card-text">
@@ -74,93 +96,8 @@
     <br />
 
 </div>
-
 <br />
 <br />
-
-@*<table id="tableusers" class="display" style="width:100%">
-    <thead>
-        <tr>
-            <th>UserID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Username</th>
-            <th>Password</th>
-            <th>RoleID</th>
-            <th>Role</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>1</td>
-            <td>Giancarlo</td>
-            <td>Rhodes</td>
-            <td>grhodes29</td>
-            <td>password123</td>
-            <td>1</td>
-            <td>Administrator</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Emma</td>
-            <td>Dufresne</td>
-            <td>emma29</td>
-            <td>password123</td>
-            <td>6</td>
-            <td>Employee</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Anna </td>
-            <td>Karoll </td>
-            <td>anna29</td>
-            <td>password123</td>
-            <td>5</td>
-            <td>Member</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>Aaron</td>
-            <td>Mathes</td>
-            <td>aaron29</td>
-            <td>password123</td>
-            <td>5</td>
-            <td>Member</td>
-        </tr>
-        <tr>
-            <td>15</td>
-            <td>Joe</td>
-            <td>Smith</td>
-            <td>jsmith29</td>
-            <td>password123</td>
-            <td>6</td>
-            <td>Employee</td>
-        </tr>
-        <tr>
-            <td>220</td>
-            <td>Sally</td>
-            <td>Holly</td>
-            <td>sallyholly29</td>
-            <td>password123</td>
-            <td>6</td>
-            <td>Employee</td>
-        </tr>
-    </tbody>
-    <tfoot>
-        <tr>
-            <th>UserID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Username</th>
-            <th>Password</th>
-            <th>RoleID</th>
-            <th>Role</th>
-        </tr>
-    </tfoot>
-</table>*@
-
-
-
 <table id="tableusers" class="display" style="width:100%">
     <thead>
         <tr>
@@ -175,25 +112,25 @@
             <th></th>
         </tr>
     </thead>
-    <tbody>
+    @*<tbody>
         @{
-            foreach (UserModel _current in Model.ListOfUsers)
+            foreach (IEnumerable<Model.UserModel> _current in Model.UsersModel.ListOfUsers)
             {
                 <tr>
                     <td hidden="hidden">
                         @Html.Hidden("UserId", _current.UserId.ToString())
                     </td>
                     <td>
-                        @_current.FirstName
+                        _current.FirstName
                     </td>
                     <td>
-                        @_current.LastName
+                        _current.LastName
                     </td>
                     <td>
-                        @_current.Username
+                        _current.Username
                     </td>
                     <td>
-                        @_current.Password
+                        _current.Password
                     </td>
                     <td hidden="hidden">
                         @Html.Hidden("RoleId", _current.RoleId.ToString())
@@ -221,7 +158,7 @@
                 </tr>
             }
         }
-    </tbody>
+    </tbody>*@
     <tfoot>
         <tr>
             <th hidden="hidden"></th>
@@ -237,9 +174,6 @@
     </tfoot>
 </table>
 
-
-
-
 @section scripts {
 
     <script type="text/javascript" language="javascript">
@@ -249,8 +183,21 @@
             $('#tableusers').DataTable();
 
         });
+
+    </script>
+    <script type="text/javascript" language="javascript">
+        function editon() {
+            document.getElementById("edit").style.display = "revert";
+            document.getElementById("noedit").style.display = "none";
+        };
+    </script>
+    <script type="text/javascript" language="javascript">
+        function editoff() {
+            document.getElementById("edit").style.display = "none";
+            document.getElementById("noedit").style.display = "revert";
+        };
     </script>
 
-
 }
+
 

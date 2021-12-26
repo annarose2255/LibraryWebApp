@@ -52,5 +52,25 @@ namespace WebApplicationExample.Utility
 
             return _list;
         }
+        internal static UserModel UserDTOToUserModel(UserDTO item)
+        {
+            UserModel _m = new UserModel
+            {
+                RoleId = item.RoleId,
+                RoleName = item.RoleName,
+                FirstName = item.FirstName,
+                LastName = item.LastName,
+                Password = item.Password,
+                Username = item.Username,
+                PrimaryEmail = item.PrimaryEmail,
+                PrimaryPhone = item.PrimaryPhone
+            };
+            return _m;
+        }
+        //internal static UserDTO UserModelToUserDTO(UserModel inModel)
+        //{
+        //    //need to obtain salt from database.. create userDTO from database
+        //    int userid = inModel.UserId;
+        //}
     }   
 }

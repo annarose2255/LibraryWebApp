@@ -28,7 +28,8 @@ namespace WebApplicationExample.Controllers
             List<UserDTO> _list = businessLogicPassThru.GetUsersData();
 
           
-            UsersModel _model = new UsersModel(Mapper.ListOfUserDTOToListOfUserModel(_list));
+            //UsersModel _model = new UsersModel(Mapper.ListOfUserDTOToListOfUserModel(_list));
+            DashboardModels _model = new DashboardModels();
 
             return View(_model);
         }
@@ -79,12 +80,18 @@ namespace WebApplicationExample.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditUser(UserModel inModel)
+        public ActionResult EditUser(DashboardModels inModel)
         {
             if (ModelState.IsValid)
             {
+                // connection string coming out of the web.config
+                BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru(System.Configuration.ConfigurationManager.
+                ConnectionStrings["dbconnection"].ConnectionString);
 
-                UserDTO _addThisUser = new UserDTO();
+                EditUserBLL edituserBLL = new EditUserBLL();
+
+
+                UserDTO updateduser = edituserBLL.EditUser(businessLogicPassThru.GetUser(inModel.UserModel.UserId), businessLogicPassThru);
 
                 // TODO: user mapper
                 //toAdd.FirstName = model.FirstName;
@@ -95,10 +102,19 @@ namespace WebApplicationExample.Controllers
 
                 //_logicUser.CreateUserPassThru(toAdd);
 
+                inModel.Message = updateduser.ErrorMessage;
+                if (string.IsNullOrEmpty(inModel.Message))
+                {
+                    //use case # 1, the user was able to successfully edit fields
+                    //reload the page to see the changes
+                    return RedirectToAction("Dashboard", "System");
+                }
+                //the User model does not currently have error messages 
                 return RedirectToAction("Dashboard", "System");
             }
             else
             {
+                // use case # 3, valiation on client failed, show error message in Dashboard.cshtml
                 return View();
             }
         }
