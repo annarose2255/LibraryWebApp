@@ -6,93 +6,106 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
 </head>
 <body>
-    <div class="allButFooter">
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
+
+    <header>
+        <div class="headerButtons-list">
+
+
+            <div class="title">Library</div>
+            <nav>
+                @*<div class="headerButtons-list">*@
+
+                <ul class="headerButtons">
+
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Login", "Login", "Home")</li>
+                </ul>
+                @*</div>*@
+
+
+            </nav>
+            <div class="search">
+                <form action="home/search">
+                    <input type="text"
+                           placeholder=" Search Catalog"
+                           name="query">
+                    <button>
+                        🔎
                     </button>
-                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                        <li>@Html.ActionLink("Login", "Login", "Home")</li>
-                    </ul>
-                </div>
+                </form>
             </div>
         </div>
-        <div class="container body-content">
-            @RenderBody()  @* where view is inserted*@
-            <hr />
-            <div class="justspace">
-            </div>
+
+    </header>
+    <main>
+        <div class="allButFooter">
+            @RenderBody()
         </div>
-        
-    </div>
+    </main>
     <footer>
         @*<p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>*@
         <div class="footer">
-                <div class="footerCollumn" id="newsletter">
-                    <span id="footerCollumnHeader">
-                        Join the newsletter </span>
-                        <p class="newsletterInfo"> Get notified monthly when you need to return a book, or when new books are added!</p>
-                        <div class="newsletterInput">
-                            <input type="email" placeholder="Enter your Email" />
-                            <button type="button" style="vertical-align:middle"> <span>Sign up</span> </button>
-                        </div>
+            <div class="footerCollumn" id="newsletter">
+                <span id="footerCollumnHeader">
+                    Join the newsletter
+                </span>
+                <p class="newsletterInfo"> Get notified monthly when you need to return a book, or when new books are added!</p>
+                <div class="newsletterInput">
+                    <input type="email" placeholder="Enter your Email" />
+                    <button type="button" style="vertical-align:middle"> <span>Sign up</span> </button>
                 </div>
+            </div>
 
-                <div class="footerCollumn" id="faq">
-                    <span id="footerCollumnHeader"> 
-                        FAQ and Support <br /> </span>
-                        <div class="footerLinks"> @Html.ActionLink("FAQ Page", "FAQ", "Home", null, new { id = "link" })</div> @* passed the name of the link, the view,
-        the location folder of view, no id so null, then the style*@
-                        <div class="footerLinks"> @Html.ActionLink("Support Page", "Support", "Home", null, new { id = "link" })</div>
-</div>
+            <div class="footerCollumn" id="faq">
+                <span id="footerCollumnHeader">
+                    FAQ and Support <br />
+                </span>
+                <div class="footerLinks"> @Html.ActionLink("FAQ Page", "FAQ", "Home", null, new { id = "link" })</div> @* passed the name of the link, the view,
+                    the location folder of view, no id so null, then the style*@
+                <div class="footerLinks"> @Html.ActionLink("Support Page", "Support", "Home", null, new { id = "link" })</div>
+            </div>
 
-                <div class="footerCollumn">
-                    <span id="footerCollumnHeader">
-                        Contact Us
-                    </span>
-                    <div class="footerLinks"> @Html.ActionLink("Contact Us Page", "Contact", "Home", null, new { id = "link" })</div>
-                    <p class="footerLinks">
-                        Phone:
-                        <a class="footerLinks" href="tel:1-237-6679" id="link">
-                            1-237-6679
-                        </a>
-                    </p>
-                    <p class="footerLinks">
-                        Fax:
-                        <a class="footerLinks" href="tel:1-237-2873" id="link">
-                            1-237-2873
-                        </a>
-                    </p>
-                    <p class="footerLinks">
-                        Email:
-                        <a class="footerLinks" href="mailto:Library@gmail.com" id="link">
-                            Library@gmail.com
-                        </a>
-                    </p>
-                    <p class="footerLinks">
-                        Address:
-                        <a class="footerLinks" id="link" href="https://www.google.com/maps/place/Westview+Cemetery+Inc./33.7330846,-84.4306764,13.62z/data=!4m5!3m4!1s0x88f51cbbe22cb30f:0x7b869bcdcf20033c!8m2!3d33.7463642!4d-84.4422021">
-                            1680 Westview Dr SW, Atlanta, GA 30310
-                        </a>
-                    </p>
-</div>
+            <div class="footerCollumn">
+                <span id="footerCollumnHeader">
+                    Contact Us
+                </span>
+                <div class="footerLinks"> @Html.ActionLink("Contact Us Page", "Contact", "Home", null, new { id = "link" })</div>
+                <p class="footerLinks">
+                    Phone:
+                    <a class="footerLinks" href="tel:1-237-6679" id="link">
+                        1-237-6679
+                    </a>
+                </p>
+                <p class="footerLinks">
+                    Fax:
+                    <a class="footerLinks" href="tel:1-237-2873" id="link">
+                        1-237-2873
+                    </a>
+                </p>
+                <p class="footerLinks">
+                    Email:
+                    <a class="footerLinks" href="mailto:Library@gmail.com" id="link">
+                        Library@gmail.com
+                    </a>
+                </p>
+                <p class="footerLinks">
+                    Address:
+                    <a class="footerLinks" id="link" href="https://www.google.com/maps/place/Westview+Cemetery+Inc./33.7330846,-84.4306764,13.62z/data=!4m5!3m4!1s0x88f51cbbe22cb30f:0x7b869bcdcf20033c!8m2!3d33.7463642!4d-84.4422021">
+                        1680 Westview Dr SW, Atlanta, GA 30310
+                    </a>
+                </p>
+            </div>
         </div>
     </footer>
- 
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
 </html>
+

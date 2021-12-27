@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 0px;
     /*padding-bottom: 50px;*/
     margin: 0;
 }
@@ -27,8 +27,12 @@ textarea {
 
 
 /* our custom css*/
-.allButFooter {
+main {
     min-height: calc(100vh - 364px);
+    margin-top: 20px;
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-bottom: 100px;
 }
 
 .justspace {
@@ -77,6 +81,9 @@ textarea {
     margin-left: 200px;
     margin-right: 100px;
 }
+
+/* footer button styling*/
+
 ::placeholder { /* for changing the place holder text color - Chrome, Firefox, Opera, Safari 10.1+ */
     color: #5B5B5B;
     opacity: 100; /* needed for Firefox */
@@ -128,64 +135,82 @@ button:hover span:after { /* edits/add all span elements (just an inline element
 #link{
     color: #9F2CAD;
 }
-    #link:hover {
-        color: #5D43C1;
-        /* see https://www.w3schools.com/cssref/css3_pr_text-shadow.asp for more on text shadows*/
-        text-shadow: -1px 1px 2px #000, /*  h-shadow (horizontal), v-shadow (vertical), blur-radius, color -- left bottom shadow */
-                    1px 1px 2px #000; /*more than 1 shadow - right bottom*/
-                    /*1px -1px 0 #000;*/ /* top right shadow - need comma to activate*/
-                    /*-1px -1px 0 #000;*/ /* top left shadow*/
-    }
+#link:hover {
+    color: #5D43C1;
+    /* see https://www.w3schools.com/cssref/css3_pr_text-shadow.asp for more on text shadows*/
+    text-shadow: -1px 1px 2px #000, /*  h-shadow (horizontal), v-shadow (vertical), blur-radius, color -- left bottom shadow */
+                1px 1px 2px #000; /*more than 1 shadow - right bottom*/
+                /*1px -1px 0 #000;*/ /* top right shadow - need comma to activate*/
+                /*-1px -1px 0 #000;*/ /* top left shadow*/
+}
 
 /* change color of the headers on the footer collumns*/
 #footerCollumnHeader {
     color: #2CA6A4; /* EDF7F6 white, 2CA6A4 blue*/
 }
 
+/* End Footer Stlying*/
+
+/* Begin header styling */
+
 body {
     margin: 0px;
 }
-
+/* Header text */
 header {
-    background-color: #00b517;
+    background-color: #2CA6A4;
     width: 100%;
     padding: 10px;
+    box-shadow: 0px 5px #9F2CAD;
 }
-
+/* Navbar text */
 nav a {
-    color: #f2f2f2;
+    color: #f2f2f2; /* #9F2CAD;*/
     text-align: center;
-    padding: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
     text-decoration: none;
     font-size: 20px;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 
-    nav a:hover {
-        background-color: #ddd;
-        color: black;
-    }
+nav a:hover {
+    background-color: #9F2CAD; /*  #5D43C1; */
+    color: white;
+}
 
 nav {
     display: inline-block;
     margin-left: 30px;
 }
 
+/* make nav bar in line and title look good */
+.headerButtons {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+}
+headerButtons-list{
+    display:inline;
+}
+.title {
+    color: #ffffff;
+    display: inline-block;
+    font-size: 30px;
+    padding-left: 20px;
+}
+
+/* Search bar stuff*/
 .search input[type=text] {
     width: 300px;
     height: 25px;
     border-radius: 25px;
     border: none;
 }
-
-.title {
-    color: #ffffff;
-    display: inline-block;
-    font-size: 30px;
-}
-
 .search {
     float: right;
-    padding: 5px;
+    padding: 13px;
     display: flex;
 }
 
@@ -194,7 +219,7 @@ nav {
 }
 
 .search button {
-    background-color: #00b517;
+    background-color: #2CA6A4;
     color: #f2f2f2;
     float: right;
     padding: 5px 10px;
@@ -203,6 +228,8 @@ nav {
     border: none;
     cursor: pointer;
 }
+/* End header styling */
+
 /*CSS for Login Page Starts Here*/
 .parent-login { /*Define the div that contains the two forms*/
     border: 1px solid white;
@@ -269,3 +296,291 @@ nav {
     position:relative; top :75px;
 }
 /**End of Login-Page CSS*/
+
+/* Begin Home/Index CSS*/
+
+/* New additions CSS*/
+.new-additions {
+    border: 1px #ccc solid;
+    padding: 10px;
+    border-radius: 15px;
+    text-align: center;
+    background-color: #2CA6A4;
+    color: white;
+    box-shadow: 0px 5px #9F2CAD;
+}
+/* Carousel CSS */
+#myCarousel{
+    margin-top: 1%;
+}
+
+#image-height{
+    height:300px;
+}
+
+.item {
+    background-color: #9F2CAD;
+}
+
+.carousel-caption {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 29px;
+    font-weight: normal;
+    line-height: 1.6em;
+    margin-bottom: 50px;
+}
+
+.summary-text{
+    font-size:18px;
+}
+/*Info Block CSS*/
+
+.row{
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+/*Hours*/
+
+.schedule{
+    width: 100%;
+    font-size: 18px;
+
+}
+
+.schedule td {
+    text-align: end;
+}
+
+.block1 {
+    /*width: 200px;*/
+    height: 300px;
+   /* float: left;
+    width: 33.3%;*/
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 1%;
+    text-align: center;
+}
+/*Location*/
+.block2 {
+/*    width: 200px;*/
+    height: 300px;
+/*    float: left;
+    width: 33.3%;*/
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 1%;
+    text-align: center;
+}
+/*Map Image block*/
+.block3 {
+/*    width:200px;*/
+    height: 300px;
+/*    float: left;
+    width: 33.3%;*/
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 1%;
+    background-image: url(../Content/book-images/map.jpg);
+    background-repeat: no-repeat;
+}
+
+.block-links {
+    font-size: 18px;
+    padding-block-start: 10px;
+    color: #9F2CAD;
+}
+/*Location and Hours title bar*/
+.location-hours {
+    border: 1px #ccc solid;
+    padding: 10px;
+    border-radius: 15px;
+    text-align: center;
+    background-color: #2CA6A4;
+    color: white;
+    box-shadow: 0px 5px #9F2CAD;
+}
+
+#home-faq {
+    /*height: 30vh;*/ /* Relative to 30% of the height of the viewport (browser window size)**/
+    min-height: max-content;
+    height: auto;
+    overflow: auto; /* if content is too big then, extends box (see https://www.w3schools.com/css/css_overflow.asp for more details*/
+}
+.faq-box {
+    border: 1px #ccc solid;
+    padding: 10px;
+    border-radius: 15px;
+    text-align: center;
+    background-color: #2CA6A4;
+    color: white;
+    box-shadow: 0px 5px #9F2CAD;
+}
+.loc-and-hours-container{
+    padding: 20px;
+    height: 20px;
+}
+/* Contact page css*/
+.menu-wrapper {
+    position: sticky;
+    top: 0px;
+    z-index: 900;
+}
+
+.contact-hero-section {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    background-color: chartreuse;
+    color: brown;
+}
+
+.allcontactpage{
+    display: flow;
+}
+.contact-page_background-wrapper {
+    position: relative;
+    display: flex;
+    /*flex-direction: row;
+    justify-content: start;*/
+
+    /*justify-content: space-between;*/
+    flex-direction: row;
+    align-items: flex-start;
+    /*justify-content: flex-end;*/
+    /*background-color: blue;*/
+    background-color: darkmagenta;
+    width: 100%;
+    height: 200px;
+}
+
+.container {
+    max-width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+    /*justify-items: left;*/
+   /* background-color: lightblue;*/
+}
+.container.contact {
+    /*position: absolute;*/
+    left: 0%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    background-color: aliceblue;
+    width: 200px;
+    height: 200px;
+
+   /* align-self: center;*/
+    /*justify-self: left;*/
+    
+}
+.background{
+    width: 300px;
+    height: 300px;
+    background-color: darkgrey;
+    color: darkblue;
+   
+}
+
+heading {
+    margin-top: 55px;
+}
+h1 {
+    font-size: 38px;
+    line-height: 44px;
+    /*color: aqua;*/
+}
+
+.content-section {
+    padding-top: 65px;
+    padding-bottom: 65px;
+}
+* {
+    box-sizing: border-box;
+}
+
+/***   Contact page CSS*/
+
+.contact-icon {
+    margin-bottom: 10px;
+}
+
+.contact-container {
+    background-color: dimgray;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.support-box-header {
+    margin: 5px;
+     color: #9F2CAD;
+    /*color: #2CA6A4;*/
+}
+#contact-button{
+    float: none;
+    min-width: 150px;
+    min-height: 40px;
+}
+/*hr.rounded {
+    border-top: 2px solid #9F2CAD;
+    border-radius: 5px;
+}
+.vl {
+    border-left: 6px solid green;
+    height: 500px;
+    
+}*/
+#contact-input{
+    max-width: 100%;
+}
+#exampleFormControlTextarea1{
+    max-width: 100%;
+}
+.long-container{
+    max-width: 1600px;
+    width: 100%;
+}
+.support-title {
+    color: #9F2CAD;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 10px;
+    margin-left: 20px;
+    /*background-color: ghostwhite;*/
+    /*border-width: 6px;
+    border-style: solid;
+    border-color: #2CA6A4;*/
+    text-shadow: -2px 1px 2px #2CA6A4, 
+        1px 1px 2px #2CA6A4, 
+        1px 1px 0 #2CA6A4, 
+        -1px -1px 0 #2CA6A4, 
+
+        -1px 1px 0px white, 
+        1px 0px 2px white, 
+        1px -2px 2px white, 
+        -2px -2px 0px white
+}
+.support-text {
+    color: #9F2CAD;
+    /*padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 10px;
+    margin-left: 20px;*/
+}
+#contact-head{
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+@media only screen and (max-width: 1080px) {
+    main{
+        margin-left: 0;
+        margin-right: 0;
+    }
+}

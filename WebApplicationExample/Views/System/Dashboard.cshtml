@@ -1,0 +1,174 @@
+﻿@using LibraryCommon
+@using LibraryCommon.DTO
+@using LibraryWebApp.Models
+@model LibraryWebApp.Models.UsersModel
+
+@{
+    ViewBag.Title = "Dashboard";
+    UserDTO guest = new UserDTO();
+    guest.Username = "guest";
+    guest.RoleId = (int)RoleType.Guest;
+    guest.RoleName = RoleType.Guest.ToString();
+    UserDTO profile = (UserDTO)Session["Profile"] is null ? guest : (UserDTO)Session["Profile"];
+}
+<div class="container">
+    <div class="col-lg-6">
+        <div class="row" style="border:solid black 1px; margin-right:10%">
+            <h4 class="card-title" style="border-bottom:solid black 1px">Welcome, <strong>@profile.Username</strong>!</h4>
+            <h6 class="card-subtitle mb-2 text-muted">This is your dashboard with all your relevent user information</h6>
+            <p class="card-text">
+                <strong>Username: </strong>@profile.Username
+            </p>
+            <p class="card-text">
+                <strong>First name: </strong>@profile.FirstName
+            </p>
+            <p class="card-text">
+                <strong>Last name: </strong>@profile.LastName
+            </p>
+            <p class="card-text">
+                <strong>E-mail: </strong>@profile.PrimaryEmail
+            </p>
+            <p class="card-text">
+                <strong>Phone number: </strong>@profile.PrimaryPhone
+            </p>
+            <a href="/Home/Login" class="card-link">Logout</a>
+        </div>
+        <br /><br />
+        <div class="row" style="border:solid black 1px; margin-right:10%">
+
+            <h4 class="card-title" style="border-bottom:solid black 1px">Membership/Billing</h4>
+            <p class="card-text">
+                <strong>Library Card status: </strong>@profile.RoleName
+            </p>
+            <p class="card-text">
+                Renewal Date: TODO
+            </p>
+            <p class="card-text">
+                Billing: TODO?
+            </p>
+
+
+        </div>
+
+    </div>
+    <div class="col-lg-6" style="border:solid black 1px">
+        <h4 class="card-title" style="border-bottom:solid black 1px">Saved books</h4>
+        <p class="card-text">
+            <strong>TODO </strong>
+        <p class="card-text">
+            Placeholder
+        </p>
+        <p class="card-text">
+            Placeholder
+        </p>
+        <p class="card-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare id elit sed ultrices.
+            Fusce aliquet sagittis pellentesque. Morbi tristique magna vitae velit auctor pulvinar. In leo tortor,
+            molestie ut varius ut, dignissim id lectus. Phasellus laoreet ex at urna pretium, ac tempor tortor rhoncus.
+        </p>
+        <p class="card-text">
+            Placeholder
+        </p>
+
+    </div>
+    <br />
+
+</div>
+
+<br />
+<br />
+
+
+<table id="tableusers" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th hidden="hidden"></th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+            <th>Comment</th>
+            <th hidden="hidden">RoleID</th>
+            <th>Role</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (UserModel _current in Model.ListOfUsers)
+            {
+                <tr>
+                    <td hidden="hidden">
+                        @Html.Hidden("UserId", _current.UserId.ToString())
+                    </td>
+                    <td>
+                        @_current.FirstName
+                    </td>
+                    <td>
+                        @_current.LastName
+                    </td>
+                    <td>
+                        @_current.Username
+                    </td>
+                    <td>
+                        @_current.Comment
+                    </td>
+                    <td hidden="hidden">
+                        @Html.Hidden("RoleId", _current.RoleId.ToString())
+                    </td>
+                    <td>
+                        @_current.RoleName
+                    </td>
+                    <td>
+
+                        @using (Html.BeginForm("EditUser", "System", new { id = _current.UserId.ToString() }, FormMethod.Get))
+                        {
+                            //var myModal = "myModal" + _current.UserId.ToString();
+                            <button type="submit" class="btn btn-primary btn-sm">Edit</button>
+                        }
+
+                    </td>
+                    <td>
+                        @using (Html.BeginForm("DeleteUser", "System", new { id = _current.UserId.ToString() }, FormMethod.Post))
+                        {
+                            //var myModal = "myModal" + _current.UserId.ToString();
+                            <button type="button" class="btn btn-danger btn-sm" data-item-id="@_current.UserId" data-item-description="@_current.FirstName @_current.LastName" data-toggle="modal" data-target="#confirm-delete">Delete</button>
+                        }
+
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <th hidden="hidden"></th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+            <th>Comment</th>
+            <th hidden="hidden">RoleID</th>
+            <th>Role</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </tfoot>
+</table>
+
+
+
+
+@section scripts {
+
+    <script type="text/javascript" language="javascript">
+
+        $(document).ready(function () {
+
+            $('#tableusers').DataTable();
+
+        });
+    </script>
+
+
+}
+
