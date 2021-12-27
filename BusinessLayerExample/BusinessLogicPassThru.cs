@@ -1,5 +1,4 @@
 ﻿using LibraryCommon.DTO;
-using ExampleCommon;
 using LibraryCommon;
 using LibraryDatabaseAccessLayer;
 using System;
@@ -80,12 +79,7 @@ namespace LibraryBusinessLogicLayer
             return userid;
         }
 
-            //return dtoList.Select(dto => new DayHours
-            //{
-            //    Date = dto.Date,
-            //    IsOpen = !dto.IsClosed,
-            //    HourOfOperation = dto.IsClosed ? "Closed": "9AM - 5PM"
-            //}).ToList();
+
 
     }
 }

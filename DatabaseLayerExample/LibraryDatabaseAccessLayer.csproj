@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContactDataAcess.cs" />
     <Compile Include="MediaDataAccess.cs" />
     <Compile Include="MetaDataAccess.cs" />
     <Compile Include="UserDataAccess.cs" />

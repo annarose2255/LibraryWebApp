@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LibraryCommon
+namespace LibraryCommon.DTO
 {
-    public class MediaDTO
-    { 
+    public class MediaDTO : BaseDTO
+    {
         //TODO: add view that will have the media type, genere, and publisher/author 
         public int MediaId { get; set; }
         public int MediaTypeID { get; set; }
@@ -21,5 +21,7 @@ namespace LibraryCommon
         public string ImageName { get; set; }
         public string Description { get; set; }
 
+        public MediaDTO() : base()
+        { }
     }
 }
