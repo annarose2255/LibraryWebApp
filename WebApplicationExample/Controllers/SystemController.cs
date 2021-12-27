@@ -31,6 +31,7 @@ namespace WebApplicationExample.Controllers
           
             //UsersModel _model = new UsersModel(Mapper.ListOfUserDTOToListOfUserModel(_list));
             DashboardModels _model = new DashboardModels();
+            _model.UsersModel = new UsersModel(Mapper.ListOfUserDTOToListOfUserModel(_list));
 
             return View(_model);
         }
@@ -88,8 +89,9 @@ namespace WebApplicationExample.Controllers
                 // connection string coming out of the web.config
                 BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru(System.Configuration.ConfigurationManager.
                 ConnectionStrings["dbconnection"].ConnectionString);
-
+                UserDTO _profile = (UserDTO)System.Web.HttpContext.Current.Session["Profile"];
                 EditUserBLL edituserBLL = new EditUserBLL();
+                //requested changes to profile/user fields
                 UserDTO _mappedUser = new UserDTO
                 {
                     Username = inModel.UserModel.Username,
@@ -98,10 +100,34 @@ namespace WebApplicationExample.Controllers
                     Password = inModel.UserModel.Password,
                     PrimaryEmail = inModel.UserModel.PrimaryEmail is null ? "" : inModel.UserModel.PrimaryEmail,
                     PrimaryPhone = inModel.UserModel.PrimaryPhone is null ? "" : inModel.UserModel.PrimaryPhone,
-                    RoleId = (int)RoleType.Member, // this is the default
-                    RoleName = RoleType.Member.ToString()
+                    RoleId = inModel.UserModel.RoleId, 
+                    RoleName = inModel.UserModel.RoleName
                 };
-                edituserBLL.EditUser(_mappedUser, businessLogicPassThru);
+                UserDTO new_db_fields = new UserDTO
+                {
+                    //i need to get the UserID from the database via session profile
+                    UserId = _profile.UserId,
+                    //if the model does not have a value, keep the original, otherwise, pass in new value
+                    Username = string.IsNullOrEmpty(_mappedUser.Username) ? _profile.Username : _mappedUser.Username,
+                    Password = string.IsNullOrEmpty(_mappedUser.Password) ? _profile.Password : _mappedUser.Password,
+                    //no reason to change salt 
+                    Salt = _profile.Salt,
+                    FirstName = string.IsNullOrEmpty(_mappedUser.FirstName) ? _profile.FirstName : _mappedUser.FirstName,
+                    LastName = string.IsNullOrEmpty(_mappedUser.LastName) ? _profile.LastName : _mappedUser.LastName,
+                    PrimaryEmail = string.IsNullOrEmpty(_mappedUser.PrimaryEmail) ? _profile.FirstName : _mappedUser.FirstName,
+                    PrimaryPhone = string.IsNullOrEmpty(_mappedUser.PrimaryPhone) ? _profile.PrimaryPhone : _mappedUser.PrimaryPhone,
+                    //cannot change AddressID currently
+                    AddressID = _profile.AddressID,
+                    //possibility for these not to match in db in future, for now, not editable from dashboard
+                    RoleId = _mappedUser.RoleId == 0 ? _profile.RoleId : _mappedUser.RoleId,
+                    RoleName = string.IsNullOrEmpty(_mappedUser.RoleName) ? _profile.RoleName : _mappedUser.RoleName,
+                    Comment = string.IsNullOrEmpty(_mappedUser.Comment) ? _profile.Comment : _mappedUser.Comment,
+                    ModifiedByUserID = _profile.UserId,
+                    DateModified = DateTime.Now
+
+                };
+                //edituserBLL.EditUser(new_db_fields, businessLogicPassThru);
+                businessLogicPassThru.EditUser(new_db_fields);
 
                 // TODO: user mapper
                 //toAdd.FirstName = model.FirstName;

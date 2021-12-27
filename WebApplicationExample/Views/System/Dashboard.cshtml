@@ -114,8 +114,10 @@
     </thead>
     @*<tbody>
         @{
-            foreach (IEnumerable<Model.UserModel> _current in Model.UsersModel.ListOfUsers)
+            //Model.UserModel has an inline error, changed to var
+            foreach (var _current in Model.UsersModel.ListOfUsers)
             {
+                @UserModel _currentnew = (@Model.UserModel)_current;
                 <tr>
                     <td hidden="hidden">
                         @Html.Hidden("UserId", _current.UserId.ToString())

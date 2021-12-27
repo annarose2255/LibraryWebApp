@@ -204,132 +204,23 @@ namespace LibraryDatabaseAccessLayer
 
         public UserDTO GetUser(UserDTO u)
         {
-            UserDTO uniqueUser = new UserDTO();
-
-            try
-            {
-                using (SqlConnection con = new SqlConnection(_conn))
-                {
-                    using (SqlCommand _sqlCommand = new SqlCommand("uspGetOneUser", con))
-                    {
-                        _sqlCommand.CommandType = CommandType.Text;
-                        _sqlCommand.CommandTimeout = 30;
-
-                        SqlParameter _parmUserID = _sqlCommand.CreateParameter();
-                        _parmUserID.DbType = DbType.Int32;
-                        _parmUserID.ParameterName = "@parmUserID";
-                        _parmUserID.Value = u.UserId;
-                        _sqlCommand.Parameters.Add(_parmUserID);
-                        con.Open();
-                        UserDTO _user;
-
-                        using (SqlDataReader reader = _sqlCommand.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                _user = new UserDTO
-                                {
-                                    UserId = reader.GetInt32(reader.GetOrdinal("UserID")),
-                                    RoleId = reader.GetInt32(reader.GetOrdinal("RoleID")),
-                                    AddressID = reader.GetInt32(reader.GetOrdinal("AddressID")),
-                                    FirstName = (string)reader["FirstName"],
-                                    LastName = (string)reader["LastName"],
-                                    PrimaryEmail = (reader["PrimaryEmail"] == System.DBNull.Value) ? "" : (string)reader["PrimaryEmail"],
-                                    PrimaryPhone = (reader["PrimaryPhone"] == System.DBNull.Value) ? "" : (string)reader["PrimaryPhone"],
-                                    Username = (string)reader["UserName"],
-                                    Password = (string)reader["Password"],
-                                    Salt = (reader["Salt"] == System.DBNull.Value) ? "" : (string)reader["Salt"], // teritary operation C#   
-                                    RoleName = (string)reader["RoleName"],
-                                    Comment = (reader["Comment"] == System.DBNull.Value) ? "" : (string)reader["Comment"],
-                                    DateModified = reader.GetDateTime(reader.GetOrdinal("DateModified")),
-                                    ModifiedByUserID = reader.GetInt32(reader.GetOrdinal("RoleID"))
-
-                                };
-                                uniqueUser = _user;
-                            }
-                        }
-                        con.Close();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-
-                throw;
-            }
-
-            return uniqueUser;
-        }
+            List<UserDTO> all_users = this.GetUsers();
+            //is u UserId null here?
+            UserDTO match  = all_users.Find(dbu => dbu.Username == u.Username);
+            return match;
+        } 
         public UserDTO GetUser(int userId)
         {
-            UserDTO uniqueUser = new UserDTO();
+            List<UserDTO> all_users = this.GetUsers();
+            UserDTO match = all_users.Find(dbu => dbu.UserId == userId);
+            return match;
 
-            try
-            {
-                using (SqlConnection con = new SqlConnection(_conn))
-                {
-                    using (SqlCommand _sqlCommand = new SqlCommand("uspGetOneUser", con))
-                    {
-                        _sqlCommand.CommandType = CommandType.Text;
-                        _sqlCommand.CommandTimeout = 30;
-
-                        SqlParameter _parmUserID = _sqlCommand.CreateParameter();
-                        _parmUserID.DbType = DbType.Int32;
-                        _parmUserID.ParameterName = "@parmUserID";
-                        _parmUserID.Value = userId;
-                        _sqlCommand.Parameters.Add(_parmUserID);
-
-                        SqlParameter _parmUserIDOut = _sqlCommand.CreateParameter();
-                        _parmUserIDOut.DbType = DbType.Int32;
-                        _parmUserIDOut.ParameterName = "@parmUserIDOut";
-                        var pk = _sqlCommand.Parameters.Add(_parmUserIDOut);
-                        _parmUserIDOut.Direction = ParameterDirection.Output;
-
-                        con.Open();
-                        _sqlCommand.ExecuteNonQuery();
-                        UserDTO _user;
-
-                        using (SqlDataReader reader = _sqlCommand.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                _user = new UserDTO
-                                {
-                                    UserId = reader.GetInt32(reader.GetOrdinal("UserID")),
-                                    RoleId = reader.GetInt32(reader.GetOrdinal("RoleID")),
-                                    AddressID = reader.GetInt32(reader.GetOrdinal("AddressID")),
-                                    FirstName = (string)reader["FirstName"],
-                                    LastName = (string)reader["LastName"],
-                                    PrimaryEmail = (reader["PrimaryEmail"] == System.DBNull.Value) ? "" : (string)reader["PrimaryEmail"],
-                                    PrimaryPhone = (reader["PrimaryPhone"] == System.DBNull.Value) ? "" : (string)reader["PrimaryPhone"],
-                                    Username = (string)reader["UserName"],
-                                    Password = (string)reader["Password"],
-                                    Salt = (reader["Salt"] == System.DBNull.Value) ? "" : (string)reader["Salt"], // teritary operation C#   
-                                    RoleName = (string)reader["RoleName"],
-                                    Comment = (reader["Comment"] == System.DBNull.Value) ? "" : (string)reader["Comment"],
-                                    DateModified = reader.GetDateTime(reader.GetOrdinal("DateModified")),
-                                    ModifiedByUserID = reader.GetInt32(reader.GetOrdinal("RoleID"))
-
-                                };
-                                uniqueUser = _user;
-                            }
-                        }
-                        con.Close();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-
-                throw;
-            }
-
-            return uniqueUser;
-        }
+        } 
 
         public void UpdateUser(UserDTO u) //update user and (hopefully)return the user with its updated fields
             {
                 UserDTO _requesteduser = new UserDTO();
+                UserDTO test = u; //does this hold the new fields requested by user?
 
             try
             {
