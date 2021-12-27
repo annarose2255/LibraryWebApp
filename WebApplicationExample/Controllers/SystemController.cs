@@ -126,7 +126,7 @@ namespace WebApplicationExample.Controllers
                     DateModified = DateTime.Now
 
                 };
-                //edituserBLL.EditUser(new_db_fields, businessLogicPassThru);
+                //userDTO with updated fields (unchanged fields stayed the same)
                 businessLogicPassThru.EditUser(new_db_fields);
 
                 // TODO: user mapper

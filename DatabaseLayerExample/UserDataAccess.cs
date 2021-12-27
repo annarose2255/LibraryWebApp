@@ -229,7 +229,7 @@ namespace LibraryDatabaseAccessLayer
                 {
                     using (SqlCommand _sqlCommand = new SqlCommand("uspUpdateUser", con))
                     {
-                        _sqlCommand.CommandType = CommandType.Text;
+                        _sqlCommand.CommandType = CommandType.StoredProcedure;
                         _sqlCommand.CommandTimeout = 30;
 
                         SqlParameter _parmUserID = _sqlCommand.CreateParameter();
@@ -286,11 +286,11 @@ namespace LibraryDatabaseAccessLayer
                         _parmPassword.Value = hasher.HashedValue(u.Salt + u.Password);
                         _sqlCommand.Parameters.Add(_parmPassword);
                         //should the user's salt ever need to change? (even admin?)
-                        //SqlParameter _parmSalt = _sqlCommand.CreateParameter();
-                        //_parmSalt.DbType = DbType.String;
-                        //_parmSalt.ParameterName = "@parmSalt";
-                        //_parmSalt.Value = u.Salt;
-                        //_sqlCommand.Parameters.Add(_parmSalt);
+                        SqlParameter _parmSalt = _sqlCommand.CreateParameter();
+                        _parmSalt.DbType = DbType.String;
+                        _parmSalt.ParameterName = "@parmSalt";
+                        _parmSalt.Value = u.Salt;
+                        _sqlCommand.Parameters.Add(_parmSalt);
 
                         SqlParameter _parmComment = _sqlCommand.CreateParameter();
                         _parmComment.DbType = DbType.String;
@@ -310,6 +310,7 @@ namespace LibraryDatabaseAccessLayer
                         _parmModifiedByUserID.Value = u.ModifiedByUserID;
                         _sqlCommand.Parameters.Add(_parmModifiedByUserID);
                         con.Open();
+                        _sqlCommand.ExecuteNonQuery();
                         //no return value from uspUpdateUser
                         con.Close();
                     }
