@@ -1,6 +1,8 @@
-﻿@{
+﻿@model WebApplicationExample.Models.IndexViewModel
+@{
     ViewBag.Title = "Home Page";
 }
+
 <html>
 <head>
     <title>Home Page</title>
@@ -25,29 +27,29 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
             <div class="item active">
-                <img id="image-height" src="~/Content/book-images/@Model.Media1.Img" alt="Los Angeles">
+                <img id="image-height" src="~/Content/book-images/@Model.CarouselMedia.Media1.Img" alt="Los Angeles">
                 <div class="carousel-caption">
-                    <h3>@Model.Media1.Title</h3>
+                    <h3>@Model.CarouselMedia.Media1.Title</h3>
                     <h2>Author</h2>
-                    <p class="summary-text">@Model.Media1.Description</p>
+                    <p class="summary-text">@Model.CarouselMedia.Media1.Description</p>
                 </div>
             </div>
 
             <div class="item">
-                <img id="image-height" src="~/Content/book-images/@Model.Media2.Img" alt="Chicago">
+                <img id="image-height" src="~/Content/book-images/@Model.CarouselMedia.Media2.Img" alt="Chicago">
                 <div class="carousel-caption">
-                    <h3>@Model.Media2.Title</h3>
+                    <h3>@Model.CarouselMedia.Media2.Title</h3>
                     <h2>Author</h2>
-                    <p class="summary-text">@Model.Media2.Description</p>
+                    <p class="summary-text">@Model.CarouselMedia.Media2.Description</p>
                 </div>
             </div>
 
             <div class="item">
-                <img id="image-height" src="~/Content/book-images/@Model.Media3.Img" alt="New York">
+                <img id="image-height" src="~/Content/book-images/@Model.CarouselMedia.Media3.Img" alt="New York">
                 <div class="carousel-caption">
-                    <h3>@Model.Media3.Title</h3>
+                    <h3>@Model.CarouselMedia.Media3.Title</h3>
                     <h2>Author</h2>
-                    <p class="summary-text">@Model.Media3.Description</p>
+                    <p class="summary-text">@Model.CarouselMedia.Media3.Description</p>
                 </div>
             </div>
         </div>
@@ -79,11 +81,10 @@
         <div class="block1">
             <h3>Hours</h3>
             <table>
-                <tr><th>Sunday</th><td>Closed</td></tr>
-                <tr><th>Monday</th><td>9am - 5pm</td></tr>
-                <tr><th>Tuesday</th><td>9am - 5pm</td></tr>
-                <tr><th>Wednesday</th><td>9am - 5pm</td></tr>
-                <tr><th>Thursday</th><td>9am - 5pm</td></tr>
+                @foreach (var day in Model.DayHours)
+                {
+                    <tr><th>@day.DayName</th><td>@day.HourOfOperation</td></tr>
+                }
             </table>
         </div>
         <!--Location-->

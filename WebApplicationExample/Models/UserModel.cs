@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibraryWebApp.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -6,22 +7,30 @@ using System.Web;
 
 namespace LibraryWebApp.Models
 {
-    public class UserModel
+    public class UserModel : BaseModel
     {
-        
-        public string FirstName { get; set; }
 
-       
-        public string LastName { get; set; }
+        public int UserId { get; set; }
 
-        [Required(ErrorMessage = "Username is required.")]
         public string Username { get; set; }
 
-        [Required(ErrorMessage = "Password is required.")]
+        
         public string Password { get; set; }
 
+      
+        public string FirstName { get; set; }
+
+      
+        public string LastName { get; set; }
+
+     
+        public string PrimaryEmail { get; set; } 
+   
+          
+        public string PrimaryPhone { get; set; } 
+
+        public int RoleId { get; set; }
 
         public string RoleName { get; set; }
-
     }
 }

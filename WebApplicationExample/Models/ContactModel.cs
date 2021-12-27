@@ -6,7 +6,7 @@ using System.Web;
 
 namespace LibraryWebApp.Models
 {
-    public class ContactModel : BaseModel
+    public class ContactModel : Models
     {
         [Required(ErrorMessage = "Name is required.")]
         public string Name { get; set; }
