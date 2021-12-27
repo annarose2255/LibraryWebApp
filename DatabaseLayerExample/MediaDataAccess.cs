@@ -1,4 +1,5 @@
-﻿using LibraryCommon;
+﻿using DatabaseLayerExample;
+using LibraryCommon;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -57,13 +58,12 @@ namespace LibraryDatabaseAccessLayer
                                     GenreTypeID = reader.GetInt32(reader.GetOrdinal("GenreTypeID_FK")),
                                     PublisherID = reader.GetInt32(reader.GetOrdinal("PublisherID_FK")),
                                     IsCheckedOutUserID = reader.GetInt32(reader.GetOrdinal("IsCheckedOutUserID_FK")),
-                                    Title = (string)reader["Name"],
+                                    Title = reader.SafeGetString("Description"),
                                     //Comment = (string)reader["Comment"],
                                     DateModified = reader.GetDateTime(reader.GetOrdinal("DateModified")),
                                     ModifiedByUserID = reader.GetInt32(reader.GetOrdinal("ModifiedByUserID")),
-                                    ImageName = (string)reader["image-name"],
-                                    Description = (string)reader["Description"]
-
+                                    ImageName = reader.SafeGetString("image-name"),
+                                    Description = reader.SafeGetString("Description"),
                                 };
                                 _list.Add(Media);
                             }
