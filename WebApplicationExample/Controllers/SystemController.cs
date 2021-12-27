@@ -103,13 +103,15 @@ namespace WebApplicationExample.Controllers
                     RoleId = inModel.UserModel.RoleId, 
                     RoleName = inModel.UserModel.RoleName
                 };
+                Hasher hasher = new Hasher();
                 UserDTO new_db_fields = new UserDTO
                 {
                     //i need to get the UserID from the database via session profile
                     UserId = _profile.UserId,
                     //if the model does not have a value, keep the original, otherwise, pass in new value
                     Username = string.IsNullOrEmpty(_mappedUser.Username) ? _profile.Username : _mappedUser.Username,
-                    Password = string.IsNullOrEmpty(_mappedUser.Password) ? _profile.Password : _mappedUser.Password,
+                    //new password must be passed as a hash
+                    Password = string.IsNullOrEmpty(_mappedUser.Password) ? _profile.Password : hasher.HashedValue(_profile.Salt+_mappedUser.Password),
                     //no reason to change salt 
                     Salt = _profile.Salt,
                     FirstName = string.IsNullOrEmpty(_mappedUser.FirstName) ? _profile.FirstName : _mappedUser.FirstName,
@@ -143,6 +145,7 @@ namespace WebApplicationExample.Controllers
                 {
                     //use case # 1, the user was able to successfully edit fields
                     //reload the page to see the changes
+                    System.Web.HttpContext.Current.Session["Profile"] = businessLogicPassThru.GetUser(new_db_fields);
                     return RedirectToAction("Dashboard", "System");
                 }
                 //the User model does not currently have error messages 

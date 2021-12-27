@@ -224,7 +224,7 @@ namespace LibraryDatabaseAccessLayer
 
             try
             {
-                Hasher hasher = new Hasher();
+                
                 using (SqlConnection con = new SqlConnection(_conn))
                 {
                     using (SqlCommand _sqlCommand = new SqlCommand("uspUpdateUser", con))
@@ -279,11 +279,11 @@ namespace LibraryDatabaseAccessLayer
                         _parmUserName.ParameterName = "@parmUserName";
                         _parmUserName.Value = u.Username;
                         _sqlCommand.Parameters.Add(_parmUserName);
-                        //hash and salt required on u.Password if password is being altered
+                        //the new hash should happen when determining if the user requested a password change
                         SqlParameter _parmPassword = _sqlCommand.CreateParameter();
                         _parmPassword.DbType = DbType.String;
                         _parmPassword.ParameterName = "@parmPassword";
-                        _parmPassword.Value = hasher.HashedValue(u.Salt + u.Password);
+                        _parmPassword.Value = u.Password;
                         _sqlCommand.Parameters.Add(_parmPassword);
                         //should the user's salt ever need to change? (even admin?)
                         SqlParameter _parmSalt = _sqlCommand.CreateParameter();
