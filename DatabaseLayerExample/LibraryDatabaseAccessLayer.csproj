@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="MediaDataAccess.cs" />
     <Compile Include="MetaDataAccess.cs" />
+    <Compile Include="SQLDataReaderExtensions.cs" />
     <Compile Include="UserDataAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

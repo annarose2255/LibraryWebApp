@@ -66,7 +66,7 @@
         </a>
     </div>
 
-    </br>
+    <br/>
 
     <div>
         <div class="location-hours">
@@ -74,13 +74,13 @@
         </div>
     </div>
 
-    </br>
+    <br/>
     <!-- Information Blocks -->
     <div class="row">
         <!--Hours-->
-        <div class="block1">
+        <div class="block1 col-xs-4">
             <h3>Hours</h3>
-            <table>
+            <table class="schedule">
                 @foreach (var day in Model.DayHours)
                 {
                     <tr><th>@day.DayName</th><td>@day.HourOfOperation</td></tr>
@@ -88,7 +88,7 @@
             </table>
         </div>
         <!--Location-->
-        <div class="block2">
+        <div class="block2 col-xs-4">
             <h3>Location</h3>
             <p class="block-links">
                 Address:
@@ -98,20 +98,20 @@
             </p>
         </div>
         <!--Map Image-->
-        <div class="block3">
+        <div class="block3 col-xs-4">
         </div>
     </div>
 
 
 @*faq section*@
 <div class="row">
-    </br>
+    <br/>
     <div>
         <div class="faq-box">
             <h2>FAQ</h2>
         </div>
     </div>
-    </br>
+    <br/>
     @*<div id="home-faq" class="well well-sm">*@
     <div class="col-md-6">
         <div class="well well-sm" style="background-color: #A5CECD; " ;> @*lighter blue color*@
