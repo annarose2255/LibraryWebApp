@@ -151,7 +151,34 @@ namespace LibraryWebApp
 
                 SupportModel _model = new SupportModel();
                 //TODO: take info to database
-                inModel.Message = "You have submitted the form. Thank you!";
+
+                BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru(System.Configuration.ConfigurationManager.
+                ConnectionStrings["dbconnection"].ConnectionString);
+
+                //RegisterBLL registerBLL = new RegisterBLL();
+
+                // pass a LoginBLL object because it contains the connection string and that will be need in business layer
+                // to connect to database
+                try
+                {
+                    int go = businessLogicPassThru.CreateSupportRequest(Mapper.SupportModelToSupportDTO(inModel));
+                    if (go >= 0) //if the id of the contactrequest is 0 or greater we know that the data was added 
+                    {
+                        inModel.Message = "You have submitted the form. Thank you!";
+
+                    }
+                    else
+                    {
+                        throw new Exception("Something went wrong");
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    inModel.Message = "";
+                    throw;
+
+                }
                 return View(inModel);
             }
             else

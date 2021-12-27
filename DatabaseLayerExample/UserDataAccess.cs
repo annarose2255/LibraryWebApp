@@ -48,7 +48,7 @@ namespace LibraryDatabaseAccessLayer
                             {
                                 _user = new UserDTO
                                 {
-                                    UserId = reader.GetInt32(reader.GetOrdinal("UserID")),
+                                    UserId = (int) reader["UserID"],
                                     RoleId = reader.GetInt32(reader.GetOrdinal("RoleID")),
                                     AddressID = reader.GetInt32(reader.GetOrdinal("AddressID")),
                                     FirstName = (string)reader["FirstName"],

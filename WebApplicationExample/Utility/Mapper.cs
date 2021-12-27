@@ -66,5 +66,21 @@ namespace WebApplicationExample.Utility
 
             return _ContactDTO;
         }
+
+        public static SupportDTO SupportModelToSupportDTO(SupportModel inModel)
+        {
+            SupportDTO _SupportDTO = new SupportDTO
+            {
+                FirstName = inModel.FirstName,
+                LastName = inModel.LastName,
+                Email = inModel.Email,
+                Phone = inModel.PhoneNumber,
+                IsMember = inModel.IsMember,
+                Message = inModel.MessageText,
+                DateSubmitted= DateTime.Now
+            };
+
+            return _SupportDTO;
+        }
     }
 }

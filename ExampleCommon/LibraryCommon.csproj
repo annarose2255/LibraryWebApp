@@ -46,6 +46,7 @@
     <Compile Include="DTO\ContactDTO.cs" />
     <Compile Include="DTO\MediaDTO.cs" />
     <Compile Include="DTO\BaseDTO.cs" />
+    <Compile Include="DTO\SupportDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />
     <Compile Include="Enumeration.cs" />
     <Compile Include="Hasher.cs" />

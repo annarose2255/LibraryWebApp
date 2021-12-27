@@ -85,6 +85,12 @@ namespace LibraryBusinessLogicLayer
             int ContactID = contactDataAcess.CreateContactRequest(c);
             return ContactID;
         }
+        public int CreateSupportRequest(SupportDTO s)
+        {
+            SupportDataAccess supportDataAccess = new SupportDataAccess(this._conn);
+            int SupportID = supportDataAccess.CreateSupportRequest(s);
+            return SupportID;
+        }
 
     }
 }
