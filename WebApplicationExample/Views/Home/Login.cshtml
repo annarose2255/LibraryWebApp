@@ -91,7 +91,7 @@
                     <label for="password" id="password">Password:</label>
                 </div>
                 <div class="col-sm-4">
-                    @Html.TextBoxFor(m => m.RegisterModel.Password, new { @class = "form-control" })
+                    @Html.TextBoxFor(m => m.RegisterModel.Password, new { @class = "form-control", @type="password" })
                 </div>
                 <div class="col-sm-4">
                     @Html.ValidationMessageFor(m => m.RegisterModel.Password, "", new { @class = "alert-danger" })
@@ -117,11 +117,12 @@
                 <div class="col-sm-4">
                     @Html.TextBoxFor(m => m.RegisterModel.PrimaryPhone, new { @class = "form-control" })
                 </div>
-                <div class="col-sm-4">
-                    @Html.ValidationMessageFor(m => m.RegisterModel.PrimaryPhone, "", new { @class = "alert-danger" })
-                    <input type="submit" value="Register" class="btn btn-primary" style="background-color: #9F2CAD; color: white; margin-top: 10%" />
-                </div>
             </div>
+                <div class="col-sm-4 col-sm-offset-4">
+                    @Html.ValidationMessageFor(m => m.RegisterModel.PrimaryPhone, "", new { @class = "alert-danger" })
+                    <input type="submit" value="Register" class="btn btn-primary" style="background-color: #9F2CAD; color: white; margin-top: 10%; margin-bottom: 10%" />
+                </div>
+            @*</div>*@
         }
     </div>
 </div>
