@@ -85,12 +85,13 @@ namespace LibraryBusinessLogicLayer
             return this.GetUsersData().Where(u => u.UserId == id).FirstOrDefault();
         }
 
-        //return dtoList.Select(dto => new DayHours
-        //{
-        //    Date = dto.Date,
-        //    IsOpen = !dto.IsClosed,
-        //    HourOfOperation = dto.IsClosed ? "Closed": "9AM - 5PM"
-        //}).ToList();
+        public UserDTO UpdateUser(UserDTO inUser)
+        {
+            UserDataAccess userDataAccess = new UserDataAccess(this._conn);
+            UserDTO _user = userDataAccess.UpdateUser(inUser);
+            return _user;
+        }
 
+      
     }
 }

@@ -21,7 +21,7 @@ namespace LibraryWebApp.Models
         [Required(ErrorMessage = "Last name is required.")]
         public string LastName { get; set; }
 
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Not a valid email.")]
         [Display(Name = "Email")]
         public string PrimaryEmail { get; set; } = "";
 
@@ -31,13 +31,13 @@ namespace LibraryWebApp.Models
         public string PrimaryPhone { get; set; } = "";
 
         public string Username { get; set; }
-
-        
-        public string Password { get; set; }
-
       
+        public string Password { get; set; }
+    
         public int RoleId { get; set; }
 
         public string RoleName { get; set; }
+
+        public string Comment { get; set; }
     }
 }

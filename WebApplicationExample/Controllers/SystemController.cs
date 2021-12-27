@@ -71,12 +71,28 @@ namespace WebApplicationExample.Controllers
         [HttpGet]
         public ActionResult EditUser(int id)
         {
-            //RoleListVM list = new RoleListVM(_logicRole.GetRolesPassThru());
-            //ViewBag.Roles = new SelectList(list.ListOfRoleModel, "RoleId", "RoleName");
+
+                //    @parmUserID int,
+                //@parmRoleID_FK int   -- = 5  member role
+                //  --  ,@parmAddressID_FK int = 0
+                //   , @parmFirstName nvarchar(100)
+                //   ,@parmLastName nvarchar(100)
+                //   ,@parmPrimaryEmail nvarchar(100)
+                //   ,@parmPrimaryPhone nvarchar(100)
+                //  -- ,@parmUserName nvarchar(100)
+                //  -- ,@parmPassword nvarchar(100)
+                //   --,@parmSalt nvarchar(100)
+                //   ,@parmComment nvarchar(100)
+                //   ,@parmDateModified datetime
+                //   , @parmModifiedByUserID int
 
 
-            // connection string coming out of the web.config
-            BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru(System.Configuration.ConfigurationManager.
+             //RoleListVM list = new RoleListVM(_logicRole.GetRolesPassThru());
+             //ViewBag.Roles = new SelectList(list.ListOfRoleModel, "RoleId", "RoleName");
+
+
+             // connection string coming out of the web.config
+             BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru(System.Configuration.ConfigurationManager.
             ConnectionStrings["dbconnection"].ConnectionString);
 
             UserDTO _user = businessLogicPassThru.GetSingleUserData(id);
@@ -101,11 +117,17 @@ namespace WebApplicationExample.Controllers
 
                 //_logicUser.CreateUserPassThru(toAdd);
 
+                // connection string coming out of the web.config
+                BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru(System.Configuration.ConfigurationManager.
+                ConnectionStrings["dbconnection"].ConnectionString);
+                UserDTO _currentUser = (UserDTO) System.Web.HttpContext.Current.Session["Profile"]; // get the current user
+                UserDTO _user = businessLogicPassThru.UpdateUser(Mapper.UserModelToUserDTO(inModel, _currentUser.UserId));
+
                 return RedirectToAction("Dashboard", "System");
             }
             else
             {
-                return View();
+                return View(inModel);
             }
         }
 

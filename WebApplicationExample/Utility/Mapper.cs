@@ -46,7 +46,9 @@ namespace WebApplicationExample.Utility
                     Password = item.Password,
                     Username = item.Username,
                     PrimaryEmail = item.PrimaryEmail,
-                    PrimaryPhone = item.PrimaryPhone
+                    PrimaryPhone = item.PrimaryPhone,
+                    Comment = item.Comment
+                    
                 };
                 _list.Add(_m);
             }
@@ -56,6 +58,8 @@ namespace WebApplicationExample.Utility
 
         internal static UserModel UserDTOToUserModel(UserDTO user)
         {
+          
+
             UserModel _m = new UserModel
             {
                 UserId = user.UserId,
@@ -66,9 +70,30 @@ namespace WebApplicationExample.Utility
                 Password = user.Password,
                 Username = user.Username,
                 PrimaryEmail = user.PrimaryEmail,
-                PrimaryPhone = user.PrimaryPhone
+                PrimaryPhone = user.PrimaryPhone,
+                Comment = user.Comment
             };
             return _m;
+        }
+
+        internal static UserDTO UserModelToUserDTO(UserModel inModel, int inCurrentUserId)
+        {
+            UserDTO _dto = new UserDTO
+            {
+                UserId = inModel.UserId,
+                RoleId = inModel.RoleId,
+                RoleName = inModel.RoleName,
+                FirstName = inModel.FirstName,
+                LastName = inModel.LastName,
+                Password = inModel.Password,
+                Username = inModel.Username,
+                PrimaryEmail = inModel.PrimaryEmail,
+                PrimaryPhone = inModel.PrimaryPhone,
+                Comment = inModel.Comment,
+                DateModified = DateTime.Now,
+                ModifiedByUserID = inCurrentUserId // this will store who make this change this user
+            };
+            return _dto;
         }
     }   
 }
