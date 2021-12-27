@@ -49,20 +49,23 @@
     </main>
     <footer>
         @*<p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>*@
-        <div class="row footer">
+        <div class="row" style="background-color: #3D3D3D; width:100%; min-height: 290px; max-height: stretch;  width: 100%; border-top-color: black; display: flex;  bottom: 0;">
             @*<div class="footerCollumn" id="newsletter">*@
-            <div class="col-md-3 col-md-offset-1">
+            <div class="col-md-2 col-md-offset-1 ">
                 <p id="footerCollumnHeader">
                     Join the newsletter
                 </p>
                 <p class="newsletterInfo"> Get notified monthly when you need to return a book, or when new books are added!</p>
                 @*<div class="newsletterInput">*@
+            <div class="col-md-12" style="padding-top: 4%">
                 <div class="col-md-9 newsletterInput2">
-                    <input type="email" placeholder="Enter your Email" style="width: 100%; min-width: 100%; max-width: 100%;"/>
+                    <input type="email" placeholder="Enter your Email" style="width: 100%; min-width: 100%; max-width: 100%;" />
                 </div>
                 <div class="col-md-3 newsletterInput2">
                     <button type="button" style="width: 100%; min-width: 100%; max-width: 100%;"> <span>Sign up</span> </button>
                 </div>
+            </div>
+               
                     
                 @*</div>*@
             </div>
