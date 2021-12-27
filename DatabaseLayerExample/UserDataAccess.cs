@@ -286,11 +286,11 @@ namespace LibraryDatabaseAccessLayer
                         _parmPassword.Value = hasher.HashedValue(u.Salt + u.Password);
                         _sqlCommand.Parameters.Add(_parmPassword);
                         //should the user's salt ever need to change? (even admin?)
-                        SqlParameter _parmSalt = _sqlCommand.CreateParameter();
-                        _parmSalt.DbType = DbType.String;
-                        _parmSalt.ParameterName = "@parmSalt";
-                        _parmSalt.Value = u.Salt;
-                        _sqlCommand.Parameters.Add(_parmSalt);
+                        //SqlParameter _parmSalt = _sqlCommand.CreateParameter();
+                        //_parmSalt.DbType = DbType.String;
+                        //_parmSalt.ParameterName = "@parmSalt";
+                        //_parmSalt.Value = u.Salt;
+                        //_sqlCommand.Parameters.Add(_parmSalt);
 
                         SqlParameter _parmComment = _sqlCommand.CreateParameter();
                         _parmComment.DbType = DbType.String;
@@ -307,7 +307,7 @@ namespace LibraryDatabaseAccessLayer
                         SqlParameter _parmModifiedByUserID = _sqlCommand.CreateParameter();
                         _parmModifiedByUserID.DbType = DbType.Int32;
                         _parmModifiedByUserID.ParameterName = "@parmModifiedByUserID";
-                        _parmModifiedByUserID.Value = u.UserId;
+                        _parmModifiedByUserID.Value = u.ModifiedByUserID;
                         _sqlCommand.Parameters.Add(_parmModifiedByUserID);
                         con.Open();
                         //no return value from uspUpdateUser

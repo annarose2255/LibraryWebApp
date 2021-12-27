@@ -90,7 +90,7 @@ namespace WebApplicationExample.Controllers
                 BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru(System.Configuration.ConfigurationManager.
                 ConnectionStrings["dbconnection"].ConnectionString);
                 UserDTO _profile = (UserDTO)System.Web.HttpContext.Current.Session["Profile"];
-                EditUserBLL edituserBLL = new EditUserBLL();
+                //EditUserBLL edituserBLL = new EditUserBLL();
                 //requested changes to profile/user fields
                 UserDTO _mappedUser = new UserDTO
                 {
