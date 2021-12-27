@@ -23,10 +23,13 @@ namespace LibraryWebApp.Models
       
         public string LastName { get; set; }
 
-     
-        public string PrimaryEmail { get; set; } 
-   
-          
+        [EmailAddress]
+        public string PrimaryEmail { get; set; }
+
+
+        [Display(Name = "Primary Phone")]
+        [DataType(DataType.PhoneNumber)]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
         public string PrimaryPhone { get; set; } 
 
         public int RoleId { get; set; }
