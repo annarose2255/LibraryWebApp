@@ -10,6 +10,7 @@ namespace LibraryCommon
     {
         Guest = 4,
         Member = 5,
-        System = 0
+        System = 0,
+        Administrator = 1
     }
 }

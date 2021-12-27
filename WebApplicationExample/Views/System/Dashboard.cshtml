@@ -79,6 +79,9 @@
 <br />
 
 
+@if (profile.RoleName == RoleType.Administrator.ToString())
+{
+
 <table id="tableusers" class="display" style="width:100%">
     <thead>
         <tr>
@@ -155,8 +158,7 @@
     </tfoot>
 </table>
 
-
-
+}
 
 @section scripts {
 

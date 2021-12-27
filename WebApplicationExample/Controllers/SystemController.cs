@@ -8,11 +8,11 @@ using DataTables;
 using LibraryWebApp.Models;
 using LibraryBusinessLogicLayer;
 using WebApplicationExample.Utility;
+using LibraryWebApp.Utility;
 
 namespace WebApplicationExample.Controllers
 {
    
-
     public class SystemController : Controller
     {
         [HttpGet]
@@ -72,62 +72,53 @@ namespace WebApplicationExample.Controllers
         public ActionResult EditUser(int id)
         {
 
-                //    @parmUserID int,
-                //@parmRoleID_FK int   -- = 5  member role
-                //  --  ,@parmAddressID_FK int = 0
-                //   , @parmFirstName nvarchar(100)
-                //   ,@parmLastName nvarchar(100)
-                //   ,@parmPrimaryEmail nvarchar(100)
-                //   ,@parmPrimaryPhone nvarchar(100)
-                //  -- ,@parmUserName nvarchar(100)
-                //  -- ,@parmPassword nvarchar(100)
-                //   --,@parmSalt nvarchar(100)
-                //   ,@parmComment nvarchar(100)
-                //   ,@parmDateModified datetime
-                //   , @parmModifiedByUserID int
+            //RoleListVM list = new RoleListVM(_logicRole.GetRolesPassThru());
+            //ViewBag.Roles = new SelectList(list.ListOfRoleModel, "RoleId", "RoleName");
 
+            if (ProfileChecker.IsLoggedIn() && ProfileChecker.IsAdmin())
+            {
 
-             //RoleListVM list = new RoleListVM(_logicRole.GetRolesPassThru());
-             //ViewBag.Roles = new SelectList(list.ListOfRoleModel, "RoleId", "RoleName");
+                // connection string coming out of the web.config
+                BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru(System.Configuration.ConfigurationManager.
+                ConnectionStrings["dbconnection"].ConnectionString);
 
-
-             // connection string coming out of the web.config
-             BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru(System.Configuration.ConfigurationManager.
-            ConnectionStrings["dbconnection"].ConnectionString);
-
-            UserDTO _user = businessLogicPassThru.GetSingleUserData(id);
-
-            return View(Mapper.UserDTOToUserModel(_user));
+                UserDTO _user = businessLogicPassThru.GetSingleUserData(id);
+                return View(Mapper.UserDTOToUserModel(_user));
+            }
+            else 
+            {
+               return RedirectToAction("Login", "Home");
+            }
         }
 
         [HttpPost]
         public ActionResult EditUser(UserModel inModel)
         {
-            if (ModelState.IsValid)
+
+            if (ProfileChecker.IsLoggedIn() && ProfileChecker.IsAdmin())
             {
 
-                UserDTO _editThisUser = new UserDTO();
+                if (ModelState.IsValid)
+                {
 
-                // TODO: user mapper
-                //toAdd.FirstName = model.FirstName;
-                //toAdd.LastName = model.LastName;
-                //toAdd.UserName = model.Username;
-                //toAdd.Password = model.Password;
-                //toAdd.RoleID_FK = model.RoleId;
+                    UserDTO _editThisUser = new UserDTO();
 
-                //_logicUser.CreateUserPassThru(toAdd);
+                    // connection string coming out of the web.config
+                    BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru(System.Configuration.ConfigurationManager.
+                    ConnectionStrings["dbconnection"].ConnectionString);
+                    UserDTO _currentUser = (UserDTO)System.Web.HttpContext.Current.Session["Profile"]; // get the current user
+                    UserDTO _user = businessLogicPassThru.UpdateUser(Mapper.UserModelToUserDTO(inModel, _currentUser.UserId));
 
-                // connection string coming out of the web.config
-                BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru(System.Configuration.ConfigurationManager.
-                ConnectionStrings["dbconnection"].ConnectionString);
-                UserDTO _currentUser = (UserDTO) System.Web.HttpContext.Current.Session["Profile"]; // get the current user
-                UserDTO _user = businessLogicPassThru.UpdateUser(Mapper.UserModelToUserDTO(inModel, _currentUser.UserId));
-
-                return RedirectToAction("Dashboard", "System");
+                    return RedirectToAction("Dashboard", "System");
+                }
+                else
+                {
+                    return View(inModel);
+                }
             }
-            else
+            else 
             {
-                return View(inModel);
+                return RedirectToAction("Login", "Home");
             }
         }
 
