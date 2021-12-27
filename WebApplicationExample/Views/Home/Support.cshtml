@@ -1,39 +1,110 @@
-﻿
+﻿@model LibraryWebApp.Models.SupportModel
+@{
+    ViewBag.Title = "Support";
+
+}
+@if (Model.Message != "")
+{
+    <div class="alert alert-success" role="alert">
+        @Model.Message
+    </div>
+
+}
 
 <div class="row" style="border: 5px solid #2CA6A4; margin-top: 20px; padding-bottom: 20px;">
     <div class="col-lg-6 col-lg-offset-1">
-        <h2 class="support-text" > Support Request form!</h2>
-        <form>
-            <div class="form-group row">
-                <div class="col-sm-4">
-                    <label for="First-Name">First Name</label>
-                    <input class="form-control" id="First-Name" type="text" placeholder="First Name">
+        <h2 class="support-text"> Support Request form!</h2>
+        @using (Html.BeginForm("Support", "Home", FormMethod.Post))
+        {
+            <form id="myForm">
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <label for="First-Name">First Name</label>
+                        <p>@Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "alert-danger" })</p>
+
+                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @id = "contact-input", @placeholder = "First Name" })
+                    </div>
+                    <div class="col-sm-8">
+                        <label for="Last-Name">Last Name</label>
+                        <p>@Html.ValidationMessageFor(m => m.LastName, "", new { @class = "alert-danger" })</p>
+
+                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @id = "contact-input", @placeholder = "Last Name" })
+                    </div>
                 </div>
-                <div class="col-sm-6">
-                    <label for="Last-Name">Last Name</label>
-                    <input class="form-control" id="Last-Name" type="text" placeholder="Last Name">
-                </div>
-            </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
-                    <input id="contact-input" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Your email (name@example.com)">
+                    <p>@Html.ValidationMessageFor(m => m.Email, "", new { @class = "alert-danger" })</p>
+
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @id = "contact-input", @placeholder = "Enter Your email (name@example.com)" })
                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
                 <div class="form-group">
                     <label for="phoneinput">Phone number</label>
-                    <input id="contact-input" type="tel" class="form-control" id="phoneinput" placeholder="Your Phone Number Here (222-222-2222)">
+                    <p>@Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "alert-danger" })</p>
+
+                    @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", @id = "phone-input", @type = "tel", @placeholder = "Your Phone Number Here (222-222-2222)", @style = "max-width:100%" })
                 </div>
                 <div class="form-group">
-                    <label> Are you a member?</label> </br>
-                    <label class="radio-inline"><input type="radio" name="optradio" checked> No, I am not a member</label>
-                    <label class="radio-inline"><input type="radio" name="optradio">Yes, I am a member</label>
+                    <label> Are you a member?</label>
+                    @Html.ValidationMessageFor(m => m.IsMember, "", new { @class = "alert-danger" })
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="col-md-12">
+                                <label class="radio-inline">
+                                    @Html.RadioButtonFor(m => m.IsMember, true, new { @id = "member-input", @checked = "true" })
+                                    Yes, I am a member
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="col-md-12">
+                                <label class="radio-inline">
+                                    @Html.RadioButtonFor(m => m.IsMember, false, new { @id = "member-input", @checked ="false"})
+                                    No, I am not a member
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Your Issue</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Enter your problem here! Please be specific as possible to have the best help."></textarea>
+                    <p>@Html.ValidationMessageFor(m => m.MessageText, "", new { @class = "alert-danger" })</p>
+
+                    @Html.TextAreaFor(m => m.MessageText, new
+                    {
+                        @class = "form-control",
+                        @id = "contact-input",
+                        @placeholder = "Enter your problem here! Please be specific as possible to have the best help.",
+                   @rows = "3"
+                    })
+                    @*<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Enter your problem here! Please be specific as possible to have the best help."></textarea>*@
                 </div>
-                <button style="vertical-align:middle; font-size: 18px;" id="contact-button" type="button"> <span>Submit </span> </button>
-        </form>
+                <button style="vertical-align:middle; font-size: 18px;" id="contact-button" type="submit"> <span>Submit </span> </button>
+
+            </form>
+        }
     </div>
 
 </div>
+
+
+@* extra stuff
+
+    @*</br>*@
+@*<p>@Html.ValidationMessageFor(m => m.IsMember, "", new { @class = "alert-danger" })</p>
+     @Html.CheckBoxFor(m => m.IsMember, new { @class = "form-control", @id = "member-input", @Checked = false, @Type = "radio", @style = "display: inline; height: 15px;" })
+    <label>
+        Yes, I am a member
+        @Html.CheckBoxFor(m => m.IsMember, new
+        {
+            @class = "form-control inline",
+            @style = "display: inline; float: left",
+            @id = "member-input",
+            @isChecked = false,
+            @Type = "radio"
+        })
+    </label >*@
+
+@*<label class="radio-inline"><input type="radio" name="optradio"> No, I am not a member</label>
+    <label class="radio-inline"><input type="radio" name="optradio">Yes, I am a member</label>*@
