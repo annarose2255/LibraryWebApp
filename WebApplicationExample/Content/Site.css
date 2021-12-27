@@ -27,7 +27,7 @@ textarea {
 
 
 /* our custom css*/
-.allButFooter {
+main {
     min-height: calc(100vh - 364px);
     margin-top: 20px;
     margin-left: 200px;
@@ -576,4 +576,11 @@ h1 {
 #contact-head{
     margin-right: 0px;
     margin-left: 0px;
+}
+
+@media only screen and (max-width: 1080px) {
+    main{
+        margin-left: 0;
+        margin-right: 0;
+    }
 }
