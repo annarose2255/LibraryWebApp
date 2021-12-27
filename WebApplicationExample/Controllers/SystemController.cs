@@ -10,7 +10,7 @@ using LibraryBusinessLogicLayer;
 using WebApplicationExample.Utility;
 using LibraryCommon;
 
-namespace WebApplicationExample.Controllers
+namespace LibraryWebApp
 {
    
 
@@ -178,11 +178,24 @@ namespace WebApplicationExample.Controllers
         }
 
         #endregion
+        [HttpGet]
+        public ActionResult Logout()
+        {
 
+            UserDTO guest = new UserDTO();
+            guest.Username = "guest";
+            guest.RoleId = (int)RoleType.Guest;
+            guest.RoleName = RoleType.Guest.ToString();
+            System.Web.HttpContext.Current.Session["Profile"] = guest;
 
-
-
-
+            return View();
+        }
     }
+
+
+
+
+
+    
 
 }

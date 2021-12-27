@@ -47,7 +47,7 @@
             <p class="card-text">
                 <strong>Phone number: </strong>@profile.PrimaryPhone
             </p>
-            <a href="/Home/Login" class="card-link">Logout</a> <span id="demo"></span><input type="button" onclick="editon()" value="Edit Profile" style="background-color: #9F2CAD; color: white; margin-top: 10%">
+            <a href="/Home/Login" class="card-link" onclick="logout()">Logout</a> <span id="demo"></span><input type="button" onclick="editon()" value="Edit Profile" style="background-color: #9F2CAD; color: white; margin-top: 10%">
         </div>
         @using (Html.BeginForm("EditUser", "System", FormMethod.Post))
         {
@@ -234,6 +234,11 @@
                 document.getElementById("noedit").style.display = "revert";
             }
         };
+    </script>
+    <script>
+        function logout() {
+            (this.ViewContext.Controller).Logout();
+        }
     </script>
 
 }
