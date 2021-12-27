@@ -99,11 +99,11 @@ namespace LibraryBusinessLogicLayer
             UserDTO oneUser = userDataAccess.GetUser(userId);
             return oneUser;
         }
-        public UserDTO EditUser(UserDTO u)
+        public void EditUser(UserDTO u)
         {
             UserDataAccess userDataAccess = new UserDataAccess(this._conn);
-            UserDTO edittedUser = userDataAccess.UpdateUser(u);
-            return edittedUser;
+            userDataAccess.UpdateUser(u);
+            
         }
 
     }

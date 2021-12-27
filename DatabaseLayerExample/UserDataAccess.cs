@@ -278,7 +278,15 @@ namespace LibraryDatabaseAccessLayer
                         _parmUserID.ParameterName = "@parmUserID";
                         _parmUserID.Value = userId;
                         _sqlCommand.Parameters.Add(_parmUserID);
+
+                        SqlParameter _parmUserIDOut = _sqlCommand.CreateParameter();
+                        _parmUserIDOut.DbType = DbType.Int32;
+                        _parmUserIDOut.ParameterName = "@parmUserIDOut";
+                        var pk = _sqlCommand.Parameters.Add(_parmUserIDOut);
+                        _parmUserIDOut.Direction = ParameterDirection.Output;
+
                         con.Open();
+                        _sqlCommand.ExecuteNonQuery();
                         UserDTO _user;
 
                         using (SqlDataReader reader = _sqlCommand.ExecuteReader())
@@ -319,7 +327,7 @@ namespace LibraryDatabaseAccessLayer
             return uniqueUser;
         }
 
-        public UserDTO UpdateUser(UserDTO u) //update user and return the user with its updated fields
+        public void UpdateUser(UserDTO u) //update user and (hopefully)return the user with its updated fields
             {
                 UserDTO _requesteduser = new UserDTO();
 
@@ -415,13 +423,13 @@ namespace LibraryDatabaseAccessLayer
                         con.Close();
                     }
                 }
-                _requesteduser = GetUser(u); //obtain user with altered fields
+                //_requesteduser = GetUser(u); //obtain user with altered fields
             }
             catch (Exception ex)
             {
                 throw;
             }
-            return _requesteduser;
+            //return _requesteduser;
             }
 
     }

@@ -8,10 +8,10 @@ namespace LibraryBusinessLogicLayer
 {
     public class EditUserBLL
     {
-        public UserDTO EditUser(UserDTO userDTO, BusinessLogicPassThru businessLogicPassThru)
+        public void EditUser(UserDTO userDTO, BusinessLogicPassThru businessLogicPassThru)
         {
-            UserDTO updateduser = businessLogicPassThru.EditUser(userDTO);
-            return updateduser;
+            businessLogicPassThru.EditUser(userDTO);
+            //return updateduser;
         }
     }
 }

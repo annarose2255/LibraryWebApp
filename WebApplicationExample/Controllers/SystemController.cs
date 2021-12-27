@@ -8,6 +8,7 @@ using DataTables;
 using LibraryWebApp.Models;
 using LibraryBusinessLogicLayer;
 using WebApplicationExample.Utility;
+using LibraryCommon;
 
 namespace WebApplicationExample.Controllers
 {
@@ -89,9 +90,18 @@ namespace WebApplicationExample.Controllers
                 ConnectionStrings["dbconnection"].ConnectionString);
 
                 EditUserBLL edituserBLL = new EditUserBLL();
-
-
-                UserDTO updateduser = edituserBLL.EditUser(businessLogicPassThru.GetUser(inModel.UserModel.UserId), businessLogicPassThru);
+                UserDTO _mappedUser = new UserDTO
+                {
+                    Username = inModel.UserModel.Username,
+                    FirstName = inModel.UserModel.FirstName,
+                    LastName = inModel.UserModel.LastName,
+                    Password = inModel.UserModel.Password,
+                    PrimaryEmail = inModel.UserModel.PrimaryEmail is null ? "" : inModel.UserModel.PrimaryEmail,
+                    PrimaryPhone = inModel.UserModel.PrimaryPhone is null ? "" : inModel.UserModel.PrimaryPhone,
+                    RoleId = (int)RoleType.Member, // this is the default
+                    RoleName = RoleType.Member.ToString()
+                };
+                edituserBLL.EditUser(_mappedUser, businessLogicPassThru);
 
                 // TODO: user mapper
                 //toAdd.FirstName = model.FirstName;
@@ -102,7 +112,7 @@ namespace WebApplicationExample.Controllers
 
                 //_logicUser.CreateUserPassThru(toAdd);
 
-                inModel.Message = updateduser.ErrorMessage;
+                //inModel.Message = updateduser.ErrorMessage;
                 if (string.IsNullOrEmpty(inModel.Message))
                 {
                     //use case # 1, the user was able to successfully edit fields
