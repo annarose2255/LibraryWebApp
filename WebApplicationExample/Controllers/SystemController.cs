@@ -125,7 +125,7 @@ namespace WebApplicationExample.Controllers
 
         [HttpPost]
         public ActionResult DeleteUser(int id)
-        {
+         {
             if (ModelState.IsValid)
             {
 

@@ -42,9 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContactDataAcess.cs" />
     <Compile Include="MediaDataAccess.cs" />
     <Compile Include="MetaDataAccess.cs" />
     <Compile Include="SQLDataReaderExtensions.cs" />
+    <Compile Include="SupportDataAccess.cs" />
     <Compile Include="UserDataAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

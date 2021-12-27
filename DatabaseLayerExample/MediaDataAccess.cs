@@ -1,5 +1,6 @@
 ﻿using DatabaseLayerExample;
 using LibraryCommon;
+using LibraryCommon.DTO;
 using System;
 using System.Collections.Generic;
 using System.Configuration;

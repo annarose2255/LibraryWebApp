@@ -182,7 +182,7 @@ nav a:hover {
 
 nav {
     display: inline-block;
-    margin-left: 30px;
+    margin-left: 0px;
 }
 
 /* make nav bar in line and title look good */
@@ -190,6 +190,8 @@ nav {
     display: flex;
     flex-direction: row;
     list-style-type: none;
+    padding-left: 0px;
+    margin-left: 10px;
 }
 headerButtons-list{
     display:inline;
@@ -576,6 +578,16 @@ h1 {
 #contact-head{
     margin-right: 0px;
     margin-left: 0px;
+}
+input[type=radio] {
+    vertical-align: middle;
+    position: relative;
+    bottom: 1px;
+}
+
+label {
+    display: block;
+}
 }
 
 @media only screen and (max-width: 1080px) {

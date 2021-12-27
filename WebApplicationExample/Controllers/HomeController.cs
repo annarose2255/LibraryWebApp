@@ -66,25 +66,129 @@ namespace LibraryWebApp
             return View();
         }
 
+
+        [HttpGet]
         public ActionResult Contact()
         {
-            //ContactModel _model = new ContactModel();
-            //_model.Message = "";
-            return View();
+            ContactModel _model = new ContactModel();
+            _model.Message = "";
+            return View(_model);
         }
 
-  
+        [HttpPost]
+        public ActionResult Contact(ContactModel inModel)
+        {
+
+            if (ModelState.IsValid)
+            {
+
+                ContactModel _model = new ContactModel();
+                //TODO: take info to database
+                // connection string coming out of the web.config
+                BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru(System.Configuration.ConfigurationManager.
+                ConnectionStrings["dbconnection"].ConnectionString);
+
+                //RegisterBLL registerBLL = new RegisterBLL();
+
+                // pass a LoginBLL object because it contains the connection string and that will be need in business layer
+                // to connect to database
+                try
+                {
+                    int go = businessLogicPassThru.CreateContactRequest(Mapper.ContactModelToContactDTO(inModel));
+                    if (go >= 0) //if the id of the contactrequest is 0 or greater we know that the data was added 
+                    {
+                        inModel.Message = "You have submitted the form. Thank you!";
+
+                    }
+                    else
+                    {
+                        throw new Exception("Something went wrong");
+                    }
+                    
+                }
+                catch (Exception ex)
+                {
+                    inModel.Message = "";
+                    throw;
+
+                }
+                return View(inModel);
+                // 
+                //UserDTO _profile = registerBLL.Register(Mapper.GlobalLoginModelToUserDTO(inModel), businessLogicPassThru);
+
+                // error message coming all the way up the stack from database or business layer
+                //inModel.RegisterModel.Message = _profile.ErrorMessage;
+
+
+            }
+            else
+            {
+                inModel.Message = "";
+                return View(inModel);
+
+            }
+        }
 
         public ActionResult FAQ()
         {
             ViewBag.Message = "FAQ Page";
             return View();
         }
+
+        [HttpGet]
         public ActionResult Support()
         {
-            ViewBag.Message = "Support Page";
-            return View();
+            SupportModel _model = new SupportModel();
+            _model.Message = "";
+            return View(_model);
         }
+
+        [HttpPost]
+        public ActionResult Support(SupportModel inModel)
+        {
+            if (ModelState.IsValid)
+            {
+
+                SupportModel _model = new SupportModel();
+                //TODO: take info to database
+
+                BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru(System.Configuration.ConfigurationManager.
+                ConnectionStrings["dbconnection"].ConnectionString);
+
+                //RegisterBLL registerBLL = new RegisterBLL();
+
+                // pass a LoginBLL object because it contains the connection string and that will be need in business layer
+                // to connect to database
+                try
+                {
+                    int go = businessLogicPassThru.CreateSupportRequest(Mapper.SupportModelToSupportDTO(inModel));
+                    if (go >= 0) //if the id of the contactrequest is 0 or greater we know that the data was added 
+                    {
+                        inModel.Message = "You have submitted the form. Thank you!";
+
+                    }
+                    else
+                    {
+                        throw new Exception("Something went wrong");
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    inModel.Message = "";
+                    throw;
+
+                }
+                return View(inModel);
+            }
+            else
+            {
+                inModel.Message = "";
+                return View(inModel);
+
+            }
+        }
+
 
         public ActionResult Search(string query)
         {

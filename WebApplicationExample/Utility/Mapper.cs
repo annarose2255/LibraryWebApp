@@ -8,7 +8,7 @@ using System.Web;
 
 namespace WebApplicationExample.Utility
 {
-   
+
 
     public static class Mapper
     {
@@ -94,6 +94,36 @@ namespace WebApplicationExample.Utility
                 ModifiedByUserID = inCurrentUserId // this will store who make this change this user
             };
             return _dto;
+        }   
+
+        public static ContactDTO ContactModelToContactDTO(ContactModel inModel)
+        {
+            ContactDTO _ContactDTO = new ContactDTO
+            {
+                Name = inModel.Name,
+                Email = inModel.Email is null ? "" : inModel.Email, //??
+                Message = inModel.MessageText,
+                DateSubmitted = DateTime.Now
+
+            };
+
+            return _ContactDTO;
         }
-    }   
+
+        public static SupportDTO SupportModelToSupportDTO(SupportModel inModel)
+        {
+            SupportDTO _SupportDTO = new SupportDTO
+            {
+                FirstName = inModel.FirstName,
+                LastName = inModel.LastName,
+                Email = inModel.Email,
+                Phone = inModel.PhoneNumber,
+                IsMember = inModel.IsMember,
+                Message = inModel.MessageText,
+                DateSubmitted= DateTime.Now
+            };
+
+            return _SupportDTO;
+        }
+    }
 }

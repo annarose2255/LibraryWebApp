@@ -1,5 +1,4 @@
 ﻿using LibraryCommon.DTO;
-using ExampleCommon;
 using LibraryCommon;
 using LibraryDatabaseAccessLayer;
 using System;
@@ -93,5 +92,18 @@ namespace LibraryBusinessLogicLayer
         }
 
       
+        public int CreateContactRequest(ContactDTO c)
+        {
+            ContactDataAcess contactDataAcess = new ContactDataAcess(this._conn);
+            int ContactID = contactDataAcess.CreateContactRequest(c);
+            return ContactID;
+        }
+        public int CreateSupportRequest(SupportDTO s)
+        {
+            SupportDataAccess supportDataAccess = new SupportDataAccess(this._conn);
+            int SupportID = supportDataAccess.CreateSupportRequest(s);
+            return SupportID;
+        }
+
     }
 }
