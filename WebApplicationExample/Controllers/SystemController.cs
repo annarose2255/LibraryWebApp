@@ -84,12 +84,12 @@ namespace WebApplicationExample.Controllers
         [HttpPost]
         public ActionResult EditUser(DashboardModels inModel)
         {
+            UserDTO _profile = (UserDTO)System.Web.HttpContext.Current.Session["Profile"];
             if (ModelState.IsValid)
             {
                 // connection string coming out of the web.config
                 BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru(System.Configuration.ConfigurationManager.
                 ConnectionStrings["dbconnection"].ConnectionString);
-                UserDTO _profile = (UserDTO)System.Web.HttpContext.Current.Session["Profile"];
                 //EditUserBLL edituserBLL = new EditUserBLL();
                 //requested changes to profile/user fields
                 UserDTO _mappedUser = new UserDTO
@@ -116,7 +116,7 @@ namespace WebApplicationExample.Controllers
                     Salt = _profile.Salt,
                     FirstName = string.IsNullOrEmpty(_mappedUser.FirstName) ? _profile.FirstName : _mappedUser.FirstName,
                     LastName = string.IsNullOrEmpty(_mappedUser.LastName) ? _profile.LastName : _mappedUser.LastName,
-                    PrimaryEmail = string.IsNullOrEmpty(_mappedUser.PrimaryEmail) ? _profile.FirstName : _mappedUser.FirstName,
+                    PrimaryEmail = string.IsNullOrEmpty(_mappedUser.PrimaryEmail) ? _profile.PrimaryEmail : _mappedUser.PrimaryEmail,
                     PrimaryPhone = string.IsNullOrEmpty(_mappedUser.PrimaryPhone) ? _profile.PrimaryPhone : _mappedUser.PrimaryPhone,
                     //cannot change AddressID currently
                     AddressID = _profile.AddressID,
@@ -146,15 +146,17 @@ namespace WebApplicationExample.Controllers
                     //use case # 1, the user was able to successfully edit fields
                     //reload the page to see the changes
                     System.Web.HttpContext.Current.Session["Profile"] = businessLogicPassThru.GetUser(new_db_fields);
-                    return RedirectToAction("Dashboard", "System");
+                    inModel.Message = "Changes saved successfully";
+                    return View("Dashboard", inModel);
                 }
                 //the User model does not currently have error messages 
-                return RedirectToAction("Dashboard", "System");
+                return View("Dashboard", inModel);
             }
             else
             {
                 // use case # 3, valiation on client failed, show error message in Dashboard.cshtml
-                return View();
+                inModel.UserModel.Message = "Unable to save changes to user";
+                return View("Dashboard",inModel);
             }
         }
 
