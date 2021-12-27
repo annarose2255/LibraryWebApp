@@ -84,8 +84,42 @@ namespace LibraryWebApp
 
                 ContactModel _model = new ContactModel();
                 //TODO: take info to database
-                inModel.Message = "You have submitted the form. Thank you!";
+                // connection string coming out of the web.config
+                BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru(System.Configuration.ConfigurationManager.
+                ConnectionStrings["dbconnection"].ConnectionString);
+
+                //RegisterBLL registerBLL = new RegisterBLL();
+
+                // pass a LoginBLL object because it contains the connection string and that will be need in business layer
+                // to connect to database
+                try
+                {
+                    int go = businessLogicPassThru.CreateContactRequest(Mapper.ContactModelToContactDTO(inModel));
+                    if (go >= 0) //if the id of the contactrequest is 0 or greater we know that the data was added 
+                    {
+                        inModel.Message = "You have submitted the form. Thank you!";
+
+                    }
+                    else
+                    {
+                        throw new Exception("Something went wrong");
+                    }
+                    
+                }
+                catch (Exception ex)
+                {
+                    inModel.Message = "";
+                    throw;
+
+                }
                 return View(inModel);
+                // 
+                //UserDTO _profile = registerBLL.Register(Mapper.GlobalLoginModelToUserDTO(inModel), businessLogicPassThru);
+
+                // error message coming all the way up the stack from database or business layer
+                //inModel.RegisterModel.Message = _profile.ErrorMessage;
+
+
             }
             else
             {

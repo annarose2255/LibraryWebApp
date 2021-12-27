@@ -8,7 +8,7 @@ using System.Web;
 
 namespace WebApplicationExample.Utility
 {
-   
+
 
     public static class Mapper
     {
@@ -22,11 +22,11 @@ namespace WebApplicationExample.Utility
                 LastName = inModel.RegisterModel.LastName,
                 Password = inModel.RegisterModel.Password,
                 PrimaryEmail = inModel.RegisterModel.PrimaryEmail is null ? "" : inModel.RegisterModel.PrimaryEmail,
-                PrimaryPhone = inModel.RegisterModel.PrimaryPhone is null ? "": inModel.RegisterModel.PrimaryPhone,
+                PrimaryPhone = inModel.RegisterModel.PrimaryPhone is null ? "" : inModel.RegisterModel.PrimaryPhone,
                 RoleId = (int)RoleType.Member, // this is the default
                 RoleName = RoleType.Member.ToString()
             };
-           
+
             return _userDTO;
         }
 
@@ -36,8 +36,8 @@ namespace WebApplicationExample.Utility
 
             foreach (var item in inList)
             {
-                UserModel _m = new UserModel 
-                { 
+                UserModel _m = new UserModel
+                {
                     RoleId = item.RoleId,
                     RoleName = item.RoleName,
                     FirstName = item.FirstName,
@@ -52,5 +52,19 @@ namespace WebApplicationExample.Utility
 
             return _list;
         }
-    }   
+
+        public static ContactDTO ContactModelToContactDTO(ContactModel inModel)
+        {
+            ContactDTO _ContactDTO = new ContactDTO
+            {
+                Name = inModel.Name,
+                Email = inModel.Email is null ? "" : inModel.Email, //??
+                Message = inModel.MessageText,
+                DateSubmitted = DateTime.Now
+
+            };
+
+            return _ContactDTO;
+        }
+    }
 }

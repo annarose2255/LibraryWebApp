@@ -79,7 +79,12 @@ namespace LibraryBusinessLogicLayer
             return userid;
         }
 
-
+        public int CreateContactRequest(ContactDTO c)
+        {
+            ContactDataAcess contactDataAcess = new ContactDataAcess(this._conn);
+            int ContactID = contactDataAcess.CreateContactRequest(c);
+            return ContactID;
+        }
 
     }
 }

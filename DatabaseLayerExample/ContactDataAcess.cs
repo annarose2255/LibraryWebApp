@@ -130,6 +130,7 @@ namespace LibraryDatabaseAccessLayer
                         con.Open();
                         _sqlCommand.ExecuteNonQuery();   // calls the sp 
                         var result = _parmContactIDOut.Value;
+                        c.ContactId = (int)result;
                         con.Close();
                         return (int)result;
 
