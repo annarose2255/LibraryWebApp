@@ -59,7 +59,7 @@ namespace LibraryDatabaseAccessLayer
                                     GenreTypeID = reader.GetInt32(reader.GetOrdinal("GenreTypeID_FK")),
                                     PublisherID = reader.GetInt32(reader.GetOrdinal("PublisherID_FK")),
                                     IsCheckedOutUserID = reader.GetInt32(reader.GetOrdinal("IsCheckedOutUserID_FK")),
-                                    Title = reader.SafeGetString("Description"),
+                                    Title = reader.SafeGetString("Name"),
                                     //Comment = (string)reader["Comment"],
                                     DateModified = reader.GetDateTime(reader.GetOrdinal("DateModified")),
                                     ModifiedByUserID = reader.GetInt32(reader.GetOrdinal("ModifiedByUserID")),

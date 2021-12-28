@@ -29,12 +29,14 @@ textarea {
 /* our custom css*/
 main {
     min-height: calc(100vh - 364px);
-    margin-top: 20px;
-    margin-left: 200px;
-    margin-right: 200px;
-    margin-bottom: 100px;
+    margin-top: 2%;
+    margin-left: 11%;
+    margin-right: 11%;
+    margin-bottom: 2%;
 }
+.allButFooter{
 
+}
 .justspace {
     height: 500px;
 }
@@ -63,19 +65,66 @@ main {
     padding-top: 10px;
     color: #D2DBDA; /* color of text - EDF7F6 white, 2CA6A4 - blue, D2DBDA - light Grey Silver*/
 }
-.footerLinks{
-    font-size: 18px;
+.footerCollumn2 {
+    /*max-width: 360px;
+    align-self: stretch;
+    width: auto;*/
+   /* margin-right: 150px;
+    margin-left: 150px;*/
+    text-align: center; /* alines the text to the center of this content box*/
+    font-size: 30px;
+   /* padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;*/
+    color: #D2DBDA; /* color of text - EDF7F6 white, 2CA6A4 - blue, D2DBDA - light Grey Silver*/
+}
+.footerLinks {
+    font-size: 20px;
     padding-block-start: 10px;
+    padding-top: 1%;
+    padding-bottom: 2%;
+}
+/* change color of the headers on the footer collumns*/
+#footerCollumnHeader {
+    color: #2CA6A4; /* EDF7F6 white, 2CA6A4 blue*/
+    font-size: 28px;
+    padding-top: 3%;
+    text-align: center;
+}
+
+.footerSpace {
+    margin-top: 2%;
+    padding: 10px;
+}
+.footerButton {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    height: 100%;
+    padding: 18%;
+    border-radius: 15px;
+    padding-top: 4%;
+    padding-bottom: 7%;
+    margin-left: -50%;
 }
 /* newsLetter collumn stuff*/
-.newsletterInput {
-    padding-block-start: 20px;
-    font-size: 20px;
+#newsletterInput {
+    /*padding-block-start: 20px;*/
+    font-size: 14px;
+}
+#newsletterInput2 {
+    padding: 0%;
+    margin: 0;
+    width: 100%;
+    font-size: 16px;
+    max-height: 80%;
 }
 .newsletterInfo {
-    font-size: 15px;
+    font-size: 16px;
     color: #B2B7B6; /* B2B7B6 - darker silver */
-    margin-top: 10px;
+    margin-top: 2%;
+    text-align: center;
+
 }
 #newsletter {
     margin-left: 200px;
@@ -143,16 +192,22 @@ button:hover span:after { /* edits/add all span elements (just an inline element
                 /*1px -1px 0 #000;*/ /* top right shadow - need comma to activate*/
                 /*-1px -1px 0 #000;*/ /* top left shadow*/
 }
-
-/* change color of the headers on the footer collumns*/
-#footerCollumnHeader {
-    color: #2CA6A4; /* EDF7F6 white, 2CA6A4 blue*/
+#link2 {
+    color: #9F2CAD;
 }
 
+    #link2:hover {
+        color: #5D43C1;
+        /* see https://www.w3schools.com/cssref/css3_pr_text-shadow.asp for more on text shadows*/
+        text-shadow: -1px .5px 1px #000, /*  h-shadow (horizontal), v-shadow (vertical), blur-radius, color -- left bottom shadow */
+        1px .5px 1px #000; /*more than 1 shadow - right bottom*/
+        /*1px -1px 0 #000;*/ /* top right shadow - need comma to activate*/
+        /*-1px -1px 0 #000;*/ /* top left shadow*/
+    }
+
+
 /* End Footer Stlying*/
-
 /* Begin header styling */
-
 body {
     margin: 0px;
 }
@@ -162,6 +217,7 @@ header {
     width: 100%;
     padding: 10px;
     box-shadow: 0px 5px #9F2CAD;
+    height: fit-content;
 }
 /* Navbar text */
 nav a {
@@ -172,17 +228,21 @@ nav a {
     text-decoration: none;
     font-size: 20px;
     padding-bottom: 10px;
-    padding-top: 10px;
+    padding-top: 5px;
 }
 
-nav a:hover {
-    background-color: #9F2CAD; /*  #5D43C1; */
-    color: white;
-}
+    nav a:hover {
+        background-color: #9F2CAD; /*  #5D43C1; */
+        color: white;
+        box-shadow: 0px 3px #5d43c1;
+        border-radius: 6px;
+        /*text-decoration-color: #5D43C1;*/
+    }
 
 nav {
     display: inline-block;
     margin-left: 0px;
+   /* margin-left: -20px;*/
 }
 
 /* make nav bar in line and title look good */
@@ -192,9 +252,11 @@ nav {
     list-style-type: none;
     padding-left: 0px;
     margin-left: 10px;
+    margin-top: 2%;
 }
 headerButtons-list{
     display:inline;
+   /* min-height: fit-content;*/
 }
 .title {
     color: #ffffff;
@@ -205,15 +267,21 @@ headerButtons-list{
 
 /* Search bar stuff*/
 .search input[type=text] {
-    width: 300px;
-    height: 25px;
+    width: 281px;
+    max-width: 100%;
+    height: 28px;
+    float: left;
     border-radius: 25px;
     border: none;
+    font-size: 14px;
+    box-shadow: 0px 4px #5d43c1;
+    padding: 9px 0px 9px 10px;
 }
 .search {
-    float: right;
+    float: left;
     padding: 13px;
-    display: flex;
+    /*display: flex;*/
+    width: 100%;
 }
 
 .searchBy {
@@ -221,17 +289,23 @@ headerButtons-list{
 }
 
 .search button {
-    background-color: #2CA6A4;
     color: #f2f2f2;
-    float: right;
+    float: left;
     padding: 5px 10px;
-    margin-right: 16px;
+   /* margin-right: 16px;*/
     font-size: 12px;
     border: none;
     cursor: pointer;
+    background-color: #9f2cad;
+    box-shadow: 0px 4px #5d43c1;
+    margin-left: 2%;
+    border-radius: 15px;
+    width: 28%;
+}
+label{
+    font-size: 13px;
 }
 /* End header styling */
-
 /*CSS for Login Page Starts Here*/
 .parent-login { /*Define the div that contains the two forms*/
     border: 1px solid white;
@@ -316,25 +390,35 @@ headerButtons-list{
     margin-top: 1%;
 }
 
-#image-height{
-    height:300px;
+#image-height {
+    height: 300px;
 }
 
 .item {
     background-color: #9F2CAD;
 }
+.carousel-indicators {
+    margin-left: 20%;
+}
 
 .carousel-caption {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 29px;
-    font-weight: normal;
-    line-height: 1.6em;
     margin-bottom: 50px;
+    background-color: #B2B7B6;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    background: rgba(2, 2, 2, 0.5);
+    /*opacity: 0.6;*/
 }
-
-.summary-text{
-    font-size:18px;
-}
+    /*.carousel-caption h3 {
+        opacity: 1;
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 29px;
+        font-weight: normal;
+        line-height: 1.6em;
+    }*/
+    .summary-text {
+        font-size: 18px;
+    }
 /*Info Block CSS*/
 
 .row{
@@ -351,18 +435,43 @@ headerButtons-list{
 }
 
 .schedule td {
-    text-align: end;
+    text-align: center;
+    padding-right: 20px;
 }
 
-.block1 {
+#home-center-box {
+ /*padding: inherit, 5%, inherit, 5%;*/
+    padding-left: 10%;
+    padding-right: 10%;
+}
+h3{
+    font-size: 22px;
+}
+p{
+    font-size: 16px;
+}
+.hours-block {
     /*width: 200px;*/
     height: 300px;
    /* float: left;
     width: 33.3%;*/
     border: 1px solid #ccc;
     padding: 10px;
+    margin-top: 1%;
     box-sizing: border-box;
     margin-bottom: 1%;
+    text-align: center;
+}
+.hours-block2 {
+    /*width: 200px;*/
+    height: 300px;
+    /* float: left;
+    width: 33.3%;*/
+    border: 1px solid #ccc;
+    padding: 0px;
+    margin-top: 1%;
+    box-sizing: border-box;
+   /* margin-bottom: 1%;*/
     text-align: center;
 }
 /*Location*/
@@ -390,6 +499,28 @@ headerButtons-list{
     background-image: url(../Content/book-images/map.jpg);
     background-repeat: no-repeat;
 }
+#image-height2 {
+    /* max-width: 100%;
+    min-height: 20%; */
+    max-height: 100%;
+    /*height: 100%;*/
+    max-width: 100%;
+    /*object-fit: contain; */
+    margin: auto;
+    display: block;
+}
+
+.hours-box-center3 {
+   /* max-width: 100%;*/
+    height: 300px;
+}
+.map-title {
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    height: 0px;
+    width: 0px;
+}
 
 .block-links {
     font-size: 18px;
@@ -397,14 +528,18 @@ headerButtons-list{
     color: #9F2CAD;
 }
 /*Location and Hours title bar*/
-.location-hours {
+.home-dividers {
     border: 1px #ccc solid;
-    padding: 10px;
+    padding: 15px;
     border-radius: 15px;
     text-align: center;
     background-color: #2CA6A4;
     color: white;
     box-shadow: 0px 5px #9F2CAD;
+    
+}
+h2 {
+    font-size: 24px;
 }
 
 #home-faq {
@@ -528,18 +663,29 @@ h1 {
     float: none;
     min-width: 150px;
     min-height: 40px;
+    font-size: 15px;
+    border-radius: 15px;
 }
-/*hr.rounded {
-    border-top: 2px solid #9F2CAD;
-    border-radius: 5px;
+#contact-from{
+    font-size: 16px;
 }
-.vl {
-    border-left: 6px solid green;
-    height: 500px;
-    
-}*/
-#contact-input{
+.contact-divider {
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    height: 0px;
+    width: 0px;
+   
+}
+address {
+    font-size: 16px;
+}
+#contact-input {
     max-width: 100%;
+    font-size: 14px;
+}
+#emailHelp{
+    font-size: 12px;
 }
 #exampleFormControlTextarea1{
     max-width: 100%;
@@ -570,6 +716,7 @@ h1 {
 }
 .support-text {
     color: #9F2CAD;
+    padding-top: 3%;
     /*padding-bottom: 10px;
     padding-top: 10px;
     padding-left: 10px;
@@ -588,11 +735,228 @@ input[type=radio] {
 label {
     display: block;
 }
-}
+
 
 @media only screen and (max-width: 1080px) {
-    main{
+    main {
         margin-left: 0;
         margin-right: 0;
     }
+
+    .search {
+        display: inline-block;
+        /*background-color: blue;*/
+        float: none;
+        margin-left: 4%;
+    }
+
+    .search input[type=text] {
+        width: 69%;
+        font-size: 14px;
+        padding-left: 3.5%;
+    }
+
+    nav {
+        width: 100%;
+        margin-left: -4%;
+        /* padding: 5%;*/
+    }
+
+        nav a {
+            width: 100%;
+            padding: 13% 17% 20% 17%;
+            /*padding-bottom: 20%;*/
+            /* margin-left: 25%;*/
+        }
+
+        nav li {
+            padding-left: 6%;
+        }
+
+    .headerButtons {
+        margin-left: 5%;
+    }
+
+    .search button {
+        width: 27%;
+        border-radius: 15px;
+    }
+
+    .newsletterInput2 {
+        font-size: 16px;
+    }
+
+    .newsletterInput2 input[type=email] {
+        padding-left: 2%;
+        margin-bottom: 2%;
+    }
+    #image-height {
+        height: 300px;
+        /*margin-left: 10%;*/
+    }
+    .footerButton {
+        /*        width: 100%;
+        min-width: 100%;
+        max-width: 100%;*/
+        /*height: 100%;*/
+        /*padding: 3%;*/
+        font-size: 17px;
+        padding-top: 1.35%;
+        padding-bottom: 2.5%;
+    }
+
+    #footerCollumnHeader {
+        padding-top: 5%;
+    }
+
+    .footerCollumn2 {
+        margin-bottom: 5%;
+        height: 100%;
+    }
+    main {
+        margin-top: 0%;
+        margin-left: 0%;
+        margin-right: 0%;
+        margin-bottom: 10%;
+    }
+    .home-dividers{
+        margin-top: 12%;
+        margin-bottom: 5%;
+
+    }
+    .map-title {
+       /* height: 100%;
+        width: 100%;*/
+       height: 10%;
+       width: 100%;
+        padding-bottom: 10%;
+        text-indent: 0%;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    #image-height2 {
+        border-radius: 15px;
+        width: 300px;
+    }
+    /* hours-block*/
+    .hours-block {
+        /*width: 200px;*/
+        height: 300px;
+        /* float: left;
+    width: 33.3%;*/
+        background-color: #2CA6A4;
+        color: white;
+        /*border: 1px #ccc solid;*/
+        box-shadow: 0px 6px #9F2CAD;
+        padding: 10px;
+        margin-top: 2%;
+        margin-bottom: 2%;
+        padding-bottom: 0px;
+        border-radius: 15px;
+        box-sizing: border-box;
+        
+        text-align: center;
+
+    }
+    .hours-block2 {
+        /*width: 200px;*/
+        height: 300px;
+        /* float: left;
+    width: 33.3%;*/
+        background-color: #2CA6A4;
+        color: white;
+        /*border: 1px #ccc solid;*/
+        box-shadow: 0px 6px #9F2CAD;
+        padding: 10px;
+        margin-top: 2%;
+        margin-bottom: 2%;
+        padding-bottom: 0px;
+        border-radius: 15px;
+        box-sizing: border-box;
+        text-align: center;
+        
+    }
+    .hours-box-center {
+        background-color: white;
+        color: black;
+        margin-bottom: 0%;
+        padding-top: 4%;
+        padding-bottom: 5%;
+        border-radius: 15px;
+        margin-left: 3%;
+        margin-right: 3%;
+    }
+    .hours-box-center3 {
+        background-color: white;
+        color: black;
+        margin-bottom: 0%;
+        padding-top: 4%;
+        min-height: 20%;
+        padding-bottom: 20%;
+        border-radius: 15px;
+        margin-left: 3%;
+        margin-right: 3%;
+        margin-top: 3%;
+        max-height: 90%;
+        /*margin-top: 3%;*/
+    }
+    .hours-box-center2 {
+        background-color: white;
+        color: black;
+        margin-bottom: 0%;
+        padding-top: 4%;
+        padding-bottom: 10%;
+        text-align: center;
+        border-radius: 15px;
+        padding-left: 6%;
+        padding-right: 6%;
+        margin-left: 3%;
+        margin-right: 3%;
+    }
+    #home-center-box{
+        /*padding: inherit, 5%, inherit, 5%;*/
+        padding-left: 5%;
+        padding-right: 5%;
+        
+    }
+    h3{
+        font-size: 21px;
+        
+    }
+    #location-header {
+        margin-bottom: 14%;
+    }
+    .schedule {
+        padding-right: 120px;
+        width: 100%;
+    }
+    .schedule td {
+        text-align: center;
+        padding-right: 20px;
+    }
+
+    /*Location*/
+    .block2 {
+        /*    width: 200px;*/
+        height: 300px;
+        /*    float: left;
+    width: 33.3%;*/
+        border: 1px solid #ccc;
+        padding: 10px;
+        box-sizing: border-box;
+        margin-bottom: 1%;
+        text-align: center;
+    }
+    .contact-divider {
+        height: 10%;
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+        /*padding-bottom: 10%;*/
+        text-indent: 0%;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    /*Map Image block*/
+
 }
