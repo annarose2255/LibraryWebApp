@@ -12,46 +12,27 @@
 
 
 }
-@{
-    <script>
-        document.getElementById("edit").style.display = "none";
-        document.getElementById("noedit").style.display = "run-in";
-    </script>
-}
-@if (Model.UserModel.Message != "") 
+@*Use case # 1 : user successfully completed changes to the form in edit profile view*@
+@if (Model.UserModel.Message == "complete")
 {
-    <script>
-        document.getElementById("edit").style.display = "run-in";
-        document.getElementById("noedit").style.display = "none";
-    </script>
+    <label class="alert-success">@Model.Message</label>
+    @*Wrap javascript in text tag to identify for the template parser that raw "HTML" should be rendered*@
+    <text>
+        document.getElementById("noedit").style.display = "revert";
+    </text>
+
 }
+@*Use case # 2 : user had invalid data input when attempting to submit form (email or phonenumber errors)*@
+@if (Model.UserModel.Message == "incomplete")
+{
+    @*Wrap javascript in text tag to identify for the template parser that raw "HTML" should be rendered*@
+    <text>
+        document.getElementById("noedit").style.display = "none";
+    </text>
 <div class="container">
-    <div class="col-lg-6">
-        <div class="row" id="noedit" style="border:solid black 1px; margin-right:10%">
-            <label class="alert-success">@Model.Message</label>
-            <label for="error" id="error" class="alert-danger">@Model.UserModel.Message</label>
-            <h4 class="card-title" style="border-bottom:solid black 1px">Welcome, <strong>@profile.Username</strong>!</h4>
-            <h6 class="card-subtitle mb-2 text-muted">This is your dashboard with all your relevent user information</h6>
-            <p class="card-text">
-                <strong>Username: </strong>@profile.Username
-            </p>
-            <p class="card-text">
-                <strong>First name: </strong>@profile.FirstName
-            </p>
-            <p class="card-text">
-                <strong>Last name: </strong>@profile.LastName
-            </p>
-            <p class="card-text">
-                <strong>E-mail: </strong>@profile.PrimaryEmail
-            </p>
-            <p class="card-text">
-                <strong>Phone number: </strong>@profile.PrimaryPhone
-            </p>
-            <a href="/Home/Login" class="card-link" onclick="logout()">Logout</a> <span id="demo"></span><input type="button" onclick="editon()" value="Edit Profile" style="background-color: #9F2CAD; color: white; margin-top: 10%">
-        </div>
-        @using (Html.BeginForm("EditUser", "System", FormMethod.Post))
-        {
-    <div class="row" id="edit" style="border:solid black 1px; margin-right:10%; display:none">
+    @using (Html.BeginForm("EditUser", "System", FormMethod.Post, new {@display = "revert"} ))
+    {
+    <div class="row" id="edit" style="border:solid black 1px; margin-right:10%; display:run-in">
         <label for="error" id="error" class="alert-danger">@Model.UserModel.Message</label>
         <h4 class="card-title" style="border-bottom:solid black 1px">Edit Profile Window</h4>
 
@@ -78,29 +59,65 @@
             <strong>Phone number: </strong>@Html.TextBoxFor(m => m.UserModel.PrimaryPhone, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.UserModel.PrimaryPhone, "", new { @class = "alert-danger" })
         </p>
-        <input type="submit" value="Save Changes" class="btn btn-primary" onclick="editoff()" style="background-color: #9F2CAD; color: white; margin-top: 10%" />
+        <input type="submit" value="Save Changes" class="btn btn-primary" style="background-color: #9F2CAD; color: white; margin-top: 10%" />
 
     </div>
-            }
+    }
+</div>
+}
 
-            <br /><br />
-            <div class="row" style="border:solid black 1px; margin-right:10%">
+@*When would the model not be set to an instance of an object?*@
+@if (Model.UserModel.Message != "")
+{
+    <script>
+        document.getElementById("noedit").style.display = "none";
+        editon()
+    </script>
+}
+@*Use case # 3 : user has not requested changes to their profile, only display noedit profile view*@
+<div class="container">
+    <div class="col-lg-6">
+        <div class="row" id="noedit" style="border:solid black 1px; margin-right:10%">
 
-                <h4 class="card-title" style="border-bottom:solid black 1px">Membership/Billing</h4>
-                <p class="card-text">
-                    <strong>Library Card status: </strong>@profile.RoleName
-                </p>
-                <p class="card-text">
-                    Renewal Date: TODO
-                </p>
-                <p class="card-text">
-                    Billing: TODO?
-                </p>
+            <label for="error" id="error" class="alert-danger">@Model.UserModel.Message</label>
+            <h4 class="card-title" style="border-bottom:solid black 1px">Welcome, <strong>@profile.Username</strong>!</h4>
+            <h6 class="card-subtitle mb-2 text-muted">This is your dashboard with all your relevent user information</h6>
+            <p class="card-text">
+                <strong>Username: </strong>@profile.Username
+            </p>
+            <p class="card-text">
+                <strong>First name: </strong>@profile.FirstName
+            </p>
+            <p class="card-text">
+                <strong>Last name: </strong>@profile.LastName
+            </p>
+            <p class="card-text">
+                <strong>E-mail: </strong>@profile.PrimaryEmail
+            </p>
+            <p class="card-text">
+                <strong>Phone number: </strong>@profile.PrimaryPhone
+            </p>
+            <a href="/Home/Login" class="card-link" onclick="logout()">Logout</a> <span id="demo"></span><input type="button" id="turnediton" value="Edit Profile" style="background-color: #9F2CAD; color: white; margin-top: 10%" onclick="location.href='<%: Url.Action("RequestEdit","System") %>'" />
+        </div>
 
+        <br /><br />
+        <div class="row" style="border:solid black 1px; margin-right:10%">
 
-            </div>
+            <h4 class="card-title" style="border-bottom:solid black 1px">Membership/Billing</h4>
+            <p class="card-text">
+                <strong>Library Card status: </strong>@profile.RoleName
+            </p>
+            <p class="card-text">
+                Renewal Date: TODO
+            </p>
+            <p class="card-text">
+                Billing: TODO?
+            </p>
+
 
         </div>
+
+    </div>
     <div class="col-lg-6" style="border:solid black 1px">
         <h4 class="card-title" style="border-bottom:solid black 1px">Saved books</h4>
         <p class="card-text">
@@ -218,18 +235,54 @@
     <script type="text/javascript" language="javascript">
         function editon() {
             document.getElementById("edit").style.display = "revert";
-            document.getElementById("noedit").style.display = "none";
+            @Model.UserModel.Message = "incomplete"; 
+            <div class="container" id="form">
+            @using (Html.BeginForm("EditUser", "System", FormMethod.Post))
+            {
+            <div class="row" id="edit" style="border:solid black 1px; margin-right:10%; display:run-in">
+                <label for="error" id="error" class="alert-danger">@Model.UserModel.Message</label>
+                <h4 class="card-title" style="border-bottom:solid black 1px">Edit Profile Window</h4>
+
+                <p class="card-text">
+                    <strong>Username: </strong>@profile.Username
+                </p>
+                <p class="card-text">
+                    <strong>First name: </strong>@Html.TextBoxFor(m => m.UserModel.FirstName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.UserModel.FirstName, "", new { @class = "alert-danger" })
+                </p>
+                <p class="card-text">
+                    <strong>Last name: </strong>@Html.TextBoxFor(m => m.UserModel.LastName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.UserModel.LastName, "", new { @class = "alert-danger" })
+                </p>
+                <p class="card-text">
+                    <strong>Password: </strong>@Html.TextBoxFor(m => m.UserModel.Password, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.UserModel.Password, "", new { @class = "alert-danger" })
+                </p>
+                <p class="card-text">
+                    <strong>E-mail: </strong>@Html.TextBoxFor(m => m.UserModel.PrimaryEmail, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.UserModel.PrimaryEmail, "", new { @class = "alert-danger" })
+                </p>
+                <p class="card-text">
+                    <strong>Phone number: </strong>@Html.TextBoxFor(m => m.UserModel.PrimaryPhone, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.UserModel.PrimaryPhone, "", new { @class = "alert-danger" })
+                </p>
+                <input type="submit" value="Save Changes" class="btn btn-primary" style="background-color: #9F2CAD; color: white; margin-top: 10%" />
+
+                </div>
+            }
+            </div>
+            
         };
     </script>
     <script type="text/javascript" language="javascript">
         function editoff() {
             if (Model.UserMode.Message != "") {
-                window.alert("Changes were made successfully!");
+                alert("Changes were made successfully!");
                 document.getElementById("edit").style.display = "revert";
                 document.getElementById("noedit").style.display = "none";
             }
             else {
-                window.alert("Are you sure you want to save changes?");
+                alert("Are you sure you want to save changes?");
                 document.getElementById("edit").style.display = "none";
                 document.getElementById("noedit").style.display = "revert";
             }
@@ -237,7 +290,7 @@
     </script>
     <script>
         function logout() {
-            (this.ViewContext.Controller).Logout();
+            ViewContext.Controller.Logout();
         }
     </script>
 

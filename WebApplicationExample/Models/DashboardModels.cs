@@ -12,7 +12,7 @@ namespace LibraryWebApp.Models
         public DashboardModels()
         {
             UserModel = new UserModel();
-            //UsersModel = new UsersModel();
+            //UsersModel = new UsersModel(); //need list of users to accomplish instantiation
         }
     }
 }

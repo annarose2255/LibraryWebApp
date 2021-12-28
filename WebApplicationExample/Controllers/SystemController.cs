@@ -78,7 +78,14 @@ namespace LibraryWebApp
         {
             //RoleListVM list = new RoleListVM(_logicRole.GetRolesPassThru());
             //ViewBag.Roles = new SelectList(list.ListOfRoleModel, "RoleId", "RoleName");
-            return View();
+            return View("Login");
+            
+        }
+        [HttpGet]
+        public ActionResult RequestEdit(DashboardModels inModel)
+        {
+            inModel.UserModel.Message = "incomplete";
+            return View("Dashboard", inModel);
         }
 
         [HttpPost]
@@ -90,7 +97,6 @@ namespace LibraryWebApp
                 // connection string coming out of the web.config
                 BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru(System.Configuration.ConfigurationManager.
                 ConnectionStrings["dbconnection"].ConnectionString);
-                //EditUserBLL edituserBLL = new EditUserBLL();
                 //requested changes to profile/user fields
                 UserDTO _mappedUser = new UserDTO
                 {
@@ -104,6 +110,7 @@ namespace LibraryWebApp
                     RoleName = inModel.UserModel.RoleName
                 };
                 Hasher hasher = new Hasher();
+                //userDTO with updated fields (unchanged fields stayed the same)
                 UserDTO new_db_fields = new UserDTO
                 {
                     //i need to get the UserID from the database via session profile
@@ -128,33 +135,23 @@ namespace LibraryWebApp
                     DateModified = DateTime.Now
 
                 };
-                //userDTO with updated fields (unchanged fields stayed the same)
                 businessLogicPassThru.EditUser(new_db_fields);
-
-                // TODO: user mapper
-                //toAdd.FirstName = model.FirstName;
-                //toAdd.LastName = model.LastName;
-                //toAdd.UserName = model.Username;
-                //toAdd.Password = model.Password;
-                //toAdd.RoleID_FK = model.RoleId;
-
-                //_logicUser.CreateUserPassThru(toAdd);
-
-                //inModel.Message = updateduser.ErrorMessage;
-                if (string.IsNullOrEmpty(inModel.Message))
+                if (string.IsNullOrEmpty(inModel.Message) & string.IsNullOrEmpty(inModel.UserModel.Message))
                 {
                     //use case # 1, the user was able to successfully edit fields
-                    //reload the page to see the changes
+                    //reload the page, show 
                     System.Web.HttpContext.Current.Session["Profile"] = businessLogicPassThru.GetUser(new_db_fields);
+                    inModel.UserModel.Message = "complete";
                     inModel.Message = "Changes saved successfully";
-                    return View("Dashboard", inModel);
+                    return View("Dashboard",inModel);
                 }
-                //the User model does not currently have error messages 
+                //the dashboard has error messages, display edit view 
+                inModel.UserModel.Message = "incomplete";
                 return View("Dashboard", inModel);
             }
             else
             {
-                // use case # 3, valiation on client failed, show error message in Dashboard.cshtml
+                // use case # 3, valiation on client failed, show error message in Dashboard.cshtml, don't leave editing part of view
                 inModel.UserModel.Message = "Unable to save changes to user";
                 return View("Dashboard",inModel);
             }
@@ -179,16 +176,12 @@ namespace LibraryWebApp
 
         #endregion
         [HttpGet]
-        public ActionResult Logout()
+        public void Logout()
         {
 
-            UserDTO guest = new UserDTO();
-            guest.Username = "guest";
-            guest.RoleId = (int)RoleType.Guest;
-            guest.RoleName = RoleType.Guest.ToString();
-            System.Web.HttpContext.Current.Session["Profile"] = guest;
+            Session.Abandon();
 
-            return View();
+            //return View();
         }
     }
 
