@@ -52,7 +52,22 @@ namespace WebApplicationExample.Utility
                 };
                 _list.Add(_m);
             }
+            return _list;
+        }
 
+        internal static List<RoleModel> ListOfRoleDTOToListOfRoles(List<RoleDTO> inList)
+        {
+            List<RoleModel> _list = new List<RoleModel>();
+
+            foreach (var item in inList)
+            {
+                RoleModel _m = new RoleModel
+                {                   
+                    RoleId = item.RoleId,
+                    RoleName = item.RoleName
+                };
+                _list.Add(_m);
+            }
             return _list;
         }
 
@@ -82,7 +97,7 @@ namespace WebApplicationExample.Utility
             {
                 UserId = inModel.UserId,
                 RoleId = inModel.RoleId,
-                RoleName = inModel.RoleName,
+                //RoleName = inModel.RoleName,
                 FirstName = inModel.FirstName,
                 LastName = inModel.LastName,
                 Password = inModel.Password,

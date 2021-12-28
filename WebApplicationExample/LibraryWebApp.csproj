@@ -139,7 +139,9 @@
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Models\DashboardModel.cs" />
+    <Compile Include="Models\RoleModel.cs" />
     <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Models\RolesModel.cs" />
     <Compile Include="Models\UsersModel.cs" />
     <Compile Include="Utility\Mapper.cs" />
     <Compile Include="Controllers\HomeController.cs" />

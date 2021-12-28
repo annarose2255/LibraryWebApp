@@ -33,7 +33,7 @@ namespace LibraryWebApp.Models
         public string Username { get; set; }
       
         public string Password { get; set; }
-    
+        [Display(Name = "Role")]
         public int RoleId { get; set; }
 
         public string RoleName { get; set; }

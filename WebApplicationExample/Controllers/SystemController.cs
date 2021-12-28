@@ -82,6 +82,10 @@ namespace WebApplicationExample.Controllers
                 BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru(System.Configuration.ConfigurationManager.
                 ConnectionStrings["dbconnection"].ConnectionString);
 
+                // get the roles and add to a bag
+                List<RoleDTO> _rolesDTO = businessLogicPassThru.GetRoles();
+                ViewBag.Roles = new SelectList(Mapper.ListOfRoleDTOToListOfRoles(_rolesDTO), "RoleId", "RoleName");
+
                 UserDTO _user = businessLogicPassThru.GetSingleUserData(id);
                 return View(Mapper.UserDTOToUserModel(_user));
             }
