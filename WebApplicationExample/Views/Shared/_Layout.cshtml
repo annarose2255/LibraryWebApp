@@ -11,35 +11,46 @@
 <body>
 
     <header>
-        <div class="headerButtons-list">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="title">Solo Jazz Library</div>
+            </div>
+            <div class="col-md-3">
+                <nav>
+                    @*<div class="headerButtons-list">*@
+
+                    <ul class="headerButtons">
+
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Login", "Login", "Home")</li>
+                    </ul>
+                    @*</div>*@
 
 
-            <div class="title">Solo Jazz Library</div>
-            <nav>
-                @*<div class="headerButtons-list">*@
-
-                <ul class="headerButtons">
-
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Login", "Login", "Home")</li>
-                </ul>
-                @*</div>*@
-
-
-            </nav>
-            <div class="search">
-                <form action="home/search">
-                    <input type="text"
-                           placeholder=" Search Catalog"
-                           name="query">
-                    <button>
-                        🔎
-                    </button>
-                </form>
+                </nav>
+            </div>
+            <div class="col-md-3 col-md-offset-4" id="SearchButtonSmallScreen">
+                <div class="search">
+                    <form action="home/search">
+                        <input type="text"
+                               placeholder=" Search Catalog"
+                               name="query">
+                        <button>
+                            🔎
+                        </button>
+                    </form>
+                </div>
+               
             </div>
         </div>
+        @*<div class="headerButtons-list">
+
+
+          
+            
+        </div>*@
 
     </header>
     <main>

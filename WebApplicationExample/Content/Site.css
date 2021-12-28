@@ -164,6 +164,7 @@ header {
     width: 100%;
     padding: 10px;
     box-shadow: 0px 5px #9F2CAD;
+    height: fit-content;
 }
 /* Navbar text */
 nav a {
@@ -177,14 +178,18 @@ nav a {
     padding-top: 10px;
 }
 
-nav a:hover {
-    background-color: #9F2CAD; /*  #5D43C1; */
-    color: white;
-}
+    nav a:hover {
+        background-color: #9F2CAD; /*  #5D43C1; */
+        color: white;
+        box-shadow: 0px 3px #5d43c1;
+        border-radius: 6px;
+        /*text-decoration-color: #5D43C1;*/
+    }
 
 nav {
     display: inline-block;
     margin-left: 0px;
+   /* margin-left: -20px;*/
 }
 
 /* make nav bar in line and title look good */
@@ -194,9 +199,11 @@ nav {
     list-style-type: none;
     padding-left: 0px;
     margin-left: 10px;
+    margin-top: 2%;
 }
 headerButtons-list{
     display:inline;
+   /* min-height: fit-content;*/
 }
 .title {
     color: #ffffff;
@@ -207,15 +214,20 @@ headerButtons-list{
 
 /* Search bar stuff*/
 .search input[type=text] {
-    width: 300px;
-    height: 25px;
+    width: 281px;
+    max-width: 100%;
+    height: 28px;
+    float: left;
     border-radius: 25px;
     border: none;
+    box-shadow: 0px 3px #5d43c1;
+    padding: 9px 0px 9px 6px;
 }
 .search {
-    float: right;
+    float: left;
     padding: 13px;
-    display: flex;
+    /*display: flex;*/
+    width: 100%;
 }
 
 .searchBy {
@@ -223,14 +235,17 @@ headerButtons-list{
 }
 
 .search button {
-    background-color: #2CA6A4;
     color: #f2f2f2;
-    float: right;
+    float: left;
     padding: 5px 10px;
-    margin-right: 16px;
+   /* margin-right: 16px;*/
     font-size: 12px;
     border: none;
     cursor: pointer;
+    background-color: #9f2cad;
+    box-shadow: 0px 3px #5d43c1;
+    margin-left: 2%;
+    width: 28%;
 }
 /* End header styling */
 
@@ -589,4 +604,20 @@ label {
         margin-left: 0;
         margin-right: 0;
     }
+    .search{
+        display: inline-block;
+        /*background-color: blue;*/
+        float: none;
+        margin-left: 6%;
+    }
+    #SearchButtonSmallScreen{
+
+    }
+    .headerButtons{
+        margin-left: 5%;
+    }
+    .search button {
+        width: 23%;
+    }
+
 }
