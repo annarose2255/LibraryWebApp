@@ -317,6 +317,24 @@ namespace LibraryDatabaseAccessLayer
             }
         }
 
+
+
+        public void DeleteUser(int id)
+        {
+            using (SqlConnection con = new SqlConnection(_conn))
+            {
+                using (SqlCommand _sqlCommand = new SqlCommand("uspDeleteUser", con))
+                {
+                    _sqlCommand.CommandType = CommandType.StoredProcedure;
+                    _sqlCommand.Parameters.AddWithValue("@UserID", id);
+
+                    con.Open();
+                    _sqlCommand.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
+        }
+
         #endregion Users
 
 
@@ -368,20 +386,7 @@ namespace LibraryDatabaseAccessLayer
 
         }
 
-        public void DeleteUser(int id)
-        {
-            using (SqlConnection con = new SqlConnection(_conn))
-            {
-                using (SqlCommand _sqlCommand = new SqlCommand("uspDeleteUser", con))
-                {
-                    _sqlCommand.CommandType = CommandType.StoredProcedure;
-                    _sqlCommand.Parameters.AddWithValue("@UserID", id);
+        #endregion
 
-                    con.Open();
-                    _sqlCommand.ExecuteNonQuery();
-                    con.Close();
-                }
-            }
-        }
     }
 }
