@@ -28,6 +28,7 @@
             <h6 class="card-subtitle mb-2 text-muted">This is your dashboard with all your relevent user information</h6>
             <p class="card-text">
                 <strong>Username: </strong>@profile.Username
+                @Html.ActionLink(profile.Username, "EditUser", new { Id = profile.UserId })
             </p>
             <p class="card-text">
                 <strong>First name: </strong>@profile.FirstName
