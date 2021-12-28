@@ -74,10 +74,17 @@ main {
     padding-block-start: 20px;
     font-size: 20px;
 }
+.newsletterInput2{
+    padding: 0;
+    margin: 0;
+    /*width: 100%;*/
+}
 .newsletterInfo {
     font-size: 15px;
     color: #B2B7B6; /* B2B7B6 - darker silver */
-    margin-top: 10px;
+    margin-top: 2%;
+    text-align: center;
+
 }
 #newsletter {
     margin-left: 200px;
@@ -149,12 +156,16 @@ button:hover span:after { /* edits/add all span elements (just an inline element
 /* change color of the headers on the footer collumns*/
 #footerCollumnHeader {
     color: #2CA6A4; /* EDF7F6 white, 2CA6A4 blue*/
+    font-size: 26px;
+    padding-top: 4%;
+    text-align: center;
 }
-
+.footerSpace{
+    margin-top: 2%;
+    padding: 10px;
+}
 /* End Footer Stlying*/
-
 /* Begin header styling */
-
 body {
     margin: 0px;
 }
