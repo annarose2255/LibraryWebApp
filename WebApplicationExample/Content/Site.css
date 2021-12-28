@@ -296,6 +296,7 @@ headerButtons-list{
     background-color: #9f2cad;
     box-shadow: 0px 4px #5d43c1;
     margin-left: 2%;
+    border-radius: 15px;
     width: 28%;
 }
 /* End header styling */
@@ -657,10 +658,20 @@ h1 {
     float: none;
     min-width: 150px;
     min-height: 40px;
+    font-size: 15px;
 }
-
-#contact-input{
+#contact-from{
+    font-size: 16px;
+}
+address{
+    font-size: 16px;
+}
+#contact-input {
     max-width: 100%;
+    font-size: 14px;
+}
+#emailHelp{
+    font-size: 12px;
 }
 #exampleFormControlTextarea1{
     max-width: 100%;
@@ -753,6 +764,7 @@ label {
 
     .search button {
         width: 27%;
+        border-radius: 15px;
     }
 
     .newsletterInput2 {

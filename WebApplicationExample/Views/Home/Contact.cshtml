@@ -15,34 +15,37 @@
 
 <div class="row" style="background-color: dimgray; padding-top: 20px; padding-bottom: 40px; padding-left: 40px;">
     <div class="row">
-        <div class="col-md-6 col-md-offset-1">
+        <div class="col-md-10 col-md-offset-2">
             <h1 class="support-title img-rounded"> Contact Solo Jazz Library Support</h1>
         </div>
     </div>
-    <div class="col-md-3 col-md-offset-1">
-        <div class="col-md-12 img-rounded" style="background-color: ghostwhite; border-width: 6px; border-style: solid; border-color: #2CA6A4; min-height: 300px; min-width: 270px; ">
-            <div style="text-align: center; padding: 20px">
-                <img class="contact-icon" src="https://assets.website-files.com/5e7ff3ec0c4ef4c974fa99e3/5e84ba313e8232516a7da902_chat-alt.svg" alt="" />
-                <h1 class="support-box-header">Contact Us</h1>
-                <p style="padding: 10px;"> Just want to say hi? We'd love to hear from you. We love our members and community! </p>
-                <div class="col-md-12" style="padding-bottom: 20px">
-                    <button id="contact-button" type="button" onclick="location.href='#contact-form'">Send Us A Message!</button>
+    <div class="row">
+        <div class="col-md-3 col-md-offset-1">
+            <div class="col-md-12 img-rounded" style="background-color: ghostwhite; border-width: 6px; border-style: solid; border-color: #2CA6A4; min-height: 300px; min-width: 270px; ">
+                <div style="text-align: center; padding: 20px">
+                    <img class="contact-icon" src="https://assets.website-files.com/5e7ff3ec0c4ef4c974fa99e3/5e84ba313e8232516a7da902_chat-alt.svg" alt="" />
+                    <h1 class="support-box-header">Contact Us</h1>
+                    <p style="padding: 10px;"> Just want to say hi? We'd love to hear from you. We love our members and community! </p>
+                    <div class="col-md-12" style="padding-bottom: 20px">
+                        <button id="contact-button" type="button" onclick="location.href='#contact-form'">Send Us A Message!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-md-offset-1" style="margin-left: 5px;">
+            <div class="col-md-12 img-rounded" style="background-color: ghostwhite; border-width: 6px; border-style: solid; border-color: #2CA6A4; min-height: 300px; min-width: 270px; ">
+                <div style="text-align:center; padding: 20px">
+                    <img class="contact-icon" src="https://assets.website-files.com/5e7ff3ec0c4ef4c974fa99e3/5e850414db1f6ebfba8bc42d_chat-warning.svg" alt="">
+                    <h1 class="support-box-header"> Get Support</h1>
+                    <p style="padding: 10px;"> Have an issue with the site? Something wrong? Get help and fill out our support form.</p>
+                    <div class="col-md-12" style="padding-bottom: 20px;">
+                        <button id="contact-button" type="button" onclick="location.href='/Home/Support'">  Send A Help Ticket!</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-md-3 col-md-offset-1" style="margin-left: 5px;">
-        <div class="col-md-12 img-rounded" style="background-color: ghostwhite; border-width: 6px; border-style: solid; border-color: #2CA6A4; min-height: 300px; min-width: 270px; ">
-            <div style="text-align:center; padding: 20px">
-                <img class="contact-icon" src="https://assets.website-files.com/5e7ff3ec0c4ef4c974fa99e3/5e850414db1f6ebfba8bc42d_chat-warning.svg" alt="">
-                <h1 class="support-box-header"> Get Support</h1>
-                <p style="padding: 10px;"> Have an issue with the site? Something wrong? Get help and fill out our support form.</p>
-                <div class="col-md-12" style="padding-bottom: 20px;">
-                    <button id="contact-button" type="button" onclick="location.href='/Home/Support'">  Send A Help Ticket!</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 </div>
 
 <div class="row" style="padding-top: 10px;">
@@ -75,7 +78,7 @@
                 <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
             </address>
         </div>
-        <div class="col-lg-6 col-lg-offset-1">
+        <div class="col-lg-6 col-lg-offset-1" style="font-size: 13px;">
             @*<label for="error" id="error" class="alert-danger">@Model.Message</label>*@
             <h2> Contact us form!</h2>
             @using (Html.BeginForm("Contact", "Home", FormMethod.Post))
