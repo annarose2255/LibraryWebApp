@@ -29,12 +29,14 @@ textarea {
 /* our custom css*/
 main {
     min-height: calc(100vh - 364px);
-    margin-top: 20px;
-    margin-left: 200px;
-    margin-right: 200px;
-    margin-bottom: 100px;
+    margin-top: 2%;
+    margin-left: 11%;
+    margin-right: 11%;
+    margin-bottom: 2%;
 }
+.allButFooter{
 
+}
 .justspace {
     height: 500px;
 }
@@ -529,15 +531,7 @@ h1 {
     min-width: 150px;
     min-height: 40px;
 }
-/*hr.rounded {
-    border-top: 2px solid #9F2CAD;
-    border-radius: 5px;
-}
-.vl {
-    border-left: 6px solid green;
-    height: 500px;
-    
-}*/
+
 #contact-input{
     max-width: 100%;
 }
@@ -588,7 +582,7 @@ input[type=radio] {
 label {
     display: block;
 }
-}
+
 
 @media only screen and (max-width: 1080px) {
     main{
