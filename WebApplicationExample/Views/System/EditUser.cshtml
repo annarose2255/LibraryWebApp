@@ -74,7 +74,7 @@
     </div>
 
 
-
+@if (Model.RoleName == "Administrator") {
     <div class="form-group">
 
         @Html.LabelFor(model => model.RoleId, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -83,7 +83,7 @@
             @Html.ValidationMessageFor(model => model.RoleId, "", new { @class = "text-danger" })
         </div>
     </div>
-
+}
 
 
 

@@ -89,6 +89,15 @@ namespace WebApplicationExample.Controllers
                 UserDTO _user = businessLogicPassThru.GetSingleUserData(id);
                 return View(Mapper.UserDTOToUserModel(_user));
             }
+            if (ProfileChecker.IsLoggedIn())
+            {
+                // connection string coming out of the web.config
+                BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru(System.Configuration.ConfigurationManager.
+                ConnectionStrings["dbconnection"].ConnectionString);
+
+                UserDTO _user = businessLogicPassThru.GetSingleUserData(id);
+                return View(Mapper.UserDTOToUserModel(_user));
+            }
             else 
             {
                return RedirectToAction("Login", "Home");
@@ -99,7 +108,7 @@ namespace WebApplicationExample.Controllers
         public ActionResult EditUser(UserModel inModel)
         {
 
-            if (ProfileChecker.IsLoggedIn() && ProfileChecker.IsAdmin())
+            if (ProfileChecker.IsLoggedIn() || ProfileChecker.IsAdmin())
             {
 
                 if (ModelState.IsValid)
@@ -112,7 +121,7 @@ namespace WebApplicationExample.Controllers
                     ConnectionStrings["dbconnection"].ConnectionString);
                     UserDTO _currentUser = (UserDTO)System.Web.HttpContext.Current.Session["Profile"]; // get the current user
                     UserDTO _user = businessLogicPassThru.UpdateUser(Mapper.UserModelToUserDTO(inModel, _currentUser.UserId));
-
+                    System.Web.HttpContext.Current.Session["Profile"] = _user; //update user fields
                     return RedirectToAction("Dashboard", "System");
                 }
                 else
