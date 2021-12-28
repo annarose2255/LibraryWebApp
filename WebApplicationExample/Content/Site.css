@@ -384,25 +384,35 @@ headerButtons-list{
     margin-top: 1%;
 }
 
-#image-height{
-    height:300px;
+#image-height {
+    height: 300px;
 }
 
 .item {
     background-color: #9F2CAD;
 }
+.carousel-indicators {
+    margin-left: 20%;
+}
 
 .carousel-caption {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 29px;
-    font-weight: normal;
-    line-height: 1.6em;
     margin-bottom: 50px;
+    background-color: #B2B7B6;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    background: rgba(2, 2, 2, 0.5);
+    /*opacity: 0.6;*/
 }
-
-.summary-text{
-    font-size:18px;
-}
+    /*.carousel-caption h3 {
+        opacity: 1;
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 29px;
+        font-weight: normal;
+        line-height: 1.6em;
+    }*/
+    .summary-text {
+        font-size: 18px;
+    }
 /*Info Block CSS*/
 
 .row{
@@ -753,7 +763,10 @@ label {
         padding-left: 2%;
         margin-bottom: 2%;
     }
-
+    #image-height {
+        height: 300px;
+        /*margin-left: 10%;*/
+    }
     .footerButton {
         /*        width: 100%;
         min-width: 100%;
