@@ -91,6 +91,11 @@ namespace LibraryBusinessLogicLayer
             return _user;
         }
 
+        public void DeleteUser(int id)
+        {
+            UserDataAccess userDataAccess = new UserDataAccess(this._conn);
+            userDataAccess.DeleteUser(id);
+        }
       
         public int CreateContactRequest(ContactDTO c)
         {

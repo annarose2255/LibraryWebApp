@@ -128,8 +128,9 @@ namespace WebApplicationExample.Controllers
          {
             if (ModelState.IsValid)
             {
-
-                //_logicUser.CreateUserPassThru(toAdd);
+                BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru(System.Configuration.ConfigurationManager.
+                ConnectionStrings["dbconnection"].ConnectionString);
+                businessLogicPassThru.DeleteUser(id);
 
                 return RedirectToAction("Dashboard", "System");
             }
