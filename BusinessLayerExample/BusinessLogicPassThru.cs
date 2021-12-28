@@ -110,5 +110,10 @@ namespace LibraryBusinessLogicLayer
             return SupportID;
         }
 
+        public List<RoleDTO> GetRoles()
+        {
+            UserDataAccess _roles = new UserDataAccess(this._conn);
+            return _roles.GetRoles();
+        }
     }
 }

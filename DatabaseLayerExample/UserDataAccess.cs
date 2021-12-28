@@ -23,7 +23,8 @@ namespace LibraryDatabaseAccessLayer
         {
         }
 
-        // methods
+        
+        #region Users
 
         // user login
         public List<UserDTO> GetUsers()
@@ -200,8 +201,6 @@ namespace LibraryDatabaseAccessLayer
         }
 
 
-
-
         // TODO: return Operation DTO
         // register at login
         public UserDTO UpdateUser(UserDTO u)
@@ -218,7 +217,6 @@ namespace LibraryDatabaseAccessLayer
                     {
                         _sqlCommand.CommandType = CommandType.StoredProcedure;
                         _sqlCommand.CommandTimeout = 30;
-
 
                         SqlParameter _parmUserID = _sqlCommand.CreateParameter();
                         _parmUserID.DbType = DbType.Int32;
@@ -317,6 +315,57 @@ namespace LibraryDatabaseAccessLayer
 
                 throw;
             }
+        }
+
+        #endregion Users
+
+
+
+        #region Roles
+
+        public List<RoleDTO> GetRoles()
+        {
+
+            List<RoleDTO> _list = new List<RoleDTO>();
+
+            try
+            {
+                using (SqlConnection con = new SqlConnection(_conn))
+                {
+                    using (SqlCommand _sqlCommand = new SqlCommand("uspGetRole", con))
+                    {
+                        _sqlCommand.CommandType = CommandType.Text;
+                        _sqlCommand.CommandTimeout = 30;
+
+                        con.Open();
+                        RoleDTO _role;
+
+                        using (SqlDataReader reader = _sqlCommand.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                _role = new RoleDTO
+                                {                                  
+                                    RoleId = reader.GetInt32(reader.GetOrdinal("RoleID")),
+                                    RoleName = (reader["RoleName"] == System.DBNull.Value) ? "" : (string)reader["RoleName"],
+                                    Comment = (reader["Comment"] == System.DBNull.Value) ? "" : (string)reader["Comment"],
+                                    DateModified = reader.GetDateTime(reader.GetOrdinal("DateModified")),
+                                    ModifiedByUserID = reader.GetInt32(reader.GetOrdinal("RoleID"))
+                                };
+                                _list.Add(_role);
+                            }
+                        }
+                        con.Close();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            return _list;
+
         }
 
         public void DeleteUser(int id)
