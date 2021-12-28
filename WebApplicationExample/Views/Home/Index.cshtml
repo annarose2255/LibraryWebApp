@@ -10,10 +10,11 @@
 </head>
 <body>
     <div>
-        <div class="new-additions">
+        <div class="home-dividers">
             <h2>New Additions</h2>
         </div>
     </div>
+    <br />
 
     <!-- TODO: add model varables to change info based on database-->
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -66,71 +67,84 @@
         </a>
     </div>
 
-    <br/>
+    <br />
 
     <div>
-        <div class="location-hours">
+        <div class="home-dividers">
             <h2>Location and Hours</h2>
         </div>
     </div>
 
-    <br/>
+    @*<br />*@
     <!-- Information Blocks -->
     <div class="row">
         <!--Hours-->
-        <div class="block1 col-xs-4">
-            <h3>Hours</h3>
-            <table class="schedule">
-                @foreach (var day in Model.DayHours)
-                {
-                    <tr><th>@day.DayName</th><td>@day.HourOfOperation</td></tr>
-                }
-            </table>
+        <div class="hours-block col-xs-10 col-md-4">
+            <div class="hours-box-center">
+                <h3>Hours</h3>
+                <table class="schedule">
+                    @foreach (var day in Model.DayHours)
+                    {
+                        <tr><th>@day.DayName</th><td>@day.HourOfOperation</td></tr>
+                    }
+                </table>
+            </div>
+
         </div>
         <!--Location-->
-        <div class="block2 col-xs-4">
-            <h3>Location</h3>
-            <p class="block-links">
-                Address:
-                <a class="block-links" href="https://www.google.com/maps/place/Westview+Cemetery+Inc./33.7330846,-84.4306764,13.62z/data=!4m5!3m4!1s0x88f51cbbe22cb30f:0x7b869bcdcf20033c!8m2!3d33.7463642!4d-84.4422021">
-                    1680 Westview Dr SW, Atlanta, GA 30310
-                </a>
-            </p>
+        <div class="hours-block  col-xs-12 col-md-4">
+            <div class="hours-box-center2">
+                <h3 id="location-header">Location</h3>
+                @*<span> Address: </span>*@
+                <p class="footerLinks" id="home-center-box">
+                    Address:
+                    <a id="link2" href="https://www.google.com/maps/place/Westview+Cemetery+Inc./33.7330846,-84.4306764,13.62z/data=!4m5!3m4!1s0x88f51cbbe22cb30f:0x7b869bcdcf20033c!8m2!3d33.7463642!4d-84.4422021">
+                        1680 Westview Dr SW, Atlanta, GA 30310
+                    </a>
+                </p>
+            </div>
         </div>
-        <!--Map Image-->
-        <div class="block3 col-xs-4">
+        <div class="hours-block2 col-xs-12 col-md-4">
+            <div class="hours-box-center3">
+                <h3 class="map-title">Map Location</h3>
+                <!--Map Image-->
+                <img  id="image-height2" src="~/Content/book-images/map.jpg" />
+                @*<div class="block3">
+                    </div>*@
+                @*</div>*@
+                @*</div>*@
+            </div>
         </div>
     </div>
+    <div class="home-dividers">
+        <h2>FAQ</h2>
+    </div>
+    <br />
+    @*faq section*@
+    <div class="row">
+        @*<br/>*@
+        @*<div class="col-md-12">*@
 
+        @*</div>*@
 
-@*faq section*@
-<div class="row">
-    <br/>
-    <div class="col-md-12">
-        <div class="location-hours">
-            <h2>FAQ</h2>
-        </div>
-        <br />
-    </div>
-    
-@*</div>
-<div class="row">*@
+        @*</div>
+            <div class="row">*@
 
-    @*<div id="home-faq" class="well well-sm">*@
-    <div class="col-md-6">
-        <div class="well well-sm" style="background-color: #A5CECD; " ;>
-            @*lighter blue color*@
-            <div class="footerLinks"> @Html.ActionLink("FAQ Page", "FAQ", "Home", null, new { id = "link" })</div>
-            <p> Get help by seeing the frequently asked questions! </p>
+        @*<div id="home-faq" class="well well-sm">*@
+        <div class="col-md-6">
+            <div class="well well-sm" style="background-color: #A5CECD; " ;>
+                @*lighter blue color*@
+                <div class="footerLinks"> @Html.ActionLink("FAQ Page", "FAQ", "Home", null, new { id = "link2" })</div>
+                <p> Get help by seeing the frequently asked questions! </p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="well well-sm" style="background-color: #A5CECD; ">
+                <div class="footerLinks"> @Html.ActionLink("Contact Us Page", "Contact", "Home", null, new { id = "link2" })</div>
+                <p> Contact us if you have any more questions! </p>
+            </div>
         </div>
     </div>
-    <div class="col-md-6">
-        <div class="well well-sm" style="background-color: #A5CECD; ">
-            <div class="footerLinks"> @Html.ActionLink("Contact Us Page", "Contact", "Home", null, new { id = "link" })</div>
-            <p> Contact us if you have any more questions! </p>
-        </div>
-    </div>
-</div>
 
 </body>
 </html>
