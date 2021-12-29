@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContactDataAcess.cs" />
+    <Compile Include="LogException.cs" />
     <Compile Include="MediaDataAccess.cs" />
     <Compile Include="MetaDataAccess.cs" />
     <Compile Include="SQLDataReaderExtensions.cs" />
