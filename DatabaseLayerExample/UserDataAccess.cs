@@ -74,7 +74,8 @@ namespace LibraryDatabaseAccessLayer
             }
             catch (Exception ex)
             {
-
+                LogException logexception = new LogException(_conn);
+                int LogId_PK = logexception.CreateLogException(ex);
                 throw;
             }
          
@@ -195,7 +196,8 @@ namespace LibraryDatabaseAccessLayer
             }
             catch (Exception ex)
             {
-
+                LogException logexception = new LogException(_conn);
+                int LogId_PK = logexception.CreateLogException(ex);
                 throw;
             }         
         }
@@ -312,7 +314,8 @@ namespace LibraryDatabaseAccessLayer
             }
             catch (Exception ex)
             {
-
+                LogException logexception = new LogException(_conn);
+                int LogId_PK = logexception.CreateLogException(ex);
                 throw;
             }
         }

@@ -58,9 +58,10 @@ namespace LibraryDatabaseAccessLayer
                 }
                 return daysClosed;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                LogException logexception = new LogException(_connString);
+                int LogId_PK = logexception.CreateLogException(ex);
                 throw;
             }
         }
