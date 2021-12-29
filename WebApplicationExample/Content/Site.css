@@ -744,6 +744,8 @@ input[type=radio] {
     vertical-align: middle;
     position: relative;
     bottom: 1px;
+    float: left;
+    width: auto;
 }
 
 label {
