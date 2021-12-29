@@ -156,7 +156,6 @@
     <Compile Include="Models\IndexViewModel.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\SupportModel.cs" />
-    <Compile Include="Models\MediaCarouselModel.cs" />
     <Compile Include="Models\MediaModel.cs" />
     <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

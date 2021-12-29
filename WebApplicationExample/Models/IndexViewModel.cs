@@ -10,8 +10,13 @@ namespace WebApplicationExample.Models
 {
     public class IndexViewModel
     {
-        public MediaCarouselModel CarouselMedia { get; set; }
+        public List<MediaModel> CarouselMedia { get; set; }
 
         public List<DayHours> DayHours { get; set; }
+        public IndexViewModel()
+        {
+            CarouselMedia = new List<MediaModel>();
+            DayHours = new List<DayHours>();
+        }
     }
 }

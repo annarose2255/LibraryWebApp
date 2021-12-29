@@ -55,16 +55,18 @@ namespace LibraryDatabaseAccessLayer
                                 Media = new MediaDTO
                                 {
                                     MediaId = reader.GetInt32(reader.GetOrdinal("MediaID")),
-                                    MediaTypeID = reader.GetInt32(reader.GetOrdinal("MediaTypeID_FK")),
-                                    GenreTypeID = reader.GetInt32(reader.GetOrdinal("GenreTypeID_FK")),
-                                    PublisherID = reader.GetInt32(reader.GetOrdinal("PublisherID_FK")),
-                                    IsCheckedOutUserID = reader.GetInt32(reader.GetOrdinal("IsCheckedOutUserID_FK")),
-                                    Title = reader.SafeGetString("Name"),
+                                    MediaTypeID = reader.GetInt32(reader.GetOrdinal("MediaTypeID")),
+                                    GenreTypeID = reader.GetInt32(reader.GetOrdinal("GenreTypeID")),
+                                    PublisherID = reader.GetInt32(reader.GetOrdinal("PublisherID")),
+                                    IsCheckedOutUserID = reader.GetInt32(reader.GetOrdinal("IsCheckedOutUserID")),
+                                    Title = reader.SafeGetString("Title"),
                                     //Comment = (string)reader["Comment"],
                                     DateModified = reader.GetDateTime(reader.GetOrdinal("DateModified")),
                                     ModifiedByUserID = reader.GetInt32(reader.GetOrdinal("ModifiedByUserID")),
-                                    ImageName = reader.SafeGetString("image-name"),
+                                    ImageName = reader.SafeGetString("ImageName"),
                                     Description = reader.SafeGetString("Description"),
+                                    GenreName = reader.SafeGetString("GenreName"),
+                                    PublisherName = reader.SafeGetString("PublisherName"),
                                 };
                                 _list.Add(Media);
                             }
