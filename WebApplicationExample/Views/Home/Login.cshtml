@@ -13,24 +13,40 @@
                 <div class="col-sm-4">
                     <label for="username" id="username">Username:</label>
                 </div>
-                <div class="col-sm-8">
+                <div class="col-sm-6">
                     @Html.TextBoxFor(m => m.LoginModel.Username, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.LoginModel.Username, "", new { @class = "alert-danger" })
                 </div>
-              
+
             </div>
 
             <div class="form-group row">
+                
                 <div class="col-sm-4">
                     <label for="name">Password</label>
                 </div>
-                <div class="col-sm-8">
-                    @Html.TextBoxFor(m => m.LoginModel.Password, new { @class = "form-control", @type = "password" })
-                    @Html.ValidationMessageFor(m => m.LoginModel.Password, "", new { @class = "alert-danger" })
-                    <div>
-                        <input type="submit" value="Login" class="btn btn-primary" style="background-color: #9F2CAD; color: white; margin-top: 5%" />
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            @Html.TextBoxFor(m => m.LoginModel.Password, new { @class = "form-control", @type = "password" })
+                        </div>
                     </div>
-                </div>               
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            @Html.Raw(HttpUtility.HtmlDecode(Html.ValidationMessageFor(m => m.LoginModel.Password, "", new { @class = "alert-danger" }).ToHtmlString()))
+                            @*Note about above: We first get the error message through the ValidationMessageFor method.
+                              Then we call .ToHtmlString() to convert the error message string to html code (if any exists) - this covnerts "<br>" into an actual <br> tag
+                              Then we call that as part of the HtmlDecode method which converts the rest of the string back into plain text
+                              Then we call that as part of the Raw method which is what actually returns the html tags as tags to be displayed *@
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-4 col-sm-offset-4" style="">
+                    <input type="submit" value="Login" class="btn btn-primary" style="background-color: #9F2CAD; color: white; margin-top: 5%" />
+                </div>
             </div>
         }
     </div>
@@ -85,7 +101,7 @@
                 </div>
                 <div class="col-sm-8">
                     @Html.TextBoxFor(m => m.RegisterModel.Password, new { @class = "form-control", @type = "password" })
-                    @Html.ValidationMessageFor(m => m.RegisterModel.Password, "", new { @class = "alert-danger" })
+                    @Html.Raw(HttpUtility.HtmlDecode(Html.ValidationMessageFor(m => m.RegisterModel.Password, "", new { @class = "alert-danger" }).ToHtmlString()))
                 </div>               
             </div>
             <!--prompt for email-->
