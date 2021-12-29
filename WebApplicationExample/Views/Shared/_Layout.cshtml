@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -6,40 +7,54 @@
     <title>@ViewBag.Title - Solo Jazz Library</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          rel="stylesheet">
 
 </head>
+
 <body>
 
     <header>
-        <div class="headerButtons-list">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="title">Solo Jazz Library</div>
+            </div>
+            <div class="col-md-3">
+                <nav>
+                    @*<div class="headerButtons-list">*@
+
+                    <ul class="headerButtons">
+
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Login", "Login", "Home")</li>
+                    </ul>
+                    @*</div>*@
 
 
-            <div class="title">Solo Jazz Library</div>
-            <nav>
-                @*<div class="headerButtons-list">*@
-
-                <ul class="headerButtons">
-
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Login", "Login", "Home")</li>
-                </ul>
-                @*</div>*@
-
-
-            </nav>
-            <div class="search">
-                <form action="home/search">
-                    <input type="text"
-                           placeholder=" Search Catalog"
-                           name="query">
-                    <button>
-                        🔎
-                    </button>
-                </form>
+                </nav>
+            </div>
+            <div class="col-md-3 col-md-offset-4" id="SearchButtonSmallScreen">
+                <div class="search">
+                    <form action="home/search">
+                        <input type="text"
+                               placeholder=" Search Catalog"
+                               name="query">
+                        <button>
+                            🔎
+                        </button>
+                    </form>
+                </div>
+               
             </div>
         </div>
+        @*<div class="headerButtons-list">
+
+
+          
+            
+        </div>*@
 
     </header>
     <main>
@@ -49,31 +64,46 @@
     </main>
     <footer>
         @*<p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>*@
-        <div class="footer">
-            <div class="footerCollumn" id="newsletter">
-                <span id="footerCollumnHeader">
-                    Join the newsletter
-                </span>
-                <p class="newsletterInfo"> Get notified monthly when you need to return a book, or when new books are added!</p>
-                <div class="newsletterInput">
-                    <input type="email" placeholder="Enter your Email" />
-                    <button type="button" style="vertical-align:middle"> <span>Sign up</span> </button>
+        <div class="row" style="background-color: #3D3D3D; width:100%; min-height: 290px; max-height: stretch;  width: 100%; border-top-color: black; display: flex;  bottom: 0;">
+            @*<div class="footerCollumn" id="newsletter">*@
+            <div class="col-xs-12 col-md-3   col-md-offset-1 footerCollumn2">
+                <div class="col-md-12 ">
+                    <p id="footerCollumnHeader">
+                        Join the newsletter
+                    </p>
+                    <p class="newsletterInfo"> Get notified monthly when you need to return a book, or when new books are added!</p>
+                    @*<div class="newsletterInput">*@
+                    <div class="col-md-12" style="padding-top: 4%">
+                        <div class="col-md-8" id="newsletterInput2">
+                            <input type="email" placeholder="Enter your Email" style="width: 97%;  max-width: 100%; border-radius: 10px; padding-left: 4%;"" />
+                        </div>
+                        <div class="col-md-4" id="newsletterInput2">
+                            <button type="button" class="footerButton" style="font-size: 15px;"> <span>Sign up</span> </button>
+                        </div>
+                    </div>
                 </div>
+
+                @*</div>*@
+
             </div>
 
-            <div class="footerCollumn" id="faq">
-                <span id="footerCollumnHeader">
-                    FAQ and Support <br />
-                </span>
+            @*</div>*@
+        <div class="col-xs-12 col-md-4 ">
+            <div class="footerCollumn2" @*id="faq"*@>
+                <p id="footerCollumnHeader">
+                    FAQ and Support @*<br />*@
+                </p>
                 <div class="footerLinks"> @Html.ActionLink("FAQ Page", "FAQ", "Home", null, new { id = "link" })</div> @* passed the name of the link, the view,
-                    the location folder of view, no id so null, then the style*@
+            the location folder of view, no id so null, then the style*@
                 <div class="footerLinks"> @Html.ActionLink("Support Page", "Support", "Home", null, new { id = "link" })</div>
             </div>
+        </div>
+        <div class="col-xs-13 col-md-3 ">
 
-            <div class="footerCollumn">
-                <span id="footerCollumnHeader">
+            <div class="footerCollumn2" style="margin-bottom: 0px;">
+                <p id="footerCollumnHeader">
                     Contact Us
-                </span>
+                </p>
                 <div class="footerLinks"> @Html.ActionLink("Contact Us Page", "Contact", "Home", null, new { id = "link" })</div>
                 <p class="footerLinks">
                     Phone:
@@ -101,7 +131,8 @@
                 </p>
             </div>
         </div>
-    </footer>
+    </div>
+</footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
