@@ -43,7 +43,7 @@ namespace LibraryBusinessLogicLayer
                     Username = userDTO.Username,
                     Password = hasher.HashedValue(_salt + userDTO.Password), //add salt to password before creating hashed password
                     Salt = _salt,//use password to get salt 
-                    Comment = "",
+                    Comment =userDTO.Comment,
                     DateModified = DateTime.Now,  // default will be picked by database default
                     ModifiedByUserID = (int)RoleType.System // default will be picked by database default
 
