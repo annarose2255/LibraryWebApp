@@ -372,6 +372,17 @@ label{
     vertical-align: central;
     position:relative; top :75px;
 }
+
+.form-control {
+    margin-left: 12px;
+}
+.register-hide{
+    margin-top: 5px;
+}
+
+label{
+    margin-top: 5px;
+}
 /**End of Login-Page CSS*/
 
 /* Begin Home/Index CSS*/

@@ -74,7 +74,7 @@ namespace WebApplicationExample.Controllers
 
             //RoleListVM list = new RoleListVM(_logicRole.GetRolesPassThru());
             //ViewBag.Roles = new SelectList(list.ListOfRoleModel, "RoleId", "RoleName");
-
+            //if admin, pass list of roles
             if (ProfileChecker.IsLoggedIn() && ProfileChecker.IsAdmin())
             {
 
@@ -89,6 +89,16 @@ namespace WebApplicationExample.Controllers
                 UserDTO _user = businessLogicPassThru.GetSingleUserData(id);
                 return View(Mapper.UserDTOToUserModel(_user));
             }
+            //if logged in but does not have admin status, do not pass list of roles (for security)
+            if (ProfileChecker.IsLoggedIn())
+            {
+                // connection string coming out of the web.config
+                BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru(System.Configuration.ConfigurationManager.
+                ConnectionStrings["dbconnection"].ConnectionString);
+
+                UserDTO _user = businessLogicPassThru.GetSingleUserData(id);
+                return View(Mapper.UserDTOToUserModel(_user));
+            }
             else 
             {
                return RedirectToAction("Login", "Home");
@@ -99,20 +109,36 @@ namespace WebApplicationExample.Controllers
         public ActionResult EditUser(UserModel inModel)
         {
 
-            if (ProfileChecker.IsLoggedIn() && ProfileChecker.IsAdmin())
+            if (ProfileChecker.IsLoggedIn() & ProfileChecker.IsAdmin())
             {
-
+                //can update any user in db
                 if (ModelState.IsValid)
                 {
-
-                    UserDTO _editThisUser = new UserDTO();
-
                     // connection string coming out of the web.config
                     BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru(System.Configuration.ConfigurationManager.
                     ConnectionStrings["dbconnection"].ConnectionString);
                     UserDTO _currentUser = (UserDTO)System.Web.HttpContext.Current.Session["Profile"]; // get the current user
                     UserDTO _user = businessLogicPassThru.UpdateUser(Mapper.UserModelToUserDTO(inModel, _currentUser.UserId));
+                    System.Web.HttpContext.Current.Session["Profile"] = businessLogicPassThru.GetSingleUserData(_currentUser.UserId); //if inModel and currentUser have the same userId, profile session would need to reflect new user fields
+                    return RedirectToAction("Dashboard", "System",inModel);
+                }
+                else
+                {
+                    return View(inModel);
+                }
+            }
 
+            if (ProfileChecker.IsLoggedIn())
+            {
+                //can only update themselves in db
+                if (ModelState.IsValid)
+                {
+                    // connection string coming out of the web.config
+                    BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru(System.Configuration.ConfigurationManager.
+                    ConnectionStrings["dbconnection"].ConnectionString);
+                    UserDTO _currentUser = (UserDTO)System.Web.HttpContext.Current.Session["Profile"]; // get the current user
+                    UserDTO _user = businessLogicPassThru.UpdateUser(Mapper.UserModelToUserDTO(inModel, _currentUser.UserId));
+                    System.Web.HttpContext.Current.Session["Profile"] = _user; //update user fields
                     return RedirectToAction("Dashboard", "System");
                 }
                 else
@@ -121,7 +147,7 @@ namespace WebApplicationExample.Controllers
                 }
             }
             else 
-            {
+            { //cannot update any user
                 return RedirectToAction("Login", "Home");
             }
         }

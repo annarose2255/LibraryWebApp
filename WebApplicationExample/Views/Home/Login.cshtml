@@ -3,6 +3,19 @@
     ViewBag.Title = "Login";
 }
 
+<head>
+    <script>
+        function toggleShowPassword(inputID) {
+            var x = document.getElementById(inputID);
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
+</head>
+
 <div class="row">
     <div class="col-xs-12 col-sm-5 table-bordered">
         <label for="error" id="error" class="alert-danger">@Model.Message</label>
@@ -39,6 +52,9 @@
                               Then we call .ToHtmlString() to convert the error message string to html code (if any exists) - this covnerts "<br>" into an actual <br> tag
                               Then we call that as part of the HtmlDecode method which converts the rest of the string back into plain text
                               Then we call that as part of the Raw method which is what actually returns the html tags as tags to be displayed *@
+                        </div>
+                        <div class="col-sm-2" style="display:flex; padding: 0; margin-top: 5px;">
+                            <input type="checkbox" onclick="toggleShowPassword('password-login')" style="margin-right: 5px;">Show
                         </div>
                     </div>
                 </div>
@@ -99,10 +115,15 @@
                 <div class="col-sm-4">
                     <label for="password" id="password">Password:</label>
                 </div>
-                <div class="col-sm-8">
-                    @Html.TextBoxFor(m => m.RegisterModel.Password, new { @class = "form-control", @type = "password" })
-                    @Html.Raw(HttpUtility.HtmlDecode(Html.ValidationMessageFor(m => m.RegisterModel.Password, "", new { @class = "alert-danger" }).ToHtmlString()))
-                </div>               
+                <div class="col-sm-6">
+                    @Html.TextBoxFor(m => m.RegisterModel.Password, new { @class = "form-control", @type = "password", @id = "password-register" })
+                    @Html.ValidationMessageFor(m => m.RegisterModel.Password, "", new { @class = "alert-danger" })
+
+                </div>
+                <div class="col-sm-2" style="padding: 0; margin-top: 5px;">
+                    <input type="checkbox" onclick="toggleShowPassword('password-register')" style="margin-right: 5px;"> Show
+
+                </div>
             </div>
             <!--prompt for email-->
             <div class="form-group row">
@@ -123,7 +144,7 @@
                     @Html.TextBoxFor(m => m.RegisterModel.PrimaryPhone, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.RegisterModel.PrimaryPhone, "", new { @class = "alert-danger" })
                     <div>
-                        <input type="submit" value="Register" class="btn btn-primary" style="background-color: #9F2CAD; color: white; margin-top: 5%;" />
+                        <input type="submit" value="Register" class="btn btn-primary" style="background-color: #9F2CAD; color: white; margin-top: 5%; margin-left: 10px;" />
                     </div>
                 </div>
             </div>
