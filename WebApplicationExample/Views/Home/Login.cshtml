@@ -23,31 +23,45 @@
         @using (Html.BeginForm("Login", "Home", FormMethod.Post))
         {
             <div class="form-group row">
-                <div class="col-sm-2">
+                <div class="col-sm-4">
                     <label for="username" id="username">Username:</label>
                 </div>
-                <div class="col-sm-8">
+                <div class="col-sm-6">
                     @Html.TextBoxFor(m => m.LoginModel.Username, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.LoginModel.Username, "", new { @class = "alert-danger" })
                 </div>
+
             </div>
 
             <div class="form-group row">
-                <div class="col-sm-2">
-                    <label for="name">Password:</label>
+                
+                <div class="col-sm-4">
+                    <label for="name">Password</label>
                 </div>
-                <div class="col-sm-8">
-                    @Html.TextBoxFor(m => m.LoginModel.Password, new { @class = "form-control", @type = "password", @id = "password-login" })
-                    @Html.ValidationMessageFor(m => m.LoginModel.Password, "", new { @class = "alert-danger" })
-                </div>
-                <div class="col-sm-2" style="display:flex; padding: 0; margin-top: 5px;">
-                    <input type="checkbox" onclick="toggleShowPassword('password-login')" style="margin-right: 5px;">Show
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            @Html.TextBoxFor(m => m.LoginModel.Password, new { @class = "form-control", @type = "password" })
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            @Html.Raw(HttpUtility.HtmlDecode(Html.ValidationMessageFor(m => m.LoginModel.Password, "", new { @class = "alert-danger" }).ToHtmlString()))
+                            @*Note about above: We first get the error message through the ValidationMessageFor method.
+                              Then we call .ToHtmlString() to convert the error message string to html code (if any exists) - this covnerts "<br>" into an actual <br> tag
+                              Then we call that as part of the HtmlDecode method which converts the rest of the string back into plain text
+                              Then we call that as part of the Raw method which is what actually returns the html tags as tags to be displayed *@
+                        </div>
+                        <div class="col-sm-2" style="display:flex; padding: 0; margin-top: 5px;">
+                            <input type="checkbox" onclick="toggleShowPassword('password-login')" style="margin-right: 5px;">Show
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="form-group row">
-                <div class="col-sm-2"></div>
-                <div class="col-sm-8">
-                    <input type="submit" value="Login" class="btn btn-primary" style="background-color: #9F2CAD; color: white; margin-left: 10px;" />
+                <div class="col-sm-4 col-sm-offset-4" style="">
+                    <input type="submit" value="Login" class="btn btn-primary" style="background-color: #9F2CAD; color: white; margin-top: 5%" />
                 </div>
             </div>
         }
@@ -71,7 +85,7 @@
                 <div class="col-sm-4">
                     <label for="firstname" id="firstname">First name:</label>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-8">
                     @Html.TextBoxFor(m => m.RegisterModel.FirstName, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.RegisterModel.FirstName, "", new { @class = "alert-danger" })
                 </div>
@@ -81,7 +95,7 @@
                 <div class="col-sm-4">
                     <label for="lastname" id="lastname">Last name:</label>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-8">
                     @Html.TextBoxFor(m => m.RegisterModel.LastName, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.RegisterModel.LastName, "", new { @class = "alert-danger" })
                 </div>              
@@ -91,7 +105,7 @@
                 <div class="col-sm-4">
                     <label for="username" id="username">Username:</label>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-8">
                     @Html.TextBoxFor(m => m.RegisterModel.Username, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.RegisterModel.Username, "", new { @class = "alert-danger" })
                 </div>           
@@ -107,7 +121,7 @@
 
                 </div>
                 <div class="col-sm-2" style="padding: 0; margin-top: 5px;">
-                    <input type="checkbox" onclick="toggleShowPassword('password-register')" style="margin-right: 5px;">Show
+                    <input type="checkbox" onclick="toggleShowPassword('password-register')" style="margin-right: 5px;"> Show
 
                 </div>
             </div>
@@ -116,7 +130,7 @@
                 <div class="col-sm-4">
                     <label for="email" id="email">E-Mail:</label>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-8">
                     @Html.TextBoxFor(m => m.RegisterModel.PrimaryEmail, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.RegisterModel.PrimaryEmail, "", new { @class = "alert-danger" })
                 </div>               
@@ -126,7 +140,7 @@
                 <div class="col-sm-4">
                     <label for="phone" id="phone">Phone number:</label>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-8">
                     @Html.TextBoxFor(m => m.RegisterModel.PrimaryPhone, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.RegisterModel.PrimaryPhone, "", new { @class = "alert-danger" })
                     <div>
