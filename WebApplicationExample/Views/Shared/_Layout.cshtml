@@ -9,7 +9,6 @@
     @Scripts.Render("~/bundles/modernizr")
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           rel="stylesheet">
-
 </head>
 
 <body>
@@ -30,8 +29,8 @@
                         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                         @if (ProfileChecker.IsLoggedIn())
                         {
-
-                            <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
+                            <li>@Html.ActionLink("Dashboard", "Dashboard", "System")</li>
+                            <li>@Html.ActionLink("Logout", "Logout", "Home", null, new { id = "logout", onclick="logOut()" })</li>
                         }
                         else
                         {

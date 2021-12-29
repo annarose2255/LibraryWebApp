@@ -246,9 +246,11 @@ namespace LibraryWebApp
 
 
         [HttpGet]
-        public ActionResult LogOut()
+        public ActionResult Logout()
         {
+            //System.Web.HttpContext.Current.Session["Profile"] = null;
             Session.Clear();
+            Session.Abandon();           
             return RedirectToAction("Index", "Home");
         }
 
