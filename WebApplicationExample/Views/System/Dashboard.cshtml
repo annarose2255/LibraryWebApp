@@ -18,17 +18,11 @@
         <div class="row" style="border:solid black 1px; margin-right:10%">
 
 
-            @using (Html.BeginForm("EditUser", "System", new { id = profile.UserId.ToString() }, FormMethod.Get))
-            {
-                @*<h4 class="card-title" style="border-bottom:solid black 1px">Welcome, <strong>@profile.Username</strong>!</h4>*@
-                //var myModal = "myModal" + _current.UserId.ToString();
-                <button type="submit" class="btn btn-primary btn-sm">@profile.Username </button>
-            }
-
+            
+            <h4 class="card-title" style="border-bottom:solid black 1px">Welcome, <strong>@profile.Username</strong>!</h4>
             <h6 class="card-subtitle mb-2 text-muted">This is your dashboard with all your relevent user information</h6>
             <p class="card-text">
-                <strong>Username: </strong>@profile.Username
-                @Html.ActionLink(profile.Username, "EditUser", new { Id = profile.UserId })
+                <strong>Username: </strong> @Html.ActionLink(@profile.Username, "EditUser", new { Id = profile.UserId })
             </p>
             <p class="card-text">
                 <strong>First name: </strong>@profile.FirstName
@@ -42,6 +36,7 @@
             <p class="card-text">
                 <strong>Phone number: </strong>@profile.PrimaryPhone
             </p>
+            
         </div>
 
 

@@ -304,7 +304,7 @@ namespace LibraryDatabaseAccessLayer
                         _sqlCommand.ExecuteNonQuery();   // calls the sp                        
                         con.Close();
 
-                        return _return;
+                        return u;
 
 
                     }
