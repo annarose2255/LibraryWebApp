@@ -39,10 +39,10 @@
                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
                 <div class="form-group">
-                    <label for="phoneinput">Phone number</label>
+                    <label >Phone number</label>
                     <p>@Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "alert-danger" })</p>
 
-                    @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", @id = "phone-input", @type = "tel", @placeholder = "Your Phone Number Here (222-222-2222)", @style = "max-width:100%" })
+                    @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", @id = "contact-input", @type = "tel", @placeholder = "Your Phone Number Here (222-222-2222)", @style = "max-width:100%" })
                 </div>
                 <div class="form-group">
                     <label> Are you a member?</label>
