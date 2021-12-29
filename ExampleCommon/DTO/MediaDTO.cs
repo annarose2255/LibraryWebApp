@@ -20,7 +20,7 @@ namespace LibraryCommon.DTO
         public int ModifiedByUserID { get; set; }
         public string ImageName { get; set; }
         public string Description { get; set; }
-        public string  GenreName { get; set; }
+        public string GenreName { get; set; }
         public string PublisherName { get; set; }
         public MediaDTO() : base()
         { }
