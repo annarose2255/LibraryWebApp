@@ -747,7 +747,21 @@ input[type=radio] {
     float: left;
     width: auto;
 }
+.radio-inline{
+    padding-left: 0;
+    width: auto;
+}
+.checkbox-inline input[type="checkbox"] {
+    padding-left: 0;
+    width: auto;
 
+   
+}
+.checkbox-inline {
+    /*margin-top: 0;*/
+    margin-top: 2%;
+    height: 100%;
+}
 label {
     display: block;
 }
