@@ -244,6 +244,14 @@ namespace LibraryWebApp
             }          
         }
 
+
+        [HttpGet]
+        public ActionResult LogOut()
+        {
+            Session.Clear();
+            return RedirectToAction("Index", "Home");
+        }
+
         [HttpPost]
         public ActionResult Register(GlobalLoginModel inModel)
         {
