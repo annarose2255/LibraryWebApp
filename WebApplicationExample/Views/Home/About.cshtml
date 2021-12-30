@@ -9,43 +9,44 @@
     <link rel="stylesheet" type="text/css" href="../content/site.css" />
 </head>
 <body>
-    <h2>Staff Directory</h2>
-    <div class="row">
+    <h2 style="margin-top:2%">Staff Directory</h2>
             @foreach (var user in Model.UsersModel.ListOfUsers)
             {
                 if (user.RoleName == "Employee")
                 {
-                    <div class="col-lg-3 col-md-4 col-sm-12">
-                        <img src="~/Content/user-images/profileanon.jpg" />
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <img src="~/Content/user-images/profileanon.jpg" style="width:50%">
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="row">
+                    <div class="col-12">
+                        <h3><strong>@user.FirstName @user.LastName</strong></h3>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-12">
-                        <div class="row">
-                            <div class="col-12">
-                                <h3><strong>@user.FirstName @user.LastName</strong></h3>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                Description of the employee would go here. For now, it is a placeholder.
-                            </div>
-                        </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        Description of the employee would go here. For now, it is a placeholder.
                     </div>
-                    <div class="col-lg-5 col-md-4 col-sm-12">
-                        <div class="row">
-                            <div class="col-12">
-                                <h4>
-                                    <a href="mailto: @user.PrimaryEmail"> @user.PrimaryEmail</a>
-                                </h4>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <h4>
-                                    <strong>@user.PrimaryPhone</strong>
-                                </h4>
-                            </div>
-                        </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-4 col-sm-12">
+                <div class="row">
+                    <div class="col-12">
+                        <h4>
+                            <a href="mailto: @user.PrimaryEmail"> @user.PrimaryEmail</a>
+                        </h4>
                     </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <h4>
+                            <strong>@user.PrimaryPhone</strong>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
                     <br/>
                     <br/>
 
