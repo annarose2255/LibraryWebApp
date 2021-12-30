@@ -26,8 +26,8 @@
                 <div class=" col-md-3" style="margin-left: 1%;">
                     <label for="username" id="username">Username:</label>
                 </div>
-                <div class="col-11 col-md-6" style="margin-left: 2%; padding-right: 0;">
-                    @Html.TextBoxFor(m => m.LoginModel.Username, new { @class = "form-control", @style="width: 84%"})
+                <div class="col-11 col-md-6" style="margin-left: 2%; padding-right: 0;" id="login-username-box">
+                    @Html.TextBoxFor(m => m.LoginModel.Username, new { @class = "form-control", @*@style="width: 84%"*@})
                     @Html.ValidationMessageFor(m => m.LoginModel.Username, "", new { @class = "alert-danger" })
                 </div>
 

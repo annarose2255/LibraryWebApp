@@ -788,7 +788,9 @@ label {
 
     width: 93%;
 }
-
+#login-username-box .form-control {
+    width: 84%;
+}
 
 @media only screen and (max-width: 1080px) {
     main {
@@ -1013,5 +1015,7 @@ label {
     #password-register{
         width: 100%;
     }
-
+    #login-username-box .form-control{
+        width: 97%;
+    }
 }
