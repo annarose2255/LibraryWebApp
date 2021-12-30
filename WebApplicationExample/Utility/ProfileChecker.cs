@@ -7,10 +7,10 @@ using System.Web;
 
 namespace LibraryWebApp.Utility
 {
-    internal static class ProfileChecker
+    public static class ProfileChecker
     {
 
-        internal static bool IsLoggedIn() 
+        public static bool IsLoggedIn() 
         {
 
             UserDTO _check = (UserDTO)System.Web.HttpContext.Current.Session["Profile"];
@@ -18,7 +18,7 @@ namespace LibraryWebApp.Utility
 
         }
 
-        internal static bool IsAdmin()
+        public static bool IsAdmin()
         {
             UserDTO _check = (UserDTO)System.Web.HttpContext.Current.Session["Profile"];
             return _check.RoleName == RoleType.Administrator.ToString() ? true : false;
