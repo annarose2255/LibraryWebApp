@@ -18,17 +18,23 @@ namespace WebApplicationExample.Controllers
         [HttpGet]
         public ActionResult Dashboard()
         {
+            if (ProfileChecker.IsLoggedIn())
+            {
+                // connection string coming out of the web.config
+                BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru(System.Configuration.ConfigurationManager.
+                ConnectionStrings["dbconnection"].ConnectionString);
+
+                List<UserDTO> _list = businessLogicPassThru.GetUsersData();
+                UsersModel _model = new UsersModel(Mapper.ListOfUserDTOToListOfUserModel(_list));
+
+                return View(_model);
+            }
+            else 
+            {
+                return RedirectToAction("Index", "Home");
+            }
           
-            // connection string coming out of the web.config
-            BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru(System.Configuration.ConfigurationManager.
-            ConnectionStrings["dbconnection"].ConnectionString);
-
-            List<UserDTO> _list = businessLogicPassThru.GetUsersData();
-
           
-            UsersModel _model = new UsersModel(Mapper.ListOfUserDTOToListOfUserModel(_list));
-
-            return View(_model);
         }
 
         //[AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post)]
