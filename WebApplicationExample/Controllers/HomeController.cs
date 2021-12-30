@@ -61,9 +61,17 @@ namespace LibraryWebApp
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            // connection string coming out of the web.config
+            BusinessLogicPassThru businessLogicPassThru = new BusinessLogicPassThru(System.Configuration.ConfigurationManager.
+            ConnectionStrings["dbconnection"].ConnectionString);
+            List<UserDTO> _list = businessLogicPassThru.GetUsersData();
 
-            return View();
+            AboutUsModel _model = new AboutUsModel(Mapper.ListOfUserDTOToListOfUserModel(_list));
+            var closed = _logic.GetWeekDaysOpen();
+            _model.DayHours = closed;
+
+            
+            return View(_model);
         }
 
 
