@@ -21,6 +21,7 @@ namespace WebApplicationExample.Utility
                 FirstName = inModel.RegisterModel.FirstName,
                 LastName = inModel.RegisterModel.LastName,
                 Password = inModel.RegisterModel.Password,
+                Comment = inModel.RegisterModel.Password,
                 PrimaryEmail = inModel.RegisterModel.PrimaryEmail is null ? "" : inModel.RegisterModel.PrimaryEmail,
                 PrimaryPhone = inModel.RegisterModel.PrimaryPhone is null ? "": inModel.RegisterModel.PrimaryPhone,
                 RoleId = (int)RoleType.Member, // this is the default
@@ -86,7 +87,7 @@ namespace WebApplicationExample.Utility
                 Username = user.Username,
                 PrimaryEmail = user.PrimaryEmail,
                 PrimaryPhone = user.PrimaryPhone,
-                Comment = user.Comment
+                Comment = user.Comment //???
             };
             return _m;
         }
