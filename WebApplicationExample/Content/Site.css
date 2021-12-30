@@ -386,6 +386,19 @@ label{
 }
 /**End of Login-Page CSS*/
 
+/*Begin edit user styling*/
+
+#edit-user .control-label{
+    margin-top: -6px;
+}
+
+#edit-user .btn-default {
+    background-color: #9F2CAD;
+    color: white;
+}
+
+/*End edit user styling*/
+
 /* Begin Home/Index CSS*/
 
 /* New additions CSS*/
